@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Panier — Zil Fusion Brew</title>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <link rel="stylesheet" href="assets/css/nav-addon.css"/>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html" aria-label="Zil Fusion Brew">
+        <img class="logoImg" src="assets/img/logo_mark.svg" alt="" aria-hidden="true"/>
+        <span>Zil Fusion Brew</span>
+      </a>
+
+      <nav class="navlinks" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="bieres.html">Bières</a>
+        <a href="rhum.html">Rhums arrangés</a>
+        <a href="boissons-fermentees.html">Boissons fermentées</a>
+        <a href="ateliers.html">Ateliers</a>
+        <a href="boutique.html">Boutique</a>
+        <a href="a-propos.html">À propos</a>
+      </nav>
+
+      <div class="navRight">
+  <a class="btn" href="panier.html">Panier</a>
+</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container">
+      <div class="kicker">Boutique</div>
+      <h1>Panier</h1>
+      <p class="small" style="max-width:70ch;margin-top:.6rem">Ajoute des produits depuis la boutique, puis ajuste tes quantités ici.</p>
+      <div id="cartRoot" style="margin-top:1rem"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="notice">
+      Vente d’alcool interdite aux mineurs. L’abus d’alcool est dangereux pour la santé.
+    </div>
+    <div class="small" style="margin-top:10px;">
+      © <span data-year></span> Zil Fusion Brew
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

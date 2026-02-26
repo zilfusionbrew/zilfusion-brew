@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Zil Fusion Brew">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d4af37" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".05"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#g)" stroke="#d4af37" stroke-opacity=".35" stroke-width="2"/>
+  <path d="M22 22h20v6c0 5-4 9-9 9h-2c-5 0-9-4-9-9v-6z" fill="#0b0f0d" fill-opacity=".75" stroke="#d4af37" stroke-opacity=".35" stroke-width="2" />
+  <path d="M24 44c3 4 6 6 8 6s5-2 8-6" fill="none" stroke="#d4af37" stroke-opacity=".6" stroke-width="3" stroke-linecap="round"/>
+  <path d="M26 19c2-3 5-5 6-5s4 2 6 5" fill="none" stroke="#d4af37" stroke-opacity=".55" stroke-width="2" stroke-linecap="round"/>
+</svg>

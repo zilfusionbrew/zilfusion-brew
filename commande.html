@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Finaliser la commande — Zil Fusion Brew</title>
+  <meta name="description" content="Finaliser une commande (vitrine) — demande envoyée via formulaire."/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+  <link rel="stylesheet" href="assets/css/nav-addon.css"/>
+</head>
+<body>
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="brand" href="index.html" aria-label="Zil Fusion Brew">
+        <img class="logoImg" src="assets/img/logo_mark.svg" alt="" aria-hidden="true"/>
+        <span>Zil Fusion Brew</span>
+      </a>
+      <nav class="navlinks" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="boutique.html">Boutique</a>
+        <a href="panier.html" class="btn" id="navCartBtn">Panier</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section">
+    <div class="container">
+      <div class="kicker">Boutique</div>
+      <h1>Finaliser la commande</h1>
+      <p class="small" style="max-width:75ch;margin-top:.6rem">
+        Paiement non activé (vitrine). Ta commande est envoyée comme <strong>demande</strong> via le formulaire ci‑dessous.
+      </p>
+
+      <div class="grid" style="grid-template-columns:1.1fr .9fr; gap:1rem; margin-top:1rem">
+        <div class="card pad">
+          <h3 style="margin:0 0 .6rem 0">Récapitulatif</h3>
+          <div id="orderSummary" class="small" style="white-space:pre-wrap; line-height:1.5"></div>
+        </div>
+
+        <div class="card pad">
+          <h3 style="margin:0 0 .6rem 0">Tes infos</h3>
+
+          <!-- Netlify needs a static form + hidden form-name -->
+          <form class="form" name="commande" method="POST" data-netlify="true" action="merci.html">
+            <input type="hidden" name="form-name" value="commande"/>
+            <input class="input" name="name" placeholder="Nom / Prénom" required type="text"/>
+            <input class="input" name="email" placeholder="Email" required type="email"/>
+            <input class="input" name="subject" placeholder="Sujet" required type="text"/>
+            <textarea class="input" name="message" placeholder="Détails de commande" required></textarea>
+            <button class="btn" type="submit">Envoyer la commande →</button>
+            <p class="small" style="opacity:.8;margin-top:.6rem">Tu peux modifier le message avant envoi.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+      <section class="card" style="margin-top:1rem">
+        <h2 style="margin:0 0 .5rem 0">Paiement</h2>
+        <p style="margin:.25rem 0 1rem 0; color: rgba(243,241,234,.82)">
+          Paiement sécurisé par carte (Stripe). Une fois payé, tu reçois une confirmation et on prépare la commande.
+        </p>
+        <button class="btn" id="payBtn" type="button">Payer par carte</button>
+        <p id="payMsg" style="margin:.75rem 0 0 0; color: rgba(243,241,234,.82)"></p>
+        <p style="margin:.5rem 0 0 0; font-size:.9rem; color: rgba(243,241,234,.65)">
+          * Si tu es en local (fichier .html), le paiement ne peut fonctionner que sur Netlify/Vercel avec les variables Stripe configurées.
+        </p>
+      </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="notice">
+      Vente d’alcool interdite aux mineurs. L’abus d’alcool est dangereux pour la santé.
+    </div>
+    <div class="small" style="margin-top:10px;">
+      © <span data-year></span> Zil Fusion Brew
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  (function(){
+    const params = new URLSearchParams(window.location.search);
+    const subject = params.get('subject') || 'Commande via panier';
+    const message = params.get('message') || '';
+
+    const summary = document.getElementById('orderSummary');
+    if(summary){
+      summary.textContent = message ? decodeURIComponent(message) : "Aucun article. Retourne à la boutique.";
+    }
+
+    const form = document.querySelector('form[name="commande"]');
+    if(form){
+      const subjectInput = form.querySelector('input[name="subject"]');
+      const messageInput = form.querySelector('textarea[name="message"]');
+      if(subjectInput && !subjectInput.value) subjectInput.value = subject;
+      if(messageInput && !messageInput.value) messageInput.value = message ? decodeURIComponent(message) : '';
+    }
+  })();
+</script>
+
+<script>
+(function(){
+  const STORAGE_KEY = 'zilfusion_cart_v1';
+
+  function getCart(){
+    try {
+      const cart = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      return Array.isArray(cart) ? cart : [];
+    } catch(e){ return []; }
+  }
+
+  async function startCheckout(){
+    const btn = document.getElementById('payBtn');
+    const msg = document.getElementById('payMsg');
+    const cart = getCart();
+    if(!cart.length){
+      msg.textContent = "Ton panier est vide.";
+      return;
+    }
+    btn.disabled = true;
+    msg.textContent = "Ouverture du paiement sécurisé…";
+    try{
+      const res = await fetch('/.netlify/functions/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type':'application/json' },
+        body: JSON.stringify({ items: cart })
+      });
+      const data = await res.json().catch(()=> ({}));
+      if(!res.ok || !data.url){
+        throw new Error(data.error || 'Erreur paiement');
+      }
+      window.location.href = data.url;
+    }catch(err){
+      console.error(err);
+      msg.textContent = "Impossible d’ouvrir le paiement. Vérifie la config Stripe (clé secrète + URL du site).";
+      btn.disabled = false;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', ()=>{
+    const btn = document.getElementById('payBtn');
+    if(btn) btn.addEventListener('click', startCheckout);
+  });
+})();
+</script>
+
+</body>
+</html>
