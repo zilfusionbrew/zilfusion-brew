@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin ZilFusion Brew</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@300;400;500;600&display=swap');
+  
+  :root {
+    --gold: #C5A059;
+    --gold2: #E8C97A;
+    --black: #070a09;
+    --surface: #0f1410;
+    --surface2: #161d16;
+    --border: rgba(197,160,89,.18);
+    --red: #e05555;
+    --green: #4caf7d;
+    --blue: #5599e0;
+    --orange: #e07c35;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: #f4f1eb;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* LOGIN */
+  #login-screen {
+    position: fixed; inset: 0; z-index: 9999;
+    background: var(--black);
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  .login-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 3rem 2.5rem;
+    width: 360px;
+    text-align: center;
+  }
+
+  .login-box h1 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 1.4rem;
+    margin-bottom: .3rem;
+  }
+
+  .login-box p { color: rgba(244,241,235,.4); font-size: .82rem; margin-bottom: 2rem; }
+
+  .login-box input {
+    width: 100%; padding: .9rem 1rem;
+    background: rgba(255,255,255,.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: #f4f1eb;
+    font-size: .9rem;
+    margin-bottom: 1rem;
+    outline: none;
+    transition: border-color .2s;
+  }
+
+  .login-box input:focus { border-color: var(--gold); }
+
+  .login-box button {
+    width: 100%; padding: .9rem;
+    background: var(--gold);
+    border: none; border-radius: 8px;
+    color: #000; font-weight: 700;
+    font-size: .9rem; cursor: pointer;
+    transition: background .2s;
+  }
+
+  .login-box button:hover { background: var(--gold2); }
+  .login-error { color: var(--red); font-size: .8rem; margin-top: .5rem; display: none; }
+
+  /* HEADER */
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+  }
+
+  header h1 {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 1.1rem;
+  }
+
+  header span { font-size: .75rem; color: rgba(244,241,235,.4); }
+
+  .btn-save-all {
+    background: var(--gold);
+    border: none; border-radius: 8px;
+    color: #000; font-weight: 700;
+    padding: .6rem 1.4rem;
+    cursor: pointer; font-size: .82rem;
+    transition: all .2s;
+    display: flex; align-items: center; gap: .5rem;
+  }
+
+  .btn-save-all:hover { background: var(--gold2); transform: translateY(-1px); }
+
+  /* MAIN */
+  main { padding: 2rem; max-width: 1100px; margin: 0 auto; }
+
+  /* TOAST */
+  .toast {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: var(--green); color: #000;
+    padding: .8rem 1.5rem; border-radius: 8px;
+    font-weight: 600; font-size: .85rem;
+    opacity: 0; transform: translateY(20px);
+    transition: all .3s; z-index: 9999;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: .9rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    padding-bottom: .6rem;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: .6rem;
+  }
+
+  /* BADGE ANIMÉ */
+  @keyframes pulse-solde { 0%,100%{box-shadow:0 0 0 0 rgba(224,85,85,.5)} 50%{box-shadow:0 0 0 8px rgba(224,85,85,0)} }
+  @keyframes pulse-nouveaute { 0%,100%{box-shadow:0 0 0 0 rgba(76,175,125,.5)} 50%{box-shadow:0 0 0 8px rgba(76,175,125,0)} }
+  @keyframes pulse-liquidation { 0%,100%{box-shadow:0 0 0 0 rgba(224,124,53,.5)} 50%{box-shadow:0 0 0 8px rgba(224,124,53,0)} }
+  @keyframes shine { 0%{background-position:-200% center} 100%{background-position:200% center} }
+
+  .badge-preview {
+    display: inline-flex; align-items: center; gap: .4rem;
+    padding: .3rem .8rem; border-radius: 999px;
+    font-size: .7rem; font-weight: 700;
+    letter-spacing: .08em; text-transform: uppercase;
+    margin-bottom: .3rem;
+  }
+
+  .badge-solde {
+    background: var(--red); color: #fff;
+    animation: pulse-solde 1.5s infinite;
+  }
+
+  .badge-nouveaute {
+    background: var(--green); color: #000;
+    animation: pulse-nouveaute 2s infinite;
+  }
+
+  .badge-liquidation {
+    background: linear-gradient(90deg, var(--orange), #e0a035, var(--orange));
+    background-size: 200% auto;
+    color: #fff;
+    animation: shine 2s linear infinite, pulse-liquidation 1.5s infinite;
+  }
+
+  /* PRODUCT CARDS — style liste */
+  .products-grid {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .product-card {
+    display: grid;
+    grid-template-columns: 200px 130px 200px 1fr auto;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(197,160,89,.1);
+    transition: background .15s;
+  }
+
+  .product-card:last-child { border-bottom: none; }
+  .product-card:hover { background: var(--surface2); }
+
+  .product-card-info {
+    display: flex; align-items: center; gap: .8rem;
+  }
+
+  .product-emoji { font-size: 1.8rem; flex-shrink: 0; }
+
+  .product-name {
+    font-weight: 600; font-size: .9rem;
+  }
+
+  .product-cat {
+    font-size: .65rem; color: rgba(244,241,235,.4);
+    text-transform: uppercase; letter-spacing: .1em;
+    margin-top: .15rem;
+  }
+
+  .product-field { display: flex; flex-direction: column; gap: .3rem; }
+  .product-field-label { font-size: .6rem; color: rgba(244,241,235,.35); text-transform: uppercase; letter-spacing: .1em; }
+
+  /* PROMO CONTROLS */
+  .promo-row {
+    display: flex; align-items: center; gap: .6rem;
+    margin-bottom: .7rem;
+  }
+
+  .promo-row label {
+    font-size: .75rem; color: rgba(244,241,235,.5);
+    min-width: 80px;
+  }
+
+  /* BADGE TOGGLE */
+  .badge-toggles {
+    display: flex; gap: .5rem; flex-wrap: wrap;
+    margin-bottom: .8rem;
+  }
+
+  .badge-toggle {
+    padding: .3rem .8rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.1);
+    background: rgba(255,255,255,.03);
+    color: rgba(244,241,235,.4);
+    font-size: .7rem; font-weight: 600;
+    letter-spacing: .06em; text-transform: uppercase;
+    cursor: pointer; transition: all .2s;
+  }
+
+  .badge-toggle.active-solde {
+    background: var(--red); border-color: var(--red);
+    color: #fff; animation: pulse-solde 1.5s infinite;
+  }
+
+  .badge-toggle.active-nouveaute {
+    background: var(--green); border-color: var(--green);
+    color: #000; animation: pulse-nouveaute 2s infinite;
+  }
+
+  .badge-toggle.active-bientot {
+    background: #c5a059;
+    border-color: #c5a059;
+    color: #000;
+  }
+  .badge-toggle.active-liquidation {
+    background: var(--orange); border-color: var(--orange);
+    color: #fff; animation: pulse-liquidation 1.5s infinite;
+  }
+
+  /* PRICE ROW */
+  .price-row {
+    display: flex; align-items: center; gap: .6rem;
+    margin-bottom: .5rem;
+  }
+
+  .price-original {
+    font-size: .78rem; color: rgba(244,241,235,.35);
+    text-decoration: line-through;
+  }
+
+  .price-new {
+    color: var(--gold2); font-weight: 700; font-size: .95rem;
+  }
+
+  .price-input {
+    width: 80px;
+    padding: .4rem .6rem;
+    background: rgba(255,255,255,.05);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: #f4f1eb; font-size: .85rem;
+    outline: none; transition: border-color .2s;
+  }
+
+  .price-input:focus { border-color: var(--gold); }
+
+  .discount-input {
+    width: 60px;
+    padding: .4rem .6rem;
+    background: rgba(255,255,255,.05);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--red); font-size: .85rem; font-weight: 700;
+    outline: none; transition: border-color .2s;
+  }
+
+  .discount-input:focus { border-color: var(--red); }
+
+  .price-calc {
+    font-size: .72rem; color: rgba(244,241,235,.4);
+  }
+
+  /* TOGGLE SWITCH */
+  .switch {
+    position: relative; display: inline-block;
+    width: 36px; height: 20px;
+  }
+
+  .switch input { opacity: 0; width: 0; height: 0; }
+
+  .slider {
+    position: absolute; cursor: pointer;
+    inset: 0; background: rgba(255,255,255,.1);
+    border-radius: 20px; transition: .3s;
+  }
+
+  .slider:before {
+    content: ''; position: absolute;
+    height: 14px; width: 14px;
+    left: 3px; bottom: 3px;
+    background: #fff; border-radius: 50%;
+    transition: .3s;
+  }
+
+  input:checked + .slider { background: var(--gold); }
+  input:checked + .slider:before { transform: translateX(16px); }
+
+  /* RESET BTN */
+  .btn-reset {
+    padding: .3rem .7rem;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 6px;
+    color: rgba(244,241,235,.4);
+    font-size: .7rem; cursor: pointer;
+    transition: all .2s;
+  }
+
+  .btn-reset:hover { border-color: var(--red); color: var(--red); }
+
+  /* LEGEND */
+  .legend {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  .legend-item {
+    display: flex; align-items: center; gap: .5rem;
+    font-size: .75rem; color: rgba(244,241,235,.5);
+  }
+
+  /* DOWNLOAD BTN */
+  .btn-download {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--gold);
+    padding: .6rem 1.2rem;
+    cursor: pointer; font-size: .82rem;
+    transition: all .2s;
+    display: flex; align-items: center; gap: .5rem;
+  }
+
+  .btn-download:hover { border-color: var(--gold); }
+
+  .header-btns { display: flex; gap: .8rem; }
+
+  /* ONGLETS */
+  .admin-tabs {
+    display: flex; gap: 0;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    overflow-x: auto;
+  }
+  .admin-tab {
+    padding: .9rem 1.5rem;
+    font-size: .78rem; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: rgba(244,241,235,.4);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all .2s;
+    white-space: nowrap;
+  }
+  .admin-tab:hover { color: #f4f1eb; }
+  .admin-tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* SECTIONS ONGLETS */
+  .tab-section { display: none; }
+  .tab-section.active { display: block; }
+
+  /* GAMMES */
+  .gamme-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <h1>⚙️ Admin Panel</h1>
+    <p>ZilFusion Brew — Gestion des promotions</p>
+    <input type="password" id="pwd-input" placeholder="Mot de passe admin" onkeydown="if(event.key==='Enter')checkLogin()">
+    <button onclick="checkLogin()">Connexion</button>
+    <p class="login-error" id="login-error">❌ Mot de passe incorrect</p>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">✅ Modifications appliquées !</div>
+
+<!-- HEADER -->
+<header>
+  <div>
+    <p style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;">Panneau d'administration</p>
+    <h1 style="font-family:'Cinzel',serif;color:#f4f1eb;font-size:1.6rem;letter-spacing:.02em;">ZilFusion Brew</h1>
+    <span>Gestion des promotions & prix</span>
+  </div>
+  <div class="header-btns">
+    <button class="btn-download" onclick="downloadHTML()">⬇️ Télécharger index.html</button>
+    <button class="btn-save-all" onclick="applyAll()">✅ Appliquer les modifications</button>
+  </div>
+</header>
+
+<!-- ONGLETS -->
+<div class="admin-tabs">
+  <div class="admin-tab active" onclick="showTab('accueil')">🏠 Accueil</div>
+  <div class="admin-tab" onclick="showTab('bieres')">🍺 Bières</div>
+  <div class="admin-tab" onclick="showTab('rhums')">🥃 Rhums</div>
+  <div class="admin-tab" onclick="showTab('fermentees')">🍵 Fermentés</div>
+  <div class="admin-tab" onclick="showTab('ateliers')">🎓 Ateliers</div>
+  <div class="admin-tab" onclick="showTab('boutique')">🛒 Boutique</div>
+</div>
+
+<main>
+
+  <!-- ONGLET ACCUEIL : GAMMES -->
+  <div id="tab-accueil" class="tab-section active">
+    <div class="section">
+      <div class="section-title">🏷️ Badges Gammes — Page d'accueil</div>
+      <p style="font-size:.78rem;color:rgba(244,241,235,.4);margin-bottom:1rem;">Écris le texte du badge à afficher sur chaque gamme. Laisse vide pour aucun badge.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:.8rem;">
+
+        <div class="gamme-card">
+          <div style="font-size:.8rem;font-weight:700;margin-bottom:.6rem;">🍺 Bières Artisanales</div>
+          <input type="text" id="gamme-badge-bieres" placeholder="ex: ⏳ Bientôt disponible" oninput="setGammeBadge('bieres',this.value)" style="width:100%;background:#111;border:1px solid rgba(244,241,235,.15);color:#f4f1eb;padding:.5rem .7rem;font-size:.78rem;border-radius:6px;outline:none;box-sizing:border-box;">
+          <div id="gamme-preview-bieres" style="margin-top:.5rem;min-height:1.4rem;"></div>
+        </div>
+
+        <div class="gamme-card">
+          <div style="font-size:.8rem;font-weight:700;margin-bottom:.6rem;">🥃 Rhum Arrangé</div>
+          <input type="text" id="gamme-badge-rhum" placeholder="ex: ⏳ Bientôt disponible" oninput="setGammeBadge('rhum',this.value)" style="width:100%;background:#111;border:1px solid rgba(244,241,235,.15);color:#f4f1eb;padding:.5rem .7rem;font-size:.78rem;border-radius:6px;outline:none;box-sizing:border-box;">
+          <div id="gamme-preview-rhum" style="margin-top:.5rem;min-height:1.4rem;"></div>
+        </div>
+
+        <div class="gamme-card">
+          <div style="font-size:.8rem;font-weight:700;margin-bottom:.6rem;">🍵 Kombucha</div>
+          <input type="text" id="gamme-badge-kombucha" placeholder="ex: ⏳ Bientôt disponible" oninput="setGammeBadge('kombucha',this.value)" style="width:100%;background:#111;border:1px solid rgba(244,241,235,.15);color:#f4f1eb;padding:.5rem .7rem;font-size:.78rem;border-radius:6px;outline:none;box-sizing:border-box;">
+          <div id="gamme-preview-kombucha" style="margin-top:.5rem;min-height:1.4rem;"></div>
+        </div>
+
+        <div class="gamme-card">
+          <div style="font-size:.8rem;font-weight:700;margin-bottom:.6rem;">🥛 Kéfir</div>
+          <input type="text" id="gamme-badge-kefir" placeholder="ex: ⏳ Bientôt disponible" oninput="setGammeBadge('kefir',this.value)" style="width:100%;background:#111;border:1px solid rgba(244,241,235,.15);color:#f4f1eb;padding:.5rem .7rem;font-size:.78rem;border-radius:6px;outline:none;box-sizing:border-box;">
+          <div id="gamme-preview-kefir" style="margin-top:.5rem;min-height:1.4rem;"></div>
+        </div>
+
+        <div class="gamme-card">
+          <div style="font-size:.8rem;font-weight:700;margin-bottom:.6rem;">🥤 Sodas Naturels</div>
+          <input type="text" id="gamme-badge-sodas" placeholder="ex: ⏳ Bientôt disponible" oninput="setGammeBadge('sodas',this.value)" style="width:100%;background:#111;border:1px solid rgba(244,241,235,.15);color:#f4f1eb;padding:.5rem .7rem;font-size:.78rem;border-radius:6px;outline:none;box-sizing:border-box;">
+          <div id="gamme-preview-sodas" style="margin-top:.5rem;min-height:1.4rem;"></div>
+        </div>
+
+        <div class="gamme-card">
+          <div style="font-size:.8rem;font-weight:700;margin-bottom:.6rem;">🎓 Ateliers Découverte</div>
+          <input type="text" id="gamme-badge-ateliers" placeholder="ex: ⏳ Bientôt disponible" oninput="setGammeBadge('ateliers',this.value)" style="width:100%;background:#111;border:1px solid rgba(244,241,235,.15);color:#f4f1eb;padding:.5rem .7rem;font-size:.78rem;border-radius:6px;outline:none;box-sizing:border-box;">
+          <div id="gamme-preview-ateliers" style="margin-top:.5rem;min-height:1.4rem;"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ONGLETS PRODUITS -->
+  <div id="tab-bieres" class="tab-section"></div>
+  <div id="tab-rhums" class="tab-section"></div>
+  <div id="tab-fermentees" class="tab-section"></div>
+  <div id="tab-ateliers" class="tab-section">
+    <div class="section">
+      <div class="section-title">🎓 Badge Ateliers — Page d'accueil</div>
+      <p style="font-size:.76rem;color:rgba(244,241,235,.4);margin-bottom:1rem;">Écris le texte du badge à afficher sur la carte Ateliers de la page d'accueil.</p>
+      <div style="max-width:320px;">
+        <div class="gamme-card">
+          <div style="font-size:.78rem;font-weight:700;margin-bottom:.6rem;">🎓 Ateliers Découverte</div>
+          <input type="text" id="gamme-badge-ateliers2" placeholder="ex: ⏳ Bientôt disponible" oninput="setGammeBadge('ateliers',this.value)" style="width:100%;background:#111;border:1px solid rgba(244,241,235,.15);color:#f4f1eb;padding:.45rem .65rem;font-size:.76rem;border-radius:6px;outline:none;box-sizing:border-box;">
+          <div id="gamme-preview-ateliers2" style="margin-top:.5rem;min-height:1.4rem;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="tab-boutique" class="tab-section"></div>
+
+</main>
+
+<script>
+// MOT DE PASSE ADMIN
+const ADMIN_PWD = 'zilfusion brew';
+
+function showTab(tab) {
+  document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.admin-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  event.target.classList.add('active');
+}
+
+function setGammeBadge(gamme, texte) {
+  if (!promos['gammes']) promos['gammes'] = {};
+  promos['gammes'][gamme] = texte.trim();
+  localStorage.setItem('zilf_promos', JSON.stringify(promos));
+  const prev = document.getElementById('gamme-preview-' + gamme);
+  if (prev) {
+    prev.innerHTML = texte.trim() ? '<span style="background:#c5a059;color:#000;border-radius:999px;padding:.2rem .6rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;">' + texte.trim() + '</span>' : '';
+  }
+}
+
+function loadGammeBadges() {
+  const saved = (promos['gammes'] || {});
+  ['bieres','rhum','kombucha','kefir','sodas','ateliers'].forEach(g => {
+    const inp = document.getElementById('gamme-badge-' + g);
+    if (inp && saved[g]) {
+      inp.value = saved[g];
+      const prev = document.getElementById('gamme-preview-' + g);
+      if (prev) prev.innerHTML = '<span style="background:#c5a059;color:#000;border-radius:999px;padding:.2rem .6rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;">' + saved[g] + '</span>';
+    }
+  });
+}
+
+function checkLogin() {
+  const pwd = document.getElementById('pwd-input').value;
+  if (pwd === ADMIN_PWD) {
+    document.getElementById('login-screen').style.display = 'none';
+    init();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+  }
+}
+
+// PRODUITS
+const PRODUCTS = [
+  // BIÈRES
+  {id:'pale-ale-mango', name:'Pale Ale Mango 🥭', cat:'Bière', price:4.50},
+  {id:'ipa-tropicale', name:'IPA Tropicale', cat:'Bière', price:4.50},
+  {id:'stout-cacao', name:'Stout Cacao', cat:'Bière', price:5.20},
+  {id:'blonde-passion', name:'Blonde Passion', cat:'Bière', price:4.00},
+  {id:'saison-hibiscus', name:'Saison Hibiscus', cat:'Bière', price:7.50},
+  {id:'sour-citron-vert', name:'Sour Citron Vert', cat:'Bière', price:5.00},
+  {id:'porter-vanille', name:'Porter Vanille', cat:'Bière', price:5.50},
+  {id:'griotika', name:'Griotika Cherry Stout 🍒', cat:'Bière', price:2.50},
+  // RHUMS
+  {id:'rhum-vanille-coco', name:'Rhum Vanille-Coco 🌴', cat:'Rhum', price:24.90},
+  {id:'rhum-gingembre-citron', name:'Rhum Gingembre-Citron 🫚', cat:'Rhum', price:22.90},
+  {id:'rhum-fruits-rouges', name:'Rhum Fruits Rouges 🍓', cat:'Rhum', price:29.90},
+  {id:'rhum-epices-creoles', name:'Rhum Épices Créoles 🌶️', cat:'Rhum', price:25.90},
+  {id:'rhum-longani', name:'Rhum Longani', cat:'Rhum', price:35.00},
+  {id:'rhum-dragon', name:'Rhum Fruits du Dragon & Passion', cat:'Rhum', price:35.00},
+  // FERMENTÉS
+  {id:'kombucha-hibiscus', name:'Kombucha Hibiscus 🌺', cat:'Kombucha', price:6.90},
+  {id:'kombucha-gingembre', name:'Kombucha Gingembre 🫚', cat:'Kombucha', price:6.90},
+  {id:'kombucha-citron-kaffir', name:'Kombucha Citron-Kaffir 🍋', cat:'Kombucha', price:7.20},
+  {id:'kefir-nature', name:'Kéfir de Lait Nature 🥛', cat:'Kéfir', price:4.50},
+  {id:'kefir-fruits-tropicaux', name:'Kéfir Fruits Tropicaux 🍓', cat:'Kéfir', price:5.20},
+  {id:'soda-passion-menthe', name:'Soda Passion-Menthe 💛', cat:'Soda', price:3.20},
+  {id:'soda-ananas-basilic', name:'Soda Ananas-Basilic 🍍', cat:'Soda', price:3.20},
+  {id:'soda-goyave-lime', name:'Soda Goyave-Lime 💚', cat:'Soda', price:3.50},
+  // BOXES
+  {id:'box-decouverte', name:'Box Découverte 🎁', cat:'Box', price:32.00},
+  {id:'box-brasseur', name:'Box Brasseur 🍺', cat:'Box', price:28.00},
+  {id:'box-rhum-biere', name:'Box Rhum & Bière 🥃', cat:'Box', price:58.00},
+];
+
+let promos = {};
+
+function init() {
+  const saved = localStorage.getItem('zilf_promos');
+  if (saved) promos = JSON.parse(saved);
+  renderProducts();
+  loadGammeBadges();
+}
+
+function renderProducts() {
+  // Mapping cat → onglet
+  const catTab = {
+    'Bière': 'bieres',
+    'Rhum': 'rhums',
+    'Kombucha': 'fermentees',
+    'Kéfir': 'fermentees',
+    'Soda': 'fermentees',
+    'Box': 'boutique'
+  };
+
+  // Vider les onglets
+  ['bieres','rhums','fermentees','ateliers','boutique'].forEach(t => {
+    document.getElementById('tab-' + t).innerHTML = '';
+  });
+
+  const cats = [...new Set(PRODUCTS.map(p => p.cat))];
+  cats.forEach(cat => {
+    const tab = catTab[cat] || 'boutique';
+    const container = document.getElementById('tab-' + tab);
+
+    const section = document.createElement('div');
+    section.className = 'section';
+
+    const icons = {Bière:'🍺', Rhum:'🥃', Kombucha:'🍵', Kéfir:'🥛', Soda:'🧃', Box:'🎁'};
+    section.innerHTML = `<div class="section-title">${icons[cat]||'📦'} ${cat}s</div><div class="products-grid" id="grid-${cat}"></div>`;
+    container.appendChild(section);
+
+    const grid = section.querySelector(`#grid-${cat}`);
+    PRODUCTS.filter(p => p.cat === cat).forEach(p => {
+      grid.appendChild(createCard(p));
+    });
+  });
+}
+
+function getEmoji(name) {
+  const map = {
+    'Pale Ale Mango':'🥭','IPA Tropicale':'🍊','Stout Cacao':'🍫','Blonde Passion':'🌸',
+    'Saison Hibiscus':'🌺','Sour Citron Vert':'🍋','Porter Vanille':'🍦','Griotika':'🍒',
+    'Rhum Vanille-Coco':'🌴','Rhum Gingembre-Citron':'🫚','Rhum Fruits Rouges':'🍓',
+    'Rhum Épices Créoles':'🌶️','Rhum Longani':'🌿','Rhum Fruits du Dragon':'🐉',
+    'Kombucha Hibiscus':'🌺','Kombucha Gingembre':'🫚','Kombucha Citron-Kaffir':'🍋',
+    'Kéfir de Lait Nature':'🥛','Kéfir Fruits Tropicaux':'🍓',
+    'Soda Passion-Menthe':'💛','Soda Ananas-Basilic':'🍍','Soda Goyave-Lime':'💚',
+    'Box Découverte':'🎁','Box Brasseur':'🍺','Box Rhum & Bière':'🥃'
+  };
+  for (const k in map) { if (name.includes(k.split(' ')[0]) && name.includes(k.split(' ')[1]||k.split(' ')[0])) return map[k]; }
+  for (const k in map) { if (name.startsWith(k.split(' ')[0])) return map[k]; }
+  return '📦';
+}
+
+function createCard(p) {
+  const promo = promos[p.id] || {badge: null, discount: 0};
+  const discountedPrice = promo.discount > 0 ? (p.price * (1 - promo.discount/100)).toFixed(2) : null;
+  const emoji = getEmoji(p.name);
+
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  card.id = 'card-' + p.id;
+
+  const stockStatus = promo.stock === 0 ? '<span style="color:#e05555;font-size:.7rem;font-weight:700;">❌ Rupture</span>'
+    : promo.stock > 0 && promo.stock <= 10 ? '<span style="color:#e07c35;font-size:.7rem;font-weight:700;">⚡ Stock faible</span>'
+    : promo.stock > 10 ? '<span style="color:#4caf7d;font-size:.7rem;font-weight:700;">✅ En stock</span>' : '';
+
+  card.innerHTML = `
+    <div class="product-card-info">
+      <span class="product-emoji">${emoji}</span>
+      <div>
+        <div class="product-name">${p.name.replace(/ 🥭| 🍒/g,'')}</div>
+        <div class="product-cat">${p.cat.toLowerCase()} · ${p.price.toFixed(2).replace('.',',')} €</div>
+      </div>
+    </div>
+
+    <div class="product-field">
+      <div class="product-field-label">Prix (€)</div>
+      <input class="price-input" type="number" min="0" step="0.01"
+        value="${promo.newPrice || p.price.toFixed(2)}"
+        id="newprice-${p.id}" oninput="updateNewPrice('${p.id}', ${p.price})">
+    </div>
+
+    <div class="product-field">
+      <div class="product-field-label">Stock</div>
+      <div style="display:flex;align-items:center;gap:.5rem;">
+        <input class="price-input" type="number" min="0" step="1"
+          value="${promo.stock !== undefined && promo.stock !== null ? promo.stock : ''}"
+          placeholder="Illimité"
+          id="stock-${p.id}" oninput="updateStock('${p.id}')">
+        <span id="stock-status-${p.id}">${stockStatus}</span>
+      </div>
+    </div>
+
+    <div class="product-field" style="min-width:180px;">
+      <div class="product-field-label">Badge (texte libre)</div>
+      <input type="text"
+        id="badge-input-${p.id}"
+        value="${promo.badgeTexte || ''}"
+        placeholder="ex: ⏳ Bientôt disponible"
+        oninput="setBadgeTexte('${p.id}', this.value)"
+        style="background:#111;border:1px solid rgba(244,241,235,.15);color:#f4f1eb;padding:.4rem .6rem;font-size:.76rem;border-radius:6px;outline:none;width:100%;box-sizing:border-box;">
+      <div id="badge-preview-${p.id}" style="margin-top:.3rem;min-height:1.2rem;">
+        ${promo.badgeTexte ? '<span style=\"background:#c5a059;color:#000;border-radius:999px;padding:.15rem .5rem;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;\">' + promo.badgeTexte + '</span>' : ''}
+      </div>
+    </div>
+
+    <button class="btn-reset" onclick="resetProduct('${p.id}')">Réinitialiser</button>
+  `;
+
+  return card;
+}
+
+
+function setBadgeTexte(pid, texte) {
+  if (!promos[pid]) promos[pid] = {badge: null, discount: 0};
+  promos[pid].badgeTexte = texte.trim();
+  localStorage.setItem('zilf_promos', JSON.stringify(promos));
+  const prev = document.getElementById('badge-preview-' + pid);
+  if (prev) {
+    prev.innerHTML = texte.trim()
+      ? '<span style="background:#c5a059;color:#000;border-radius:999px;padding:.15rem .5rem;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;">' + texte.trim() + '</span>'
+      : '';
+  }
+}
+
+function setBadge(pid, badge) {
+  if (!promos[pid]) promos[pid] = {badge: null, discount: 0};
+  promos[pid].badge = (badge === '' || badge === null) ? null : badge;
+  localStorage.setItem('zilf_promos', JSON.stringify(promos));
+  refreshCard(pid);
+}
+
+function updateStock(pid) {
+  const val = parseInt(document.getElementById('stock-'+pid).value);
+  if (!promos[pid]) promos[pid] = {badge: null, discount: 0, newPrice: null, stock: null};
+  promos[pid].stock = isNaN(val) ? null : val;
+  
+  const status = document.getElementById('stock-status-'+pid);
+  if (status) {
+    if (val === 0) {
+      status.textContent = '❌ Rupture de stock';
+      status.style.color = '#e05555';
+    } else if (val > 0 && val <= 10) {
+      status.textContent = '⚡ Stock faible';
+      status.style.color = '#e07c35';
+    } else if (val > 10) {
+      status.textContent = '✅ En stock';
+      status.style.color = '#4caf7d';
+    } else {
+      status.textContent = '';
+    }
+  }
+}
+
+function updateNewPrice(pid, basePrice) {
+  const val = parseFloat(document.getElementById('newprice-'+pid).value) || basePrice;
+  if (!promos[pid]) promos[pid] = {badge: null, discount: 0, newPrice: null};
+  promos[pid].newPrice = val;
+  // Recalculer la remise automatiquement
+  const disc = Math.round((1 - val/basePrice) * 100);
+  promos[pid].discount = disc > 0 ? disc : 0;
+  const discInput = document.getElementById('disc-'+pid);
+  if (discInput) discInput.value = promos[pid].discount;
+  const calc = document.getElementById('calc-'+pid);
+  if (calc && val < basePrice) {
+    calc.innerHTML = `→ <span class="price-original">${basePrice.toFixed(2)} €</span> <span class="price-new">${val.toFixed(2)} €</span>`;
+  } else if (calc) {
+    calc.innerHTML = '';
+  }
+}
+
+function updateDiscount(pid, basePrice) {
+  const val = parseFloat(document.getElementById('disc-'+pid).value) || 0;
+  if (!promos[pid]) promos[pid] = {badge: null, discount: 0, newPrice: null};
+  promos[pid].discount = val;
+  promos[pid].newPrice = val > 0 ? parseFloat((basePrice * (1 - val/100)).toFixed(2)) : null;
+
+  const calc = document.getElementById('calc-'+pid);
+  if (val > 0) {
+    const newPrice = (basePrice * (1 - val/100)).toFixed(2);
+    calc.innerHTML = `→ <span class="price-original">${basePrice.toFixed(2)} €</span> <span class="price-new">${newPrice} €</span>`;
+  } else {
+    calc.innerHTML = '';
+  }
+}
+
+function resetProduct(pid) {
+  promos[pid] = {badge: null, discount: 0};
+  refreshCard(pid);
+}
+
+function refreshCard(pid) {
+  const p = PRODUCTS.find(x => x.id === pid);
+  const card = document.getElementById('card-'+pid);
+  const newCard = createCard(p);
+  card.replaceWith(newCard);
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function applyAll() {
+  localStorage.setItem('zilf_promos', JSON.stringify(promos));
+  showToast('✅ Modifications sauvegardées ! Téléchargez index.html pour mettre à jour le site.');
+}
+
+// TÉLÉCHARGER LE HTML MODIFIÉ
+async function downloadHTML() {
+  try {
+    const response = await fetch('index.html');
+    let html = await response.text();
+
+    // Appliquer toutes les promos au HTML
+    Object.entries(promos).forEach(([pid, promo]) => {
+      const p = PRODUCTS.find(x => x.id === pid);
+      if (!p) return;
+
+      // Badge CSS à injecter dans le HTML
+      if (promo.badge) {
+        const badgeStyles = {
+          bientot: 'background:#c5a059;color:#000;border-radius:999px;padding:.25rem .7rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;margin-bottom:.4rem;',
+          destockage: 'background:#e05555;color:#fff;border-radius:999px;padding:.25rem .7rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;margin-bottom:.4rem;',
+          limite: 'background:#8b5cf6;color:#fff;border-radius:999px;padding:.25rem .7rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;margin-bottom:.4rem;',
+          promo: 'background:#f59e0b;color:#000;border-radius:999px;padding:.25rem .7rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;margin-bottom:.4rem;',
+          epuise: 'background:#6b7280;color:#fff;border-radius:999px;padding:.25rem .7rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;margin-bottom:.4rem;',
+          solde: 'background:#e05555;color:#fff;animation:pulse-promo 1.5s infinite;',
+          nouveaute: 'background:#4caf7d;color:#000;animation:pulse-promo 2s infinite;',
+          liquidation: 'background:#e07c35;color:#fff;animation:shine-promo 2s linear infinite;'
+        };
+        const badgeLabels = {bientot:'⏳ BIENTÔT DISPONIBLE', solde:'🏷 SOLDES', destockage:'📦 DÉSTOCKAGE', nouveaute:'✨ NOUVEAUTÉ', limite:'⚡ LIMITÉ', promo:'💰 PROMO', epuise:'❌ ÉPUISÉ', liquidation:'🔥 LIQUIDATION'};
+        // On ne modifie pas le HTML dynamiquement pour les badges ici
+        // (c'est géré via le script inline dans index.html)
+      }
+    });
+
+    // Injecter le script de promos dans le HTML
+    const promoScript = `
+<script id="zilf-promos">
+(function(){
+  var PROMOS = ${JSON.stringify(promos)};
+  var PRODUCTS = ${JSON.stringify(PRODUCTS)};
+  
+  var badgeStyles = {
+    bientot: 'background:#c5a059;color:#000;border-radius:999px;padding:.25rem .7rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;margin-bottom:.4rem;',
+    destockage: 'background:#e05555;color:#fff;border-radius:999px;padding:.25rem .7rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;margin-bottom:.4rem;',
+    limite: 'background:#8b5cf6;color:#fff;border-radius:999px;padding:.25rem .7rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;margin-bottom:.4rem;',
+    promo: 'background:#f59e0b;color:#000;border-radius:999px;padding:.25rem .7rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;margin-bottom:.4rem;',
+    epuise: 'background:#6b7280;color:#fff;border-radius:999px;padding:.25rem .7rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;margin-bottom:.4rem;',
+    solde: 'background:#e05555;color:#fff;border-radius:999px;padding:.25rem .7rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;margin-bottom:.4rem;animation:zilf-pulse-r 1.5s infinite;',
+    nouveaute: 'background:#4caf7d;color:#000;border-radius:999px;padding:.25rem .7rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;margin-bottom:.4rem;animation:zilf-pulse-g 2s infinite;',
+    liquidation: 'background:#e07c35;color:#fff;border-radius:999px;padding:.25rem .7rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;margin-bottom:.4rem;animation:zilf-pulse-o 1.5s infinite;'
+  };
+  var badgeLabels = {bientot:'⏳ BIENTÔT DISPONIBLE', solde:'🏷 SOLDES', destockage:'📦 DÉSTOCKAGE', nouveaute:'✨ NOUVEAUTÉ', limite:'⚡ LIMITÉ', promo:'💰 PROMO', epuise:'❌ ÉPUISÉ', liquidation:'🔥 LIQUIDATION'};
+
+  // Injecter CSS animations
+  var style = document.createElement('style');
+  style.textContent = '@keyframes zilf-pulse-r{0%,100%{box-shadow:0 0 0 0 rgba(224,85,85,.5)}50%{box-shadow:0 0 0 8px rgba(224,85,85,0)}}@keyframes zilf-pulse-g{0%,100%{box-shadow:0 0 0 0 rgba(76,175,125,.5)}50%{box-shadow:0 0 0 8px rgba(76,175,125,0)}}@keyframes zilf-pulse-o{0%,100%{box-shadow:0 0 0 0 rgba(224,124,53,.5)}50%{box-shadow:0 0 0 8px rgba(224,124,53,0)}}';
+  document.head.appendChild(style);
+
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      Object.entries(PROMOS).forEach(function(entry) {
+        var pid = entry[0], promo = entry[1];
+        var p = PRODUCTS.find(function(x){return x.id===pid;});
+        if (!p) return;
+
+        // Trouver les éléments avec data-pid
+        var els = document.querySelectorAll('[data-pid="'+pid+'"]');
+        els.forEach(function(el) {
+          // Badge texte libre
+          var badgeTexte = promo.badgeTexte || (promo.badge ? badgeLabels[promo.badge] : null);
+          var badgeStyle = promo.badgeTexte
+            ? 'background:#c5a059;color:#000;border-radius:999px;padding:.25rem .7rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;margin-bottom:.4rem;'
+            : (promo.badge ? badgeStyles[promo.badge] : null);
+          if (badgeTexte && badgeStyle) {
+            var existing = el.querySelector('.zilf-promo-badge');
+            if (!existing) {
+              var badge = document.createElement('span');
+              badge.className = 'zilf-promo-badge';
+              badge.style.cssText = badgeStyle;
+              badge.textContent = badgeTexte;
+              el.insertBefore(badge, el.firstChild);
+            }
+          }
+
+          // Prix
+          if (promo.discount > 0) {
+            var newPrice = (p.price * (1 - promo.discount/100)).toFixed(2);
+            var priceEls = el.querySelectorAll('.bc-price,.rc-price,.fc-price,.si-price,.box-price');
+            priceEls.forEach(function(pe) {
+              if (!pe.querySelector('.zilf-old-price')) {
+                pe.innerHTML = '<span class="zilf-old-price" style="text-decoration:line-through;opacity:.4;font-size:.8em;margin-right:.4rem;">'+p.price.toFixed(2)+' €</span><span style="color:#E8C97A;">'+newPrice+' €</span><span style="background:#e05555;color:#fff;border-radius:4px;padding:.1rem .4rem;font-size:.65rem;font-weight:700;margin-left:.4rem;">-'+promo.discount+'%</span>';
+              }
+            });
+            // Mettre à jour addToCart
+            var btns = el.querySelectorAll('[onclick*="addToCart"]');
+            btns.forEach(function(btn) {
+              btn.setAttribute('onclick', btn.getAttribute('onclick').replace(/,[\d.]+,/, ','+newPrice+','));
+            });
+          }
+        });
+      });
+      // Badges gammes accueil
+      var gammeBadges = PROMOS['gammes'] || {};
+      Object.keys(gammeBadges).forEach(function(gamme) {
+        var texte = gammeBadges[gamme];
+        if (!texte) return;
+        var el = document.querySelector('[data-gamme="'+gamme+'"]');
+        if (!el) return;
+        if (!el.querySelector('.zilf-gamme-badge')) {
+          var badge = document.createElement('span');
+          badge.className = 'zilf-gamme-badge';
+          badge.style.cssText = 'background:#c5a059;color:#000;border-radius:999px;padding:.2rem .6rem;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:inline-block;position:absolute;top:.7rem;left:.7rem;z-index:10;';
+          badge.textContent = texte;
+          el.style.position = 'relative';
+          el.insertBefore(badge, el.firstChild);
+        }
+      });
+    }, 300);
+  });
+})();
+<\/script>`;
+
+    // Supprimer ancien script promo s'il existe
+    html = html.replace(/<script id="zilf-promos">[\s\S]*?<\/script>/g, '');
+    // Injecter avant </body>
+    html = html.replace('</body>', promoScript + '\n</body>');
+
+    const blob = new Blob([html], {type: 'text/html'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'index.html';
+    a.click();
+    URL.revokeObjectURL(url);
+    showToast('⬇️ index.html téléchargé avec les promotions !');
+  } catch(e) {
+    showToast('❌ Erreur : ouvrez admin.html depuis un serveur local ou Netlify');
+  }
+}
+</script>
+</body>
+</html>

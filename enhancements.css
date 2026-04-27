@@ -1,0 +1,1011 @@
+/* ══════════════════════════════════════════════════════
+   ZILFUSION BREW — AMÉLIORATIONS UX/DESIGN
+   Ciblé, non-destructif, s'applique par-dessus style.css
+   ══════════════════════════════════════════════════════ */
+
+/* ── VARIABLES SUPPLÉMENTAIRES ── */
+:root {
+  --gold-glow: rgba(197, 160, 89, 0.28);
+  --card-radius: 2px;
+  --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.32), 0 1px 6px rgba(0,0,0,0.18);
+  --shadow-card-hover: 0 16px 48px rgba(0,0,0,0.48), 0 4px 16px rgba(0,0,0,0.24);
+}
+
+/* ── TYPOGRAPHIE : LISIBILITÉ ── */
+body {
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sd {
+  font-size: .92rem;
+  line-height: 1.85;
+  color: #c0bdb6;
+}
+
+/* Améliore la lisibilité des descriptions dans les cartes */
+.gc-desc, .bc-desc, .rc-desc, .fc-desc, .at-desc {
+  font-size: .84rem;
+  line-height: 1.75;
+  color: rgba(244, 241, 235, 0.82);
+}
+
+/* Noms de produits plus impactants */
+.gc-name {
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.rc-name {
+  font-size: 1.85rem;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+/* ── BOUTONS : PLUS VISIBLES ET MODERNES ── */
+
+/* Bouton principal — doré */
+.btn-g {
+  background: linear-gradient(135deg, #e8c97a, #C5A059 60%, #b08d42);
+  color: #0a0800;
+  border: none;
+  padding: .92rem 2.2rem;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+  border-radius: 3px;
+  box-shadow: 0 6px 24px rgba(197,160,89,.38), 0 2px 8px rgba(0,0,0,.22);
+  transition: all .28s var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+.btn-g::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,.14), transparent 60%);
+  pointer-events: none;
+}
+.btn-g:hover {
+  background: linear-gradient(135deg, #f0d68a, #d4b060 60%, #c5a059);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(197,160,89,.5), 0 4px 12px rgba(0,0,0,.28), 0 0 20px rgba(197,160,89,.4);
+}
+.btn-g:active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(197,160,89,.38);
+}
+
+/* Bouton outline — plus défini */
+.btn-o {
+  background: rgba(255,255,255,.03);
+  color: rgba(244, 241, 235, 0.9);
+  border: 1px solid rgba(197,160,89,.38);
+  padding: .92rem 2.2rem;
+  font-size: .68rem;
+  letter-spacing: .18em;
+  border-radius: 3px;
+  transition: all .28s var(--transition-smooth);
+  backdrop-filter: blur(6px);
+}
+.btn-o:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(197,160,89,.08);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(197,160,89,.15);
+}
+
+/* Bouton "Ajouter au panier" — plus appétissant */
+.btn-add {
+  background: linear-gradient(180deg, rgba(197,160,89,.12), rgba(197,160,89,.06));
+  border: 1px solid rgba(197,160,89,.32);
+  color: var(--gold2);
+  padding: .78rem 1rem;
+  font-size: .6rem;
+  letter-spacing: .16em;
+  border-radius: 4px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.16), inset 0 1px 0 rgba(255,255,255,.06);
+  transition: all .3s var(--transition-smooth);
+}
+.btn-add:hover {
+  background: linear-gradient(180deg, #e8c97a, #C5A059);
+  color: #0a0800;
+  border-color: transparent;
+  box-shadow: 0 8px 28px rgba(197,160,89,.36), 0 4px 12px rgba(0,0,0,.22);
+  transform: translateY(-2px) scale(1.01);
+}
+
+/* Bouton petit (boutique) */
+.btn-sm {
+  background: rgba(197,160,89,.08);
+  border: 1px solid rgba(197,160,89,.28);
+  color: var(--gold);
+  padding: .5rem 1rem;
+  font-size: .56rem;
+  border-radius: 3px;
+  transition: all .22s var(--transition-smooth);
+}
+.btn-sm:hover {
+  background: var(--gold);
+  color: #0a0800;
+  border-color: transparent;
+  box-shadow: 0 6px 18px rgba(197,160,89,.32);
+  transform: translateY(-1px);
+}
+
+/* Bouton checkout panier */
+.c-checkout {
+  border-radius: 3px;
+  font-weight: 800;
+  letter-spacing: .2em;
+  box-shadow: 0 6px 24px rgba(197,160,89,.32);
+  transition: all .25s var(--transition-smooth);
+}
+.c-checkout:hover {
+  background: var(--gold2);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(197,160,89,.44);
+}
+
+/* ── CARTES GAMMES (ACCUEIL) — PLUS VENDEUSES ── */
+.gc {
+  border-radius: 0;
+  overflow: hidden;
+  transition: transform .42s var(--transition-smooth), box-shadow .42s var(--transition-smooth);
+  cursor: pointer;
+}
+
+/* Gradient plus profond pour meilleure lisibilité du texte */
+.gc-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(5, 3, 0, 0.88) 0%,
+    rgba(5, 3, 0, 0.55) 35%,
+    rgba(5, 3, 0, 0.18) 60%,
+    transparent 100%
+  );
+}
+
+.gc-body {
+  padding: 2.2rem 2rem 2rem;
+}
+
+.gc:hover {
+  transform: translateY(-3px);
+  z-index: 2;
+  box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 0 1px rgba(197,160,89,.2);
+}
+
+.gc:hover .gc-img {
+  transform: scale(1.08);
+}
+
+/* Lien "Découvrir" plus visible */
+.gc-lnk {
+  font-size: .6rem;
+  letter-spacing: .22em;
+  padding: .45rem 0;
+  border-bottom: 1px solid rgba(197,160,89,.3);
+  display: inline-flex;
+  transition: all .22s;
+}
+.gc:hover .gc-lnk {
+  gap: 1.2rem;
+  border-bottom-color: var(--gold);
+  color: var(--gold2);
+}
+
+/* Étiquette catégorie */
+.gc-cat {
+  font-size: .56rem;
+  letter-spacing: .28em;
+  margin-bottom: .55rem;
+  text-shadow: 0 1px 6px rgba(0,0,0,.8);
+}
+
+/* ── CARTES RHUM — FICHE PRODUIT ── */
+.rc {
+  border-radius: 0;
+  transition: background .3s, transform .3s var(--transition-smooth), box-shadow .3s;
+  position: relative;
+}
+
+.rc:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Bandeau top plus élégant */
+.rc::before {
+  height: 2px;
+  background: linear-gradient(90deg, var(--rum), var(--gold), var(--gold2));
+  opacity: 0;
+  transition: opacity .35s;
+}
+.rc:hover::before {
+  opacity: 1;
+}
+
+/* Badge année */
+.rc-year {
+  border-radius: 2px;
+  font-size: .54rem;
+  letter-spacing: .16em;
+  background: rgba(139,58,10,.15);
+  backdrop-filter: blur(4px);
+}
+
+/* Notes aromatiques — meilleures pills */
+.ntag {
+  border-radius: 3px;
+  font-size: .52rem;
+  letter-spacing: .12em;
+  padding: .26rem .64rem;
+  background: rgba(139,58,10,.18);
+  border: 1px solid rgba(196,90,26,.35);
+  color: #d4734a;
+  transition: background .2s, color .2s;
+}
+.ntag:hover {
+  background: rgba(139,58,10,.3);
+  color: #e89060;
+}
+
+/* Specs rhum — plus lisibles */
+.rc-spec {
+  background: rgba(0,0,0,.4);
+  padding: .9rem;
+  transition: background .2s;
+}
+.rc-spec:hover {
+  background: rgba(0,0,0,.55);
+}
+.spec-v {
+  font-size: .95rem;
+  color: var(--gold2);
+}
+.spec-k {
+  font-size: .5rem;
+  letter-spacing: .16em;
+  color: #888;
+  margin-top: .25rem;
+}
+
+/* Prix rhum */
+.rc-price {
+  font-size: 1.55rem;
+  color: var(--gold2);
+  letter-spacing: -.02em;
+}
+
+/* ── SLIDERS RHUM (page rhum) ── */
+/* Améliorer la lisibilité des slides */
+#page-rhum .rhums-grid {
+  gap: 2px;
+  background: rgba(197,160,89,.08);
+}
+
+/* ── SECTION HERO — ESPACEMENTS & LISIBILITÉ ── */
+.hero-title {
+  letter-spacing: -.05em;
+}
+
+.hero-sub {
+  font-size: .9rem;
+  line-height: 1.9;
+  color: #b8b5ae;
+  max-width: 48ch;
+}
+
+.hero-actions {
+  gap: 1.1rem;
+  margin-top: .5rem;
+}
+
+/* ── NAV — LÉGÈRES AMÉLIORATIONS ── */
+nav {
+  border-bottom: 1px solid rgba(197,160,89,.22);
+  background: linear-gradient(180deg, rgba(8,8,8,.98), rgba(8,8,8,.95));
+}
+
+.nav-cart {
+  border-radius: 3px;
+  padding: .52rem 1.05rem;
+}
+
+/* ── SECTION MARQUEE — PLUS DE PUNCH ── */
+.mq-band {
+  border-color: rgba(197,160,89,.12);
+  background: rgba(197,160,89,.03);
+}
+
+.mq-item {
+  font-size: .58rem;
+  letter-spacing: .28em;
+  color: rgba(197,160,89,.7);
+  transition: color .2s;
+}
+.mq-item::before {
+  color: rgba(197,160,89,.4);
+}
+
+/* ── CARTES BIÈRES ── */
+.bc {
+  border-radius: 0;
+  transition: background .3s, transform .3s var(--transition-smooth);
+}
+.bc:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+.bc-price {
+  font-size: 1.3rem;
+  color: var(--gold2);
+}
+
+/* ── GRID SPACING GLOBAL ── */
+.sec {
+  padding: 5.5rem 3.5rem;
+}
+
+@media (max-width: 900px) {
+  .sec {
+    padding: 4rem 1.6rem;
+  }
+}
+
+/* ── CARTES BOUTIQUE ── */
+.si {
+  border: 1px solid rgba(197,160,89,.06);
+  border-radius: 4px;
+  transition: background .3s, transform .32s var(--transition-smooth), border-color .3s, box-shadow .3s;
+  padding: 1.6rem 1.4rem;
+}
+.si:hover {
+  background: rgba(197,160,89,.05);
+  border-color: rgba(197,160,89,.18);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.3), 0 0 0 1px rgba(197,160,89,.12);
+}
+
+.si-price {
+  font-size: 1.2rem;
+  color: var(--gold2);
+}
+
+.si-foot {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(197,160,89,.12);
+}
+
+/* ── FOOTER — PLUS PROPRE ── */
+footer {
+  padding: 2.2rem 3.5rem;
+  border-top: 1px solid rgba(197,160,89,.14);
+  background: #0c0c0c;
+}
+
+/* ── TOAST ── */
+.toast {
+  border-radius: 4px;
+  border: 1px solid rgba(197,160,89,.5);
+  background: #1a1a1a;
+  box-shadow: 0 8px 24px rgba(0,0,0,.4);
+  font-size: .73rem;
+  padding: .9rem 1.5rem;
+}
+
+/* ── SCROLLBAR ÉLÉGANTE ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(197,160,89,.25);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(197,160,89,.45);
+}
+
+/* ── FOCUS VISIBLE ACCESSIBLE ── */
+button:focus-visible, a:focus-visible {
+  outline: 2px solid rgba(197,160,89,.7);
+  outline-offset: 3px;
+}
+
+/* ── SÉLECTION DE TEXTE ── */
+::selection {
+  background: rgba(197,160,89,.25);
+  color: var(--gold2);
+}
+
+/* ── SECTION AVIS CLIENTS — CARTES PLUS LISIBLES ── */
+/* (améliore les inline styles existants) */
+#page-accueil .sec:has(.sd) .sd {
+  font-size: .9rem;
+  line-height: 1.85;
+}
+
+/* Subtle shimmer on primary CTA */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.btn-g {
+  background-size: 200% auto;
+}
+
+/* ── BANDE RÉASSURANCE ── */
+@media (max-width: 900px) {
+  /* Stack reassurance band on mobile */
+  .reassurance-band {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media (max-width: 500px) {
+  .reassurance-band {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── BOUTONS "AJOUTER AU PANIER" : PRIX INCLUS ── */
+/* Les boutons avec prix ont une typographie plus lisible */
+.btn-add {
+  font-size: .62rem;
+  letter-spacing: .14em;
+  font-weight: 700;
+}
+
+/* ── URGENCE : ALERTES STOCK ── */
+/* Pulse doux sur les badges d'urgence */
+@keyframes urgency-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .82; }
+}
+[style*="f87171"] {
+  animation: urgency-pulse 2.5s ease-in-out infinite;
+}
+
+/* ── SECTION RHUM : TITRE GAMME ── */
+#page-rhum .sl {
+  font-size: .62rem;
+  letter-spacing: .32em;
+}
+
+/* ── CTA BLOC CONVERSION ── */
+@media (max-width: 600px) {
+  /* Stack CTA buttons vertically on mobile */
+  .btn-g, .btn-o {
+    width: 100%;
+  }
+}
+
+/* ── SECTION NOS GAMMES — anciens overrides :has() supprimés (remplacés par .gammes-section / .gammes-header) ── */
+
+/* ── SECTION "NOS GAMMES" — ESPACEMENT COMPACT ── */
+.gammes-section {
+  padding: 2.8rem 3.5rem 4rem 3.5rem;
+}
+
+.gammes-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+.gammes-left {
+  min-width: 0;
+}
+
+.sec,
+.gammes-section,
+.gammes-header {
+  overflow: visible !important;
+}
+
+.gammes-header {
+  align-items: flex-start !important;
+}
+
+.gammes-header .sd {
+  max-width: 760px;
+  color: #efe7d2;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 2.1 !important;
+  letter-spacing: .02em;
+  text-transform: none;
+  margin-top: 1.2rem;
+  padding-bottom: 1.2rem !important;
+  overflow: visible !important;
+}
+
+.gammes-header .highlight {
+  color: #c5a059;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* ── SECTION AVIS CLIENTS GOOGLE ── */
+.avis-section {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(197,160,89,.08), transparent 60%),
+    var(--surface);
+  padding: 4rem 3.5rem;
+  border-top: 1px solid rgba(197,160,89,.12);
+  border-bottom: 1px solid rgba(197,160,89,.12);
+  position: relative;
+}
+
+.avis-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+}
+
+.avis-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 2rem auto;
+}
+
+.avis-header .sd {
+  margin: 1rem auto 1.2rem auto;
+}
+
+.avis-widget {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.avis-widget::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 24px;
+  background: radial-gradient(circle, rgba(197,160,89,.15), transparent 70%);
+  z-index: -1;
+}
+
+.avis-placeholder {
+  border: 1px solid rgba(197,160,89,.2);
+  background: linear-gradient(180deg, rgba(197,160,89,.06), rgba(0,0,0,.25));
+  padding: 2.8rem 2.2rem;
+  text-align: center;
+  border-radius: 20px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 20px 50px rgba(0,0,0,.25);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.avis-placeholder:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 60px rgba(0,0,0,.35);
+}
+
+.avis-placeholder p {
+  color: var(--dim);
+  font-size: .9rem;
+  line-height: 1.7;
+}
+
+.avis-note {
+  font-family: var(--fd);
+  color: var(--gold) !important;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font-size: .62rem !important;
+  font-weight: 700;
+  margin-bottom: .6rem;
+}
+
+.avis-header .st {
+  font-size: 2.2rem;
+}
+
+.avis-action {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.avis-google-btn[href="https://search.google.com/local/writereview?placeid=TON_PLACE_ID"] {
+  opacity: .75;
+  pointer-events: none;
+}
+
+/* ── BOUTON AVIS GOOGLE — EFFET PREMIUM ── */
+.avis-google-btn {
+  font-size: .9rem;
+  letter-spacing: .1em;
+  padding: 1rem 2rem;
+  box-shadow: 0 8px 25px rgba(197,160,89,.25);
+  transition: all .25s ease;
+}
+
+.avis-google-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(197,160,89,.3);
+}
+
+/* ── INDICATEUR CRÉDIBILITÉ ── */
+.avis-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  margin-top: .9rem;
+}
+
+.avis-trust span {
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+.avis-trust p {
+  font-size: .7rem;
+  color: var(--dim);
+  letter-spacing: .08em;
+}
+
+/* ── INVITATION AVIS ── */
+.avis-invite {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: .9rem;
+  color: var(--dim);
+}
+
+/* ── MICRO-TEXTE AVIS ── */
+.avis-micro {
+  text-align: center;
+  margin-top: .6rem;
+  font-size: .75rem;
+  color: var(--dim);
+  opacity: .8;
+}
+
+/* ── LABELS STATS HERO — LISIBILITÉ AMÉLIORÉE ── */
+.hstat-label {
+  font-size: .9rem;
+  letter-spacing: .18em;
+  opacity: .9;
+  color: #c5a059;
+  margin-top: .4rem;
+  display: block;
+  line-height: 1.45;
+}
+
+/* ── BLOC 3 PAYS — LABEL ÉTENDU ── */
+.hstat-label--pays {
+  font-size: .82rem;
+  letter-spacing: .08em;
+  white-space: normal;
+  line-height: 1.45;
+  max-width: 260px;
+  text-align: center;
+}
+
+/* ── LIENS GLOBAUX — STYLE PREMIUM SUR FOND SOMBRE ── */
+a {
+  color: #e5decf;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #e5decf;
+}
+
+a:hover {
+  color: #c5a059;
+  text-decoration: underline;
+}
+
+.contact a {
+  color: #e5decf;
+}
+
+.contact a:hover {
+  color: #c5a059;
+}
+
+/* ── BANDE RÉASSURANCE — CLASSES PROPRES ── */
+.reass-band {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(197,160,89,.1);
+  border-bottom: 1px solid rgba(197,160,89,.12);
+}
+
+.reass-item {
+  background: var(--surface);
+  padding: 1.3rem 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: background .2s;
+}
+
+.reass-item:hover {
+  background: var(--surface2);
+}
+
+.reass-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.reass-title {
+  font-family: var(--fd);
+  font-size: .74rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: .06em;
+}
+
+.reass-sub {
+  font-size: .68rem;
+  color: var(--dim);
+  margin-top: .15rem;
+}
+
+/* ── CARTES NOTRE HISTOIRE — RELIEF PREMIUM ── */
+.story-card {
+  text-align: center;
+  padding: 1.8rem 1.5rem;
+  border: 1px solid rgba(197,160,89,.18);
+  border-radius: 12px;
+  background: linear-gradient(160deg, rgba(197,160,89,.04), rgba(0,0,0,.18));
+  transition: border-color .3s, box-shadow .3s, transform .3s;
+}
+
+.story-card:hover {
+  border-color: rgba(197,160,89,.38);
+  box-shadow: 0 12px 32px rgba(0,0,0,.28);
+  transform: translateY(-3px);
+}
+
+/* ── STATS HERO — LABELS ── */
+.hstat-label {
+  font-size: .82rem;
+  letter-spacing: .12em;
+  line-height: 1.4;
+}
+
+.hstat-label--pays {
+  white-space: normal;
+  max-width: 260px;
+  margin: 0 auto;
+  line-height: 1.45;
+}
+
+/* ══════════════════════════════════════
+   PAGE ACCUEIL — UPGRADE PREMIUM
+   ══════════════════════════════════════ */
+
+/* ── HERO ── */
+.hero {
+  padding-bottom: 6.5rem;
+}
+
+.hero-sub {
+  font-size: 1.3rem;
+  color: #f5eddc;
+  line-height: 1.9;
+  max-width: 600px;
+}
+
+/* ── STATS ── */
+.hstat-number {
+  font-size: clamp(3.2rem, 4vw, 4.8rem);
+  font-weight: 700;
+}
+
+.hstat-label {
+  font-size: .9rem;
+  letter-spacing: .18em;
+  opacity: .95;
+}
+
+/* ── BANDE RÉASSURANCE ── */
+.reass-band {
+  background: linear-gradient(180deg, rgba(197,160,89,.05), rgba(0,0,0,.2));
+  border-top: 1px solid rgba(197,160,89,.1);
+  border-bottom: 1px solid rgba(197,160,89,.1);
+}
+
+.reass-title {
+  font-size: .78rem;
+  letter-spacing: .08em;
+}
+
+.reass-sub {
+  font-size: .7rem;
+}
+
+/* ── CARTES NOTRE HISTOIRE ── */
+.story-card {
+  border-color: rgba(197,160,89,.25);
+  background: linear-gradient(180deg, rgba(197,160,89,.04), rgba(0,0,0,.35));
+  transition: all .4s ease;
+}
+
+.story-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 30px 80px rgba(0,0,0,.8);
+  border-color: rgba(197,160,89,.5);
+}
+
+/* ── CONTRASTE GLOBAL .sd ── */
+.sd {
+  color: #f6eedc;
+}
+
+/* ── HERO TITLE EM — COULEUR OR ── */
+.hero-title em {
+  color: #c5a059;
+}
+
+/* ── ESPACEMENT GLOBAL ── */
+.sec {
+  padding: 5rem 3.5rem;
+}
+
+@media (max-width: 900px) {
+  .sec {
+    padding: 3rem 1.6rem;
+  }
+}
+
+/* ── GUIDE DE CHOIX RHUMS ── */
+.rhum-guide {
+  margin: 2rem 0;
+  padding: 1.4rem;
+  border: 1px solid rgba(197,160,89,.18);
+  background: rgba(197,160,89,.04);
+}
+
+.rhum-guide-title {
+  font-family: var(--fd);
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  font-size: .7rem;
+  margin-bottom: 1rem;
+}
+
+.rhum-guide-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: .8rem;
+  color: #e8e2d3;
+  font-size: .85rem;
+}
+
+/* ── PROMESSE ATELIERS ── */
+.atelier-promise {
+  max-width: 900px;
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  color: #e8e2d3;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+/* ── TAGLINES CUVÉES SIGNATURE ── */
+.rc-tagline {
+  font-family: var(--fd);
+  font-size: .8rem;
+  color: #c5a059;
+  letter-spacing: .06em;
+  margin: .3rem 0 .8rem;
+  font-weight: 500;
+}
+
+/* ── RÉASSURANCE ATELIERS ── */
+.atelier-reassurance {
+  text-align: center;
+  font-family: var(--fd);
+  font-size: .65rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(197,160,89,.7);
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(197,160,89,.1);
+}
+
+/* ── CARTES RHUM — ALIGNEMENT VERTICAL UNIFORME ── */
+.rc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.rc .rc-price,
+.rc .btn-add,
+.rc > div:last-child {
+  margin-top: auto;
+}
+
+/* ── ATELIERS — CARTES ALIGNÉES ── */
+.atc {
+  display: flex;
+  flex-direction: column;
+}
+
+.atc .at-price,
+.atc .btn-g,
+.atc .btn-o {
+  margin-top: auto;
+}
+
+/* ── ESPACEMENT SECTIONS RHUM & ATELIERS ── */
+#page-rhum .sec,
+#page-ateliers .sec {
+  padding: 4rem 3rem;
+}
+
+/* ── KOSO & RUMTOPF — INTRODUCTION ── */
+.ferm-intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin: 1.8rem 0 2rem;
+  padding: 1.4rem;
+  background: rgba(197,160,89,.04);
+  border: 1px solid rgba(197,160,89,.15);
+  border-radius: 4px;
+  flex-wrap: wrap;
+}
+
+.ferm-intro-badge {
+  font-family: var(--fd);
+  font-size: .6rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid rgba(197,160,89,.4);
+  padding: .35rem .8rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ferm-intro-text {
+  font-size: .88rem;
+  color: #e2dccb;
+  line-height: 1.75;
+}
+
+/* ── CARTES KOSO ── */
+.koso-card {
+  border-top: 2px solid rgba(26,122,58,.4);
+}
+
+/* ── CARTES RUMTOPF ── */
+.rumtopf-card {
+  border-top: 2px solid rgba(197,160,89,.45);
+}

@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZilFusion Brew — Brasserie Artisanale & Rhums Arrangés Premium</title>
+<meta name="description" content="ZilFusion Brew — Brasserie artisanale et rhums arrangés premium. Bières craft, kombucha vivant, kéfir et ateliers découverte. Saveurs tropicales de France, Maurice et Madagascar.">
+<meta name="keywords" content="brasserie artisanale, rhum arrangé, kombucha, bière craft, IPA tropicale, ateliers brassage, ZilFusion Brew">
+<meta name="author" content="ZilFusion Brew">
+<meta property="og:title" content="ZilFusion Brew — Brasserie Artisanale & Rhums Arrangés Premium">
+<meta property="og:description" content="Bières d'exception, rhums arrangés premium et boissons fermentées artisanales. Saveurs tropicales uniques.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080808'/><text y='.9em' font-size='80' x='10'>🍺</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Pirata+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="enhancements.css">
+
+</head>
+<body>
+
+<!-- AGE GATE -->
+<div class="age-gate" id="ageGate">
+  <div class="age-box">
+    <div class="age-logo">ZilFusion</div>
+    <div class="age-sub">Brew — Brasserie Artisanale</div>
+    <h2>Bienvenue</h2>
+    <p>ZilFusion Brew produit des boissons artisanales dont certaines sont alcoolisées. Vous devez avoir l'âge légal de consommation d'alcool dans votre pays pour entrer.</p>
+    <div class="age-btns">
+      <button class="btn-g" onclick="enterSite()">Oui, j'ai 18 ans +</button>
+      <button class="btn-o" onclick="location.href='https://www.alcool-info-service.fr'">Non</button>
+    </div>
+    <p class="age-warn">L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo" onclick="showPage('accueil')" style="padding:.2rem 0">
+    <img src="assets/img/logo_navbar.jpg" alt="ZilFusion Brew" style="height:110px;width:auto;object-fit:contain;mix-blend-mode:screen;filter:brightness(1.1);">
+  </div>
+  <ul class="nav-links">
+    <li><a id="nav-accueil" class="active" onclick="showPage('accueil')">Accueil</a></li>
+    <li class="has-drop"><a id="nav-bieres" onclick="showPage('bieres')">Bières</a>
+      <div class="dropdown">
+        <span class="drop-sec">Ales</span>
+        <a onclick="showPage('bieres')">Pale Ale</a>
+        <a onclick="showPage('bieres')">IPA</a>
+        <a onclick="showPage('bieres')">Blanches</a>
+        <a onclick="showPage('bieres')">Sours</a>
+        <span class="drop-sec">Dark</span>
+        <a onclick="showPage('bieres')">Stouts &amp; Porters</a>
+        <span class="drop-sec">Autres</span>
+        <a onclick="showPage('bieres')">Saisons</a>
+        <a onclick="showPage('bieres')">Spéciales</a>
+      </div>
+    </li>
+    <li class="has-drop"><a id="nav-rhum" onclick="showPage('rhum')">Rhums Arrangés</a>
+      <div class="dropdown">
+        <a onclick="showPage('rhum')">Fruits</a>
+        <a onclick="showPage('rhum')">Épices</a>
+        <a onclick="showPage('rhum')">Crèmes</a>
+        <a onclick="showPage('rhum')">Signature</a>
+      </div>
+    </li>
+    <li class="has-drop"><a id="nav-fermentees" onclick="showPage('fermentees')">Boissons Fermentées</a>
+      <div class="dropdown">
+        <span class="drop-sec">Kombucha</span>
+        <a onclick="showPage('fermentees');switchTabById('kombucha-nature')">Kombucha Nature</a>
+        <a onclick="showPage('fermentees');switchTabById('kombucha-fruits')">Kombucha Fruits</a>
+        <a onclick="showPage('fermentees');switchTabById('kombucha-epices')">Kombucha Épices</a>
+        <span class="drop-sec">Kéfir</span>
+        <a onclick="showPage('fermentees');switchTabById('kefir-nature')">Kéfir Nature</a>
+        <a onclick="showPage('fermentees');switchTabById('kefir-fruits')">Kéfir Fruits</a>
+        <a onclick="showPage('fermentees');switchTabById('kefir-epices')">Kéfir Épices</a>
+        <span class="drop-sec">Nouvelles gammes</span>
+        <a onclick="showPage('fermentees');switchTab('koso',document.getElementById('tabBtn-koso'))">Koso</a>
+        <a onclick="showPage('fermentees');switchTab('rumtopf',document.getElementById('tabBtn-rumtopf'))">Rumtopf</a>
+      </div>
+    </li>
+    <li class="has-drop"><a id="nav-ateliers" onclick="showPage('ateliers')">Ateliers</a>
+      <div class="dropdown">
+        <a onclick="showPage('ateliers');selectAtelier('Atelier Bière')">Atelier Bière</a>
+        <a onclick="showPage('ateliers');selectAtelier('Atelier Rhum')">Atelier Rhum</a>
+        <a onclick="showPage('ateliers');selectAtelier('Atelier Kombucha')">Atelier Kombucha</a>
+        <span class="drop-sec">Pro</span>
+        <a onclick="showPage('ateliers');selectAtelier('Dossier Technique')">Dossiers Techniques</a>
+        <a onclick="showPage('ateliers');selectAtelier('Formation Pro')">Formation Pro</a>
+      </div>
+    </li>
+    <li><a id="nav-boutique" onclick="showPage('boutique')">Boutique</a></li>
+    <li><a id="nav-histoire" onclick="showPage('histoire')">Mon Histoire</a></li>
+    <li><a onclick="showPage('accueil');setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),300)">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-cart" onclick="openCart()">🛒 Panier <span class="cart-badge" id="cartCount">0</span></button>
+    <button class="nav-burger" onclick="document.getElementById('mobMenu').classList.add('open')">☰</button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="document.getElementById('mobMenu').classList.remove('open')">&#x2715;</button>
+  <a onclick="showPage('accueil');document.getElementById('mobMenu').classList.remove('open')">Accueil</a>
+  <a onclick="showPage('bieres');document.getElementById('mobMenu').classList.remove('open')">Bières</a>
+  <a onclick="showPage('rhum');document.getElementById('mobMenu').classList.remove('open')">Rhums Arrangés</a>
+  <a onclick="showPage('fermentees');document.getElementById('mobMenu').classList.remove('open')">Boissons Fermentées</a>
+  <a onclick="showPage('ateliers');document.getElementById('mobMenu').classList.remove('open')">Ateliers</a>
+  <a onclick="showPage('boutique');document.getElementById('mobMenu').classList.remove('open')">Boutique</a>
+  <a onclick="showPage('apropos');document.getElementById('mobMenu').classList.remove('open')">À propos</a>
+  <a onclick="showPage('histoire');document.getElementById('mobMenu').classList.remove('open')">Mon Histoire</a>
+</div>
+
+<!-- ══════════ PAGE ACCUEIL ══════════ -->
+<div class="page active" id="page-accueil">
+  <section class="hero" style="justify-content:flex-start;padding-top:5.5rem;display:flex;flex-direction:row;align-items:center;gap:2rem;">
+    <div class="hero-bg"></div>
+    <div style="flex:1;position:relative;z-index:1;">
+    <p class="hero-tag">Maurice · Madagascar · France</p>
+    <h1 class="hero-title"><span style="font-family:var(--fs);font-style:italic;font-weight:700;color:#fff;font-size:clamp(3rem,8vw,8rem);display:block;line-height:1;">ZilFusion</span><em style="font-size:clamp(2rem,5vw,5rem);">Brew</em></h1>
+
+    <!-- PHRASE PROMESSE FORTE -->
+    <p style="font-size:clamp(1rem,1.8vw,1.22rem);color:var(--white);font-family:var(--fs);font-style:italic;font-weight:400;line-height:1.5;margin:1rem 0 .5rem;max-width:46ch;opacity:0;animation:fu .8s ease forwards .4s;">Créations artisanales d'exception</p>
+
+    <!-- CHECKLIST PROMESSE -->
+    <div style="display:flex;flex-direction:column;gap:.5rem;margin:1.3rem 0 1.6rem;opacity:0;animation:fu .8s ease forwards .52s;">
+      <div style="display:flex;align-items:center;gap:.7rem;font-size:.82rem;color:rgba(244,241,235,.85);">
+        <span style="width:18px;height:18px;background:rgba(197,160,89,.2);border:1px solid var(--gold);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold);flex-shrink:0;">✔</span>
+        <span><strong style="color:var(--white);font-family:var(--fd);">Des recettes inspirées des tropiques</strong> — pensées pour une dégustation intense, authentique et mémorable</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:.7rem;font-size:.82rem;color:rgba(244,241,235,.85);">
+        <span style="width:18px;height:18px;background:rgba(197,160,89,.2);border:1px solid var(--gold);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold);flex-shrink:0;">✔</span>
+        <span><strong style="color:var(--white);font-family:var(--fd);">Petites séries limitées</strong> — jamais produit à l'identique deux fois</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:.7rem;font-size:.82rem;color:rgba(244,241,235,.85);">
+        <span style="width:18px;height:18px;background:rgba(197,160,89,.2);border:1px solid var(--gold);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold);flex-shrink:0;">✔</span>
+        <span><strong style="color:var(--white);font-family:var(--fd);">Entre fermentation, infusion et précision</strong> — chaque création révèle une identité unique</span>
+      </div>
+    </div>
+
+    <div class="hero-actions" style="opacity:0;animation:fu .8s ease forwards .65s;">
+      <button class="btn-g" onclick="showPage('boutique')" style="font-size:.72rem;padding:1.05rem 2.5rem;box-shadow:0 8px 28px rgba(197,160,89,.4);">🛒 Commander mes bouteilles</button>
+      <button class="btn-o" onclick="showPage('rhum')" style="font-size:.72rem;padding:1.05rem 2.4rem;">Nos rhums arrangés →</button>
+    </div>
+
+    <!-- LIGNE DE CONFIANCE -->
+    <div style="display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid rgba(197,160,89,.12);opacity:0;animation:fu .8s ease forwards .78s;">
+      <span style="font-size:.7rem;color:var(--dim);display:flex;align-items:center;gap:.4rem;"><span style="color:#4ade80;">🔒</span> Paiement sécurisé SSL</span>
+      <span style="color:rgba(197,160,89,.25);font-size:.8rem;">|</span>
+      <span style="font-size:.7rem;color:var(--dim);display:flex;align-items:center;gap:.4rem;"><span style="color:#4ade80;">🚚</span> Livraison offerte dès 60€</span>
+      <span style="color:rgba(197,160,89,.25);font-size:.8rem;">|</span>
+      <span style="font-size:.7rem;color:var(--dim);display:flex;align-items:center;gap:.4rem;"><span style="color:#4ade80;">↩</span> Satisfait ou remboursé 14j</span>
+      <span style="color:rgba(197,160,89,.25);font-size:.8rem;">|</span>
+      <span style="font-size:.7rem;color:var(--dim);display:flex;align-items:center;gap:.4rem;">⭐ Avis clients vérifiés bientôt disponibles</span>
+    </div>
+    </div>
+    <div style="flex:0 0 380px;position:relative;z-index:1;opacity:0;animation:fu 1s ease forwards .6s;">
+      <img src="assets/img/produit_pale_ale_mango.png" alt="Pale Ale Mango" style="width:100%;height:auto;object-fit:contain;filter:drop-shadow(0 20px 60px rgba(197,160,89,0.3));">
+    </div>
+  </section>
+
+  <!-- BANDEAU STATS -->
+  <div class="hero-stats">
+    <div class="hstat">
+      <div class="hstat-number">6+</div>
+      <div class="hstat-label">GAMMES</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-number">100%</div>
+      <div class="hstat-label">ARTISANAL</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-sub">Livraison offerte</div>
+      <div class="hstat-label">dès 60€</div>
+    </div>
+    <div class="hstat">
+      <div class="hstat-number">3</div>
+      <div class="hstat-label hstat-label--pays">PAYS — Maurice • Madagascar • France</div>
+    </div>
+  </div>
+
+  <div class="mq-band"><div class="mq-inner" style="color:var(--gold)">
+    <span class="mq-item">Bières Artisanales</span><span class="mq-item">Rhum Arrangé</span><span class="mq-item">Kombucha Vivant</span><span class="mq-item">Kéfir Naturel</span><span class="mq-item">Sodas Tropicaux</span><span class="mq-item">Ateliers Découverte</span><span class="mq-item">100% Artisanal</span>
+    <span class="mq-item">Bières Artisanales</span><span class="mq-item">Rhum Arrangé</span><span class="mq-item">Kombucha Vivant</span><span class="mq-item">Kéfir Naturel</span><span class="mq-item">Sodas Tropicaux</span><span class="mq-item">Ateliers Découverte</span><span class="mq-item">100% Artisanal</span>
+  </div></div>
+
+  <!-- BANDE RÉASSURANCE -->
+  <div class="reass-band">
+    <div class="reass-item">
+      <span class="reass-icon">🚚</span>
+      <div><div class="reass-title">Livraison offerte</div><div class="reass-sub">Dès 60€ d'achat en France</div></div>
+    </div>
+    <div class="reass-item">
+      <span class="reass-icon">🔒</span>
+      <div><div class="reass-title">Paiement sécurisé</div><div class="reass-sub">CB, PayPal, virement</div></div>
+    </div>
+    <div class="reass-item">
+      <span class="reass-icon">↩️</span>
+      <div><div class="reass-title">Satisfait ou remboursé</div><div class="reass-sub">14 jours pour changer d'avis</div></div>
+    </div>
+    <div class="reass-item">
+      <span class="reass-icon">🤲</span>
+      <div><div class="reass-title">Fait à la main</div><div class="reass-sub">Petites séries, qualité garantie</div></div>
+    </div>
+  </div>
+
+  <section class="sec gammes-section" style="background:var(--surface)">
+    <div class="gammes-header">
+      <div class="gammes-left"><p class="sl">Nos gammes</p><h2 class="st">Des créations <em>uniques</em></h2></div>
+      <p class="sd">De la fermentation à la bouteille — un <span class="highlight">savoir-faire artisanal</span>, exigeant et vivant.</p>
+    </div>
+    <div class="gammes-grid">
+      <div class="gc" data-gamme="bieres" onclick="showPage('bieres')"><div class="gc-corner"></div><img class="gc-img" src="assets/img/gamme_bieres_artisanales.png" alt="Bières Artisanales"><div class="gc-overlay"></div><div class="gc-body"><p class="gc-cat">Brassage</p><h3 class="gc-name">Bières Artisanales</h3><p class="gc-desc">IPA tropicales, stouts profonds, blondes légères. Chaque brassin en série limitée, sans compromis sur la qualité.</p><span class="gc-lnk">Découvrir →</span></div></div>
+      <div class="gc" data-gamme="rhum" onclick="showPage('rhum')"><div class="gc-corner"></div><img class="gc-img" src="assets/img/gamme_rhum_arrange.png" alt="Rhum Arrangé"><div class="gc-overlay"></div><div class="gc-body"><p class="gc-cat">Macération</p><h3 class="gc-name">Rhum Arrangé</h3><p class="gc-desc">Macérations de fruits exotiques, vanille, épices. Des mois de patience pour des saveurs incomparables.</p><span class="gc-lnk">Découvrir →</span></div></div>
+      <div class="gc" data-gamme="kombucha" onclick="showPage('fermentees')"><div class="gc-corner"></div><img class="gc-img" src="assets/img/gamme_kombucha.png" alt="Kombucha ZilKombu"><div class="gc-overlay"></div><div class="gc-body"><p class="gc-cat">Fermentation Vivante</p><h3 class="gc-name">Kombucha</h3><p class="gc-desc">Thé fermenté vivant, pétillant et probiotique. Hibiscus, gingembre, citron vert — arômes 100% naturels.</p><span class="gc-lnk">Découvrir →</span></div></div>
+      <div class="gc" data-gamme="kefir" onclick="showPage('fermentees')"><div class="gc-corner"></div><img class="gc-img" src="assets/img/gamme_kefir.png" alt="Kéfir ZilFusion"><div class="gc-overlay"></div><div class="gc-body"><p class="gc-cat">Probiotique</p><h3 class="gc-name">Kéfir</h3><p class="gc-desc">Kéfir de lait et de fruits, cultivé avec soin. Doux, frais et vivant — une boisson millénaire réinventée.</p><span class="gc-lnk">Découvrir →</span></div></div>
+      <div class="gc" data-gamme="sodas" onclick="showPage('fermentees')"><div class="gc-corner"></div><img class="gc-img" src="assets/img/gamme_sodas.png" alt="Sodas Naturels ZilFusion"><div class="gc-overlay"></div><div class="gc-body"><p class="gc-cat">Boissons Naturelles</p><h3 class="gc-name">Sodas Naturels</h3><p class="gc-desc">Sodas fermentés sans additifs. Ananas-basilic, passion-menthe, goyave-lime. Le pétillant tropical.</p><span class="gc-lnk">Découvrir →</span></div></div>
+      <div class="gc" data-gamme="ateliers" onclick="showPage('ateliers')"><div class="gc-corner" style="border-color:rgba(197,160,89,.4)"></div><img class="gc-img" src="assets/img/gamme_ateliers_decouverte.png" alt="Ateliers Découverte"><div class="gc-overlay"></div><div class="gc-body"><p class="gc-cat">Expériences</p><h3 class="gc-name">Ateliers Découverte</h3><p class="gc-desc">Venez brasser, fermenter et déguster avec nous. Des ateliers immersifs pour tous les niveaux.</p><span class="gc-lnk">Réserver →</span></div></div>
+    </div>
+  </section>
+
+  <!-- SECTION STORYTELLING -->
+  <section class="sec" style="background:var(--black);padding:5rem 2rem;">
+    <div style="max-width:900px;margin:0 auto;text-align:center;">
+      <p class="sl">Notre histoire</p>
+      <h2 class="st">Né des îles, <em>brassé avec passion</em></h2>
+      <div class="gl" style="margin:1rem auto 2.5rem;"></div>
+      <p style="font-size:1.05rem;color:var(--dim);line-height:1.9;margin-bottom:2rem;">
+        ZilFusion Brew est né d'une passion pour les saveurs tropicales et les traditions artisanales de l'océan Indien. 
+        Chaque bière est brassée en <strong style="color:var(--white)">petite série</strong>, chaque rhum macéré pendant 
+        <strong style="color:var(--white)">plusieurs mois</strong> avec des ingrédients soigneusement sélectionnés à Maurice, 
+        Madagascar et en France.
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;">
+        <div class="story-card">
+          <div style="font-size:2rem;margin-bottom:.8rem;">🌿</div>
+          <h4 style="font-family:var(--fd);color:var(--gold);font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem;">Ingrédients naturels</h4>
+          <p style="font-size:.78rem;color:var(--dim);line-height:1.7;">Fruits frais, épices entières, vanilles de Madagascar — aucun arôme artificiel.</p>
+        </div>
+        <div class="story-card">
+          <div style="font-size:2rem;margin-bottom:.8rem;">⏳</div>
+          <h4 style="font-family:var(--fd);color:var(--gold);font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem;">Macération lente</h4>
+          <p style="font-size:.78rem;color:var(--dim);line-height:1.7;">4 à 9 mois de patience pour des arômes profonds et une rondeur incomparable.</p>
+        </div>
+        <div class="story-card">
+          <div style="font-size:2rem;margin-bottom:.8rem;">🤲</div>
+          <h4 style="font-family:var(--fd);color:var(--gold);font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem;">Fait main</h4>
+          <p style="font-size:.78rem;color:var(--dim);line-height:1.7;">Chaque bouteille est préparée, contrôlée et embouteillée à la main en petite série.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION POURQUOI NOUS -->
+  <section class="sec" style="background:var(--black)">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <p class="sl">Pourquoi ZilFusion Brew</p>
+      <h2 class="st">Ce qui nous rend <em>différents</em></h2>
+      <div class="gl" style="margin:1rem auto;"></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);">
+      <div style="background:var(--surface);padding:2rem 1.5rem;text-align:center;transition:background .2s;" onmouseover="this.style.background='var(--surface2)'" onmouseout="this.style.background='var(--surface)'">
+        <div style="font-size:2.5rem;margin-bottom:1rem;">🌿</div>
+        <h3 style="font-family:var(--fd);font-size:.8rem;font-weight:800;color:var(--white);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.05em;">100% Naturel</h3>
+        <p style="font-size:.76rem;color:var(--dim);line-height:1.7;">Aucun additif, aucun arôme artificiel. Que des ingrédients vrais, sourcés avec soin.</p>
+      </div>
+      <div style="background:var(--surface);padding:2rem 1.5rem;text-align:center;transition:background .2s;" onmouseover="this.style.background='var(--surface2)'" onmouseout="this.style.background='var(--surface)'">
+        <div style="font-size:2.5rem;margin-bottom:1rem;">🤝</div>
+        <h3 style="font-family:var(--fd);font-size:.8rem;font-weight:800;color:var(--white);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.05em;">Fait à la main</h3>
+        <p style="font-size:.76rem;color:var(--dim);line-height:1.7;">Chaque bouteille est brassée, macérée et embouteillée manuellement. Le savoir-faire prime.</p>
+      </div>
+      <div style="background:var(--surface);padding:2rem 1.5rem;text-align:center;transition:background .2s;" onmouseover="this.style.background='var(--surface2)'" onmouseout="this.style.background='var(--surface)'">
+        <div style="font-size:2.5rem;margin-bottom:1rem;">🌍</div>
+        <h3 style="font-family:var(--fd);font-size:.8rem;font-weight:800;color:var(--white);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.05em;">Ingrédients rares</h3>
+        <p style="font-size:.76rem;color:var(--dim);line-height:1.7;">Vanille de Madagascar, longani de Maurice, épices créoles — des saveurs introuvables ailleurs.</p>
+      </div>
+      <div style="background:var(--surface);padding:2rem 1.5rem;text-align:center;transition:background .2s;" onmouseover="this.style.background='var(--surface2)'" onmouseout="this.style.background='var(--surface)'">
+        <div style="font-size:2.5rem;margin-bottom:1rem;">🏆</div>
+        <h3 style="font-family:var(--fd);font-size:.8rem;font-weight:800;color:var(--white);margin-bottom:.6rem;text-transform:uppercase;letter-spacing:.05em;">Séries limitées</h3>
+        <p style="font-size:.76rem;color:var(--dim);line-height:1.7;">Chaque brassin est unique. Pas de production industrielle — que des créations en quantité limitée.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <button class="btn-g" onclick="showPage('boutique')" style="font-size:.7rem;padding:1rem 2.5rem;">Voir tous nos produits →</button>
+    </div>
+  </section>
+
+  <!-- SECTION AVIS CLIENTS GOOGLE -->
+  <section class="sec avis-section">
+    <div class="avis-header">
+      <p class="sl">Avis clients</p>
+      <h2 class="st">Partagez votre expérience</h2>
+      <p class="sd">Chaque création raconte une histoire. La vôtre compte aussi.</p>
+    </div>
+    <div class="avis-widget">
+      <div class="avis-placeholder">
+        <p class="avis-note">Retours clients</p>
+        <p>Nous recueillons actuellement les premiers retours clients. Votre avis est précieux et nous aide à améliorer chaque création.</p>
+      </div>
+    </div>
+    <p class="avis-invite">Vous avez testé nos produits ? Partagez votre expérience.</p>
+    <div class="avis-action">
+      <a href="https://tally.so/r/7RJ4Ya" target="_blank" rel="noopener noreferrer" class="btn-g">
+        Laisser un avis
+      </a>
+    </div>
+    <p class="avis-micro">Cela ne prend que quelques secondes.</p>
+  </section>
+
+    <!-- BLOC CTA CONVERSION -->
+  <section style="background:linear-gradient(135deg,rgba(197,160,89,.08) 0%,rgba(139,58,10,.06) 100%);border-top:1px solid rgba(197,160,89,.18);border-bottom:1px solid rgba(197,160,89,.18);padding:4rem 3rem;text-align:center;">
+    <p style="font-family:var(--fd);font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;">🔥 Stocks limités · Production artisanale</p>
+    <h2 style="font-family:var(--fp);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;color:var(--white);margin-bottom:.8rem;letter-spacing:-.03em;">Commandez avant rupture de stock</h2>
+    <p style="font-size:.9rem;color:var(--dim);max-width:50ch;margin:0 auto 2rem;line-height:1.8;">Chaque cuvée est produite en petite série. Quand c'est fini, il faut attendre la prochaine macération — plusieurs mois. Ne manquez pas la vôtre.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <button class="btn-g" onclick="showPage('boutique')" style="font-size:.72rem;padding:1.1rem 2.6rem;">🛒 Voir toutes les bouteilles disponibles</button>
+      <button class="btn-o" onclick="showPage('rhum')" style="font-size:.72rem;padding:1.1rem 2.2rem;">Nos rhums arrangés →</button>
+    </div>
+    <p style="font-size:.65rem;color:var(--dim);margin-top:1.2rem;">✓ Livraison offerte dès 60€ &nbsp;·&nbsp; ✓ Satisfait ou remboursé 14j &nbsp;·&nbsp; ✓ Paiement sécurisé</p>
+  </section>
+
+
+    <section class="sec" id="contact" style="background:var(--surface)">
+    <div class="contact-grid">
+      <div>
+        <p class="sl">Nous contacter</p><h2 class="st">Parlons de <em>vos projets</em></h2><div class="gl"></div>
+        <p class="sd">Questions, commandes sur mesure, partenariats ou ateliers privés — nous vous répondons sous 24h.</p>
+        <div class="ci">
+          <div class="ci-item"><span class="ci-icon">📱</span><div><div class="ci-label">Téléphone</div><div class="ci-val">06 45 25 69 65</div></div></div>
+          <div class="ci-item"><span class="ci-icon">📧</span><div><div class="ci-label">Email</div><div class="ci-val"><a href="mailto:contact.zilfusionbrew@gmail.com">contact.zilfusionbrew@gmail.com</a></div></div></div>
+          <div class="ci-item"><span class="ci-icon">📍</span><div><div class="ci-label">Zones</div><div class="ci-val">France · Île Maurice · Madagascar</div></div></div>
+          <div class="ci-item"><span class="ci-icon">🕐</span><div><div class="ci-label">Horaires</div><div class="ci-val">Lun–Sam : 9h–19h</div></div></div>
+        </div>
+      </div>
+      <form class="fg" onsubmit="handleForm(event)">
+        <div class="fr"><div class="ff"><label class="fl">Prénom</label><input type="text" class="fi" placeholder="Marie" required></div><div class="ff"><label class="fl">Nom</label><input type="text" class="fi" placeholder="Dupont" required></div></div>
+        <div class="ff"><label class="fl">Email</label><input type="email" class="fi" placeholder="votre@email.fr" required></div>
+        <div class="ff"><label class="fl">Sujet</label><select class="fi"><option>— Choisir —</option><option>Commande & livraison</option><option>Réservation atelier</option><option>Événement privé</option><option>Partenariat</option><option>Autre</option></select></div>
+        <div class="ff"><label class="fl">Message</label><textarea class="fi" placeholder="Votre message…" required></textarea></div>
+        <button type="submit" class="btn-g" style="width:100%;text-align:center">Envoyer le message</button>
+      </form>
+    </div>
+  </section>
+  <footer style="display:block;padding:3rem;">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--border);">
+      <div>
+        <div class="ft-logo" style="font-size:1.2rem;margin-bottom:.8rem;">ZilFusion Brew</div>
+        <p style="font-size:.76rem;color:var(--dim);line-height:1.8;max-width:32ch;">Maison artisanale de fermentation inspirée des saveurs tropicales : craft beer, rhum arrangé et ateliers.</p>
+        <p style="font-size:.65rem;color:var(--dim);margin-top:1rem;">📱 06 45 25 69 65 · 📧 <a href="mailto:contact.zilfusionbrew@gmail.com">contact.zilfusionbrew@gmail.com</a></p>
+        <p style="font-size:.65rem;color:var(--dim);margin-top:.3rem;">📍 France · Île Maurice · Madagascar</p>
+      </div>
+      <div>
+        <div style="font-family:var(--fd);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">Pages</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.6rem;">
+          <li><a onclick="showPage('bieres')" style="font-size:.72rem;color:var(--dim);cursor:pointer;font-family:var(--fd);letter-spacing:.08em;text-transform:uppercase;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--dim)'">Bières</a></li>
+          <li><a onclick="showPage('rhum')" style="font-size:.72rem;color:var(--dim);cursor:pointer;font-family:var(--fd);letter-spacing:.08em;text-transform:uppercase;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--dim)'">Rhums Arrangés</a></li>
+          <li><a onclick="showPage('fermentees')" style="font-size:.72rem;color:var(--dim);cursor:pointer;font-family:var(--fd);letter-spacing:.08em;text-transform:uppercase;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--dim)'">Boissons Fermentées</a></li>
+          <li><a onclick="showPage('ateliers')" style="font-size:.72rem;color:var(--dim);cursor:pointer;font-family:var(--fd);letter-spacing:.08em;text-transform:uppercase;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--dim)'">Ateliers</a></li>
+          <li><a onclick="showPage('boutique')" style="font-size:.72rem;color:var(--dim);cursor:pointer;font-family:var(--fd);letter-spacing:.08em;text-transform:uppercase;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--dim)'">Boutique</a></li>
+          <li><a onclick="showPage('apropos')" style="font-size:.72rem;color:var(--dim);cursor:pointer;font-family:var(--fd);letter-spacing:.08em;text-transform:uppercase;" onmouseover="this.style.color='var(--white)'" onmouseout="this.style.color='var(--dim)'">À Propos</a></li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-family:var(--fd);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">Légal</div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.6rem;">
+          <li><a href="#" onclick="openLegal('mentions')" style="font-size:.72rem;color:var(--dim);font-family:var(--fd);letter-spacing:.08em;text-transform:uppercase;">Mentions légales</a></li>
+          <li><a href="#" onclick="openLegal('cgv')" style="font-size:.72rem;color:var(--dim);font-family:var(--fd);letter-spacing:.08em;text-transform:uppercase;">CGV</a></li>
+          <li><a href="#" onclick="openLegal('confidentialite')" style="font-size:.72rem;color:var(--dim);font-family:var(--fd);letter-spacing:.08em;text-transform:uppercase;">Confidentialité</a></li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-family:var(--fd);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;">Horaires</div>
+        <p style="font-size:.72rem;color:var(--dim);line-height:1.8;">Lun – Sam<br><span style="color:var(--white)">9h – 19h</span></p>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+      <div class="ft-copy">© 2025 ZilFusion Brew — Tous droits réservés</div>
+      <div style="display:flex;gap:1rem;align-items:center;">
+        <a href="https://instagram.com" target="_blank" style="font-size:.72rem;color:var(--dim);font-family:var(--fd);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--dim)'">📸 Instagram</a>
+        <a href="https://facebook.com" target="_blank" style="font-size:.72rem;color:var(--dim);font-family:var(--fd);letter-spacing:.08em;text-transform:uppercase;transition:color .2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--dim)'">👍 Facebook</a>
+      </div>
+      <div class="ft-copy"><span style="font-size:.58rem;opacity:.4">L'abus d'alcool est dangereux pour la santé. À consommer avec modération. Vente interdite aux mineurs.</span></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════ PAGE À PROPOS ══════════ -->
+<div class="page" id="page-histoire">
+  <div class="ph" style="background:radial-gradient(ellipse 50% 70% at 30% 50%,rgba(197,160,89,.08) 0%,transparent 65%),var(--black)">
+    <div class="ph-inner">
+      <p class="ph-eye" style="color:var(--gold)"><span style="width:26px;height:1px;background:var(--gold);display:inline-block;vertical-align:middle;margin-right:.8rem"></span>Biographie</p>
+      <h1 class="ph-title">Mon Histoire<em>& Ma Vision</em></h1>
+      <p class="ph-sub">Passionné par les cultures des îles, j'ai créé Zil Fusion Brew pour partager un voyage gustatif unique — bières métissées, rhums arrangés et fermentations d'exception.</p>
+      <div class="ph-tags">
+        <span class="tag" style="border-color:rgba(197,160,89,.4);color:var(--gold)">Artisanal</span>
+        <span class="tag" style="border-color:rgba(197,160,89,.4);color:var(--gold)">Tropical</span>
+        <span class="tag" style="border-color:rgba(197,160,89,.4);color:var(--gold)">Passion</span>
+        <span class="tag" style="border-color:rgba(197,160,89,.4);color:var(--gold)">Îles</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2 CARDS CÔTE À CÔTE -->
+  <section style="padding:0;background:var(--black);">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);">
+
+      <div style="position:relative;overflow:hidden;aspect-ratio:3/4;">
+        <img src="assets/img/apropos_photo_portrait_1.png" style="width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .5s ease;">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.45) 30%,transparent 65%);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:2rem;">
+          <p style="font-family:var(--fd);font-size:.52rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;">Craft Beer · Rhum Arrangé</p>
+          <p style="font-family:var(--fd);font-size:1.15rem;font-weight:800;color:var(--white);line-height:1.4;">Zil Fusion Brew, c'est le nom que j'ai choisi pour ma brasserie artisanale — un nom qui reflète ma passion.</p>
+        </div>
+      </div>
+
+      <div style="position:relative;overflow:hidden;aspect-ratio:3/4;">
+        <img src="assets/img/apropos_photo_portrait_2.png" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.5) 35%,rgba(8,8,8,.2) 65%,transparent 100%);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:2rem;">
+          <p style="font-family:var(--fd);font-size:.52rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;">Ma Biographie</p>
+          <p style="color:var(--dim);font-size:.82rem;line-height:1.9;margin-bottom:1.2rem;">Je suis passionné par les cultures des îles de l'Océan Indien, du Pacifique, des Caraïbes et de l'Afrique. Je veux partager ma vision d'une bière métissée et d'un rhum arrangé d'exception.</p>
+          <p style="font-family:var(--fs);font-style:italic;font-size:.9rem;color:var(--gold);line-height:1.7;border-left:2px solid var(--gold);padding-left:1rem;">Zil Fusion Brew, c'est un voyage gustatif — un hommage aux terres lointaines.</p>
+          <div style="margin-top:1.5rem;display:flex;gap:.8rem;flex-wrap:wrap;">
+            <button class="btn-g" onclick="showPage('boutique')">Visiter la boutique →</button>
+            <button class="btn-o" onclick="showPage('ateliers')">Voir les ateliers</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ZONE PHOTOS / BLOG à venir -->
+  <section class="sec" style="background:var(--surface)">
+    <p class="sl" style="margin-bottom:.5rem;">Galerie & Actualités</p>
+    <h2 class="st" style="margin-bottom:2rem;">Prochainement <em>disponible</em></h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);">
+      <div style="background:var(--black);aspect-ratio:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.8rem;color:var(--dim);">
+        <span style="font-size:2rem;">📸</span>
+        <span style="font-family:var(--fd);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;">Photos</span>
+      </div>
+      <div style="background:var(--black);aspect-ratio:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.8rem;color:var(--dim);">
+        <span style="font-size:2rem;">📝</span>
+        <span style="font-family:var(--fd);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;">Blog</span>
+      </div>
+      <div style="background:var(--black);aspect-ratio:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.8rem;color:var(--dim);">
+        <span style="font-size:2rem;">🎥</span>
+        <span style="font-family:var(--fd);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;">Vidéos</span>
+      </div>
+    </div>
+  </section>
+
+  <footer><ul class="ft-links"><li><a onclick="showPage('accueil')">Accueil</a></li><li><a onclick="showPage('bieres')">Bières</a></li><li><a onclick="showPage('rhum')">Rhum</a></li><li><a onclick="showPage('boutique')">Boutique</a></li></ul><div class="ft-copy">© 2025 ZilFusion Brew<br><span style="font-size:.58rem;opacity:.4">L'abus d'alcool est dangereux. À consommer avec modération.</span></div></footer>
+</div>
+
+<div class="page" id="page-apropos">
+  <div class="ph" style="background:radial-gradient(ellipse 50% 70% at 30% 50%,rgba(197,160,89,.08) 0%,transparent 65%),var(--black)">
+    <div class="ph-inner">
+      <p class="ph-eye" style="color:var(--gold)"><span style="width:26px;height:1px;background:var(--gold);display:inline-block;vertical-align:middle;margin-right:.8rem"></span>Notre Histoire</p>
+      <div style="margin-bottom:1.5rem"><img src="assets/img/logo_navbar.jpg" alt="ZilFusion Brew Logo" style="width:140px;height:auto;object-fit:contain;"></div>
+      <h1 class="ph-title">À Propos<em>de ZilFusion</em></h1>
+      <p class="ph-sub">Née d'une passion pour les cultures tropicales et l'art de la fermentation, ZilFusion Brew est une maison de caractère inspirée par les saveurs de l'Océan Indien, des Caraïbes et de l'Afrique.</p>
+      <div class="ph-tags">
+        <span class="tag" style="border-color:rgba(197,160,89,.4);color:var(--gold)">Artisanal</span>
+        <span class="tag" style="border-color:rgba(197,160,89,.4);color:var(--gold)">Tropical</span>
+        <span class="tag" style="border-color:rgba(197,160,89,.4);color:var(--gold)">Passion</span>
+        <span class="tag" style="border-color:rgba(197,160,89,.4);color:var(--gold)">Métissé</span>
+      </div>
+    </div>
+  </div>
+  <div class="mq-band"><div class="mq-inner" style="color:var(--gold)">
+    <span class="mq-item">Craft Beer</span><span class="mq-item">Rhum Arrangé</span><span class="mq-item">Fermentation</span><span class="mq-item">Ateliers</span><span class="mq-item">100% Artisanal</span><span class="mq-item">France · Maurice · Madagascar</span>
+    <span class="mq-item">Craft Beer</span><span class="mq-item">Rhum Arrangé</span><span class="mq-item">Fermentation</span><span class="mq-item">Ateliers</span><span class="mq-item">100% Artisanal</span><span class="mq-item">France · Maurice · Madagascar</span>
+  </div></div>
+  <!-- HISTOIRE : 2 cards côte à côte avec images -->
+  <section class="sec" style="background:var(--surface);padding:4rem 3rem;">
+    <p class="sl" style="margin-bottom:.5rem;">Mon Histoire</p>
+    <h2 class="st" style="margin-bottom:2.5rem;">Né des îles, <em>brassé avec âme</em></h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);">
+
+      <!-- Card image 1 -->
+      <div style="position:relative;overflow:hidden;aspect-ratio:3/4;">
+        <img src="assets/img/apropos_photo_portrait_1.png" style="width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .5s ease;">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.4) 25%,transparent 60%);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:2rem;">
+          <p class="sl" style="margin-bottom:.5rem;">Craft Beer · Rhum Arrangé</p>
+          <p style="font-family:var(--fd);font-size:1.2rem;font-weight:800;color:var(--white);line-height:1.3;">Zil Fusion Brew,<br>c'est le nom que j'ai choisi pour ma brasserie artisanale — un nom qui reflète ma passion.</p>
+        </div>
+      </div>
+
+      <!-- Card image 2 + texte -->
+      <div style="position:relative;overflow:hidden;aspect-ratio:3/4;">
+        <img src="assets/img/apropos_photo_portrait_2.png" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,.5) 30%,rgba(8,8,8,.2) 60%,transparent 100%);"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:2rem;">
+          <p class="sl" style="margin-bottom:.8rem;">Ma Biographie</p>
+          <p class="sd" style="font-size:.82rem;line-height:1.9;margin-bottom:1.2rem;">Je suis passionné par les cultures des îles de l'Océan Indien, du Pacifique, des Caraïbes et de l'Afrique. J'aime m'inspirer de leurs saveurs, couleurs et rythmes pour créer des bières métissées originales et des rhums arrangés d'exception.</p>
+          <p style="font-family:var(--fs);font-style:italic;font-size:.95rem;color:var(--gold);line-height:1.7;border-left:2px solid var(--gold);padding-left:1rem;">Zil Fusion Brew, c'est un voyage gustatif — un hommage aux terres lointaines et à leur richesse.</p>
+          <div style="margin-top:1.5rem;display:flex;gap:.8rem;flex-wrap:wrap;">
+            <button class="btn-g" onclick="showPage('boutique')">Visiter la boutique →</button>
+            <button class="btn-o" onclick="showPage('ateliers')">Voir les ateliers</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- KPIs -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:2px;">
+      <div class="kpi"><div class="n">6+</div><div class="l">Gammes</div></div>
+      <div class="kpi"><div class="n">100%</div><div class="l">Naturel</div></div>
+      <div class="kpi"><div class="n">3</div><div class="l">Pays</div></div>
+      <div class="kpi"><div class="n">∞</div><div class="l">Passion</div></div>
+    </div>
+  </section>
+  <section class="sec" style="background:var(--black)">
+    <p class="sl">Méthode</p><h2 class="st">Une rigueur <em>artisanale</em></h2><div class="gl"></div>
+    <p class="sd" style="max-width:55ch;margin-bottom:2.5rem">Chaque étape de notre processus est pensée pour garantir des produits d'exception.</p>
+    <div class="bfts">
+      <div class="bft"><span class="bft-icon">🌾</span><div class="bft-t">Sélection des matières</div><div class="bft-d">Houblons, malts, fruits et épices soigneusement sourcés auprès de producteurs partenaires.</div></div>
+      <div class="bft"><span class="bft-icon">⚗️</span><div class="bft-t">Recettes calibrées</div><div class="bft-d">Aromatique claire, équilibre sucre/acidité/alcool. Chaque recette testée avant production.</div></div>
+      <div class="bft"><span class="bft-icon">🧫</span><div class="bft-t">Fermentation contrôlée</div><div class="bft-d">Cultures actives entretenues, fermentation surveillée pour stabilité et traçabilité optimales.</div></div>
+      <div class="bft"><span class="bft-icon">🫙</span><div class="bft-t">Mise en bouteille</div><div class="bft-d">Chaque bouteille numérotée, étiquetée et contrôlée avant expédition ou mise en vente.</div></div>
+    </div>
+    <div style="margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+      <button class="btn-g" onclick="showPage('boutique')">Explorer la boutique</button>
+      <button class="btn-o" onclick="showPage('accueil');setTimeout(()=>document.getElementById('contact').scrollIntoView({behavior:'smooth'}),300)">Nous contacter</button>
+    </div>
+  </section>
+  <footer><img src="assets/img/logo_navbar.jpg" alt="ZilFusion Brew" style="height:50px;width:auto;object-fit:contain;"><ul class="ft-links"><li><a onclick="showPage('accueil')">Accueil</a></li><li><a onclick="showPage('bieres')">Bières</a></li><li><a onclick="showPage('rhum')">Rhum</a></li><li><a onclick="showPage('boutique')">Boutique</a></li></ul><div class="ft-copy">© 2025 ZilFusion Brew<br><span style="font-size:.58rem;opacity:.4">L'abus d'alcool est dangereux. À consommer avec modération.</span></div></footer>
+</div>
+
+<!-- ══════════ PAGE BIÈRES ══════════ -->
+<div class="page" id="page-bieres">
+  <div class="ph" style="background:radial-gradient(ellipse 50% 80% at 30% 50%,rgba(212,112,10,.08) 0%,transparent 65%),var(--black)">
+    <div class="ph-inner">
+      <p class="ph-eye" style="color:var(--amber)"><span style="width:26px;height:1px;background:var(--amber);display:inline-block;vertical-align:middle;margin-right:.8rem"></span>Brassage Artisanal</p>
+      <h1 class="ph-title">Bières<em>Artisanales</em></h1>
+      <p class="ph-sub">Des brassins en série limitée, inspirés des tropiques. Brassées sans compromis à partir d'ingrédients naturels soigneusement sélectionnés.</p>
+      <div class="ph-tags">
+        <span class="tag" style="border-color:rgba(212,112,10,.4);color:var(--amber)">Petites Séries</span>
+        <span class="tag" style="border-color:rgba(212,112,10,.4);color:var(--amber)">100% Naturel</span>
+        <span class="tag" style="border-color:rgba(212,112,10,.4);color:var(--amber)">Sans Additifs</span>
+        <span class="tag" style="border-color:rgba(212,112,10,.4);color:var(--amber)">Houblons Tropicaux</span>
+      </div>
+    </div>
+  </div>
+  <div class="mq-band"><div class="mq-inner" style="color:var(--amber)">
+    <span class="mq-item">IPA Tropicale</span><span class="mq-item">Stout Cacao</span><span class="mq-item">Blonde Passion</span><span class="mq-item">Saison Hibiscus</span><span class="mq-item">Sour Citron Vert</span><span class="mq-item">Porter Vanille</span><span class="mq-item">Brassage Artisanal</span>
+    <span class="mq-item">IPA Tropicale</span><span class="mq-item">Stout Cacao</span><span class="mq-item">Blonde Passion</span><span class="mq-item">Saison Hibiscus</span><span class="mq-item">Sour Citron Vert</span><span class="mq-item">Porter Vanille</span><span class="mq-item">Brassage Artisanal</span>
+  </div></div>
+  <section class="sec" style="background:var(--surface)">
+    <p class="sl">Nos bières</p><h2 class="st">La gamme <em>ZilFusion</em></h2><div class="gl"></div>
+
+    <!-- BLOC CONFIANCE -->
+    <div style="display:flex;gap:1px;background:rgba(197,160,89,.12);border:1px solid rgba(197,160,89,.12);margin:2rem 0 0;flex-wrap:wrap;">
+      <div style="flex:1;min-width:180px;background:var(--black);padding:1rem 1.4rem;display:flex;align-items:center;gap:.8rem;">
+        <span style="font-size:1.3rem;flex-shrink:0;">🍺</span>
+        <div><div style="font-family:var(--fd);font-size:.62rem;font-weight:700;color:var(--white);letter-spacing:.05em;">Brassage artisanal</div><div style="font-size:.6rem;color:var(--dim);margin-top:.15rem;">Chaque brassin brassé en petite série</div></div>
+      </div>
+      <div style="flex:1;min-width:180px;background:var(--black);padding:1rem 1.4rem;display:flex;align-items:center;gap:.8rem;">
+        <span style="font-size:1.3rem;flex-shrink:0;">🌾</span>
+        <div><div style="font-family:var(--fd);font-size:.62rem;font-weight:700;color:var(--white);letter-spacing:.05em;">Ingrédients sélectionnés</div><div style="font-size:.6rem;color:var(--dim);margin-top:.15rem;">Malts premium, houblons frais, sans additifs</div></div>
+      </div>
+      <div style="flex:1;min-width:180px;background:var(--black);padding:1rem 1.4rem;display:flex;align-items:center;gap:.8rem;">
+        <span style="font-size:1.3rem;flex-shrink:0;">🚚</span>
+        <div><div style="font-family:var(--fd);font-size:.62rem;font-weight:700;color:var(--white);letter-spacing:.05em;">Livraison soignée</div><div style="font-size:.6rem;color:var(--dim);margin-top:.15rem;">Emballage protégé · offerte dès 60€</div></div>
+      </div>
+      <div style="flex:1;min-width:180px;background:var(--black);padding:1rem 1.4rem;display:flex;align-items:center;gap:.8rem;">
+        <span style="font-size:1.3rem;flex-shrink:0;">⭐</span>
+        <div><div style="font-family:var(--fd);font-size:.62rem;font-weight:700;color:var(--white);letter-spacing:.05em;">Retours clients Google</div><div style="font-size:.6rem;color:var(--dim);margin-top:.15rem;">Avis Google en cours d'intégration</div></div>
+      </div>
+    </div>
+
+    <div class="bieres-grid" style="margin-top:2.2rem">
+      <!-- PALE ALE MANGO avec images -->
+      <div class="bc" style="padding:0;overflow:hidden;position:relative;">
+        <div style="position:relative;overflow:hidden;">
+          <img src="assets/img/produit_pale_ale_mango.png" alt="Pale Ale Mango" style="width:100%;display:block;object-fit:cover;">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;">
+            
+            <h3 style="font-family:var(--fd);font-size:2rem;font-weight:800;color:#f4f1eb;margin-bottom:.4rem;">Pale Ale Mango 🥭</h3>
+            <p style="font-family:var(--fs);font-style:italic;font-size:.9rem;color:rgba(232,201,122,.9);margin-bottom:.7rem;line-height:1.4;">La première gorgée qui fait fermer les yeux.</p>
+            <p style="font-size:.87rem;color:#f4f1eb;line-height:1.7;max-width:50ch;">La signature ZilFusion — mangue tropicale en arôme franc, houblons fruités, robe dorée. Une Pale Ale légère, juteuse et rafraîchissante.</p>
+          </div>
+        </div>
+        <div style="padding:1.8rem 2rem;">
+          <div class="bc-specs">
+            <div class="bc-spec"><div class="spec-v">5,2%</div><div class="spec-k">Alc.</div></div>
+            <div class="bc-spec"><div class="spec-v">25</div><div class="spec-k">IBU</div></div>
+            <div class="bc-spec"><div class="spec-v">33cl</div><div class="spec-k">Format</div></div>
+          </div>
+          <div class="bc-price">4,50 €</div>
+          <p style="font-size:.73rem;color:#f87171;font-weight:700;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);padding:.35rem .75rem;border-radius:4px;">🔥 Produit signature · Plus que 12 bouteilles en stock</p><p style="font-size:.7rem;color:var(--dim);margin-bottom:.8rem;">🍽️ Idéal en apéritif · Accord : fruits de mer, sushis</p><button class="btn-add" onclick="addToCart('Pale Ale Mango',4.50,'33cl · Pale Ale')">Je veux celle-là — 4,50 €</button>
+        </div>
+      </div>
+
+      <div class="bc" data-pid="ipa-tropicale"><span class="bc-emoji">🍊</span><p class="bc-style">India Pale Ale</p><h3 class="bc-name">IPA Tropicale</h3><p class="bc-desc">Mangue, ananas, fruit de la passion. Amertume franche, houblons Citra & Mosaic. La signature ZilFusion.</p><div class="notes-list" style="margin-bottom:.8rem;"><span class="ntag">Mangue</span><span class="ntag">Ananas</span><span class="ntag">Passion</span><span class="ntag">Amer fruité</span></div><div class="notes-list" style="margin-bottom:.9rem;"><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🥂 Apéritif</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🍽️ Repas épicé</span></div><div class="bc-specs"><div class="bc-spec"><div class="spec-v">6,5%</div><div class="spec-k">Alc.</div></div><div class="bc-spec"><div class="spec-v">45</div><div class="spec-k">IBU</div></div><div class="bc-spec"><div class="spec-v">33cl</div><div class="spec-k">Format</div></div></div><div class="bc-price">4,50 €</div><p style="font-size:.7rem;color:var(--gold);font-weight:700;margin-bottom:.4rem;letter-spacing:.04em;">⭐ Produit signature · Brassage artisanal</p><button class="btn-add" onclick="addToCart('IPA Tropicale',4.50,'33cl · IPA')">Je prends cette bière — 4,50 €</button></div>
+      <div class="bc" data-pid="stout-cacao"><span class="bc-emoji">🍫</span><p class="bc-style">Imperial Stout</p><h3 class="bc-name">Stout Cacao</h3><p class="bc-desc">Notes de chocolat noir et café torréfié. Corps onctueux, finale longue et chaleureuse.</p><div class="notes-list" style="margin-bottom:.8rem;"><span class="ntag">Chocolat noir</span><span class="ntag">Café</span><span class="ntag">Caramel</span><span class="ntag">Onctueux</span></div><div class="notes-list" style="margin-bottom:.9rem;"><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🥃 Digestif</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🍫 Accord dessert</span></div><div class="bc-specs"><div class="bc-spec"><div class="spec-v">8,2%</div><div class="spec-k">Alc.</div></div><div class="bc-spec"><div class="spec-v">35</div><div class="spec-k">IBU</div></div><div class="bc-spec"><div class="spec-v">33cl</div><div class="spec-k">Format</div></div></div><div class="bc-price">5,20 €</div><p style="font-size:.7rem;color:var(--gold);font-weight:700;margin-bottom:.4rem;letter-spacing:.04em;">🤲 Production artisanale · Petite série</p><button class="btn-add" onclick="addToCart('Stout Cacao',5.20,'33cl · Stout')">Je prends cette bière — 5,20 €</button></div>
+      <div class="bc" data-pid="blonde-passion"><span class="bc-emoji">🌸</span><p class="bc-style">Blonde Fruitée</p><h3 class="bc-name">Blonde Passion</h3><p class="bc-desc">Légère et rafraîchissante, agrémentée de fruit de la passion. La bière d'été parfaite.</p><div class="notes-list" style="margin-bottom:.8rem;"><span class="ntag">Passion</span><span class="ntag">Floral</span><span class="ntag">Léger</span><span class="ntag">Pétillant</span></div><div class="notes-list" style="margin-bottom:.9rem;"><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🥂 Apéritif</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">☀️ Soirée d'été</span></div><div class="bc-specs"><div class="bc-spec"><div class="spec-v">4,8%</div><div class="spec-k">Alc.</div></div><div class="bc-spec"><div class="spec-v">18</div><div class="spec-k">IBU</div></div><div class="bc-spec"><div class="spec-v">33cl</div><div class="spec-k">Format</div></div></div><div class="bc-price">4,00 €</div><p style="font-size:.7rem;color:var(--gold);font-weight:700;margin-bottom:.4rem;letter-spacing:.04em;">🌿 Ingrédients naturels · Brassage artisanal</p><button class="btn-add" onclick="addToCart('Blonde Passion',4.00,'33cl · Blonde')">Je prends cette bière — 4,00 €</button></div>
+      <div class="bc" data-pid="saison-hibiscus"><span class="bc-emoji">🌺</span><p class="bc-style">Saison</p><h3 class="bc-name">Saison Hibiscus</h3><p class="bc-desc">Notes florales d'hibiscus, légèrement acidulée. Inspirée des traditions belges réinterprétées.</p><div class="notes-list" style="margin-bottom:.8rem;"><span class="ntag">Hibiscus</span><span class="ntag">Floral</span><span class="ntag">Acidulé</span><span class="ntag">Fruité délicat</span></div><div class="notes-list" style="margin-bottom:.9rem;"><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🍽️ Repas</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🎁 Cadeau original</span></div><div class="bc-specs"><div class="bc-spec"><div class="spec-v">5,5%</div><div class="spec-k">Alc.</div></div><div class="bc-spec"><div class="spec-v">22</div><div class="spec-k">IBU</div></div><div class="bc-spec"><div class="spec-v">75cl</div><div class="spec-k">Format</div></div></div><div class="bc-price">7,50 €</div><p style="font-size:.73rem;color:#f87171;font-weight:700;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);padding:.35rem .75rem;border-radius:4px;">⚡ Édition limitée · Seulement 8 bouteilles restantes</p><button class="btn-add" onclick="addToCart('Saison Hibiscus',7.50,'75cl · Saison')">Réserver avant rupture — 7,50 €</button></div>
+      <div class="bc" data-pid="sour-citron-vert"><span class="bc-emoji">🍋</span><p class="bc-style">Sour Ale</p><h3 class="bc-name">Sour Citron Vert</h3><p class="bc-desc">Fermentation lactique pour une acidité vive. Citron vert, kaffir, citronnelle. Intensément tropical.</p><div class="notes-list" style="margin-bottom:.8rem;"><span class="ntag">Citron vert</span><span class="ntag">Kaffir</span><span class="ntag">Acide vif</span><span class="ntag">Tropical</span></div><div class="notes-list" style="margin-bottom:.9rem;"><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🥂 Apéritif</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🐟 Poissons & fruits de mer</span></div><div class="bc-specs"><div class="bc-spec"><div class="spec-v">4,2%</div><div class="spec-k">Alc.</div></div><div class="bc-spec"><div class="spec-v">8</div><div class="spec-k">IBU</div></div><div class="bc-spec"><div class="spec-v">33cl</div><div class="spec-k">Format</div></div></div><div class="bc-price">5,00 €</div><p style="font-size:.7rem;color:var(--gold);font-weight:700;margin-bottom:.4rem;letter-spacing:.04em;">🤲 Recette artisanale · Fermentation naturelle</p><button class="btn-add" onclick="addToCart('Sour Citron Vert',5.00,'33cl · Sour')">Je prends cette bière — 5,00 €</button></div>
+      <div class="bc" data-pid="porter-vanille"><span class="bc-emoji">🍦</span><p class="bc-style">Porter</p><h3 class="bc-name">Porter Vanille</h3><p class="bc-desc">Infusé à la vanille de Madagascar. Équilibre parfait entre amertume douce et rondeur. Édition spéciale.</p><div class="notes-list" style="margin-bottom:.8rem;"><span class="ntag">Vanille Madagascar</span><span class="ntag">Torréfié</span><span class="ntag">Rond</span><span class="ntag">Doux-amer</span></div><div class="notes-list" style="margin-bottom:.9rem;"><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🥃 Digestif</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🍮 Desserts</span></div><div class="bc-specs"><div class="bc-spec"><div class="spec-v">5,8%</div><div class="spec-k">Alc.</div></div><div class="bc-spec"><div class="spec-v">28</div><div class="spec-k">IBU</div></div><div class="bc-spec"><div class="spec-v">33cl</div><div class="spec-k">Format</div></div></div><div class="bc-price">5,50 €</div><p style="font-size:.73rem;color:#f87171;font-weight:700;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);padding:.35rem .75rem;border-radius:4px;">⚡ Édition spéciale · Stock réduit — ne pas rater</p><button class="btn-add" onclick="addToCart('Porter Vanille',5.50,'33cl · Porter')">Réserver avant rupture — 5,50 €</button></div>
+      <div class="bc" data-pid="griotika" style="padding:0;overflow:hidden;position:relative;">
+        <div style="position:relative;overflow:hidden;">
+          <img src="assets/img/griotika.png" alt="Griotika Cherry Stout" style="width:100%;display:block;object-fit:cover;">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;">
+            <p style="font-family:var(--fd);font-size:.52rem;letter-spacing:.25em;text-transform:uppercase;color:var(--amber);margin-bottom:.4rem;">Stout Griotte</p>
+            <h3 style="font-family:var(--fd);font-size:2rem;font-weight:800;color:#f4f1eb;margin-bottom:.4rem;">Griotika 🍒</h3>
+            <p style="font-family:var(--fs);font-style:italic;font-size:.9rem;color:rgba(232,201,122,.9);margin-bottom:.7rem;line-height:1.4;">Griotte, chocolat et nuit noire — le stout qui surprend.</p>
+            <p style="font-size:.87rem;color:#f4f1eb;line-height:1.7;max-width:50ch;">Un stout intense aux arômes de griotte fraîche et de chocolat noir. Houblon Challenger, malt d'orge — une amertume enveloppante et fruitée.</p>
+          </div>
+        </div>
+        <div style="padding:1.8rem 2rem;">
+          <div class="bc-specs">
+            <div class="bc-spec"><div class="spec-v">5,5%</div><div class="spec-k">Alc.</div></div>
+            <div class="bc-spec"><div class="spec-v">30</div><div class="spec-k">IBU</div></div>
+            <div class="bc-spec"><div class="spec-v">33cl</div><div class="spec-k">Format</div></div>
+          </div>
+          <div class="bc-price">2,50 €</div>
+          <p style="font-size:.73rem;color:#f87171;font-weight:700;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);padding:.35rem .75rem;border-radius:4px;">🔥 Cuvée rare · Dernières bouteilles — stock réduit</p><p style="font-size:.7rem;color:var(--dim);margin-bottom:.8rem;">🍽️ Idéal en dessert · Accord : tarte aux cerises, foie gras</p><button class="btn-add" onclick="addToCart('Griotika Cherry Stout',2.50,'33cl · Stout Griotte')">Réserver avant rupture — 2,50 €</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sec" style="background:var(--black)">
+    <p class="sl">Notre méthode</p><h2 class="st">Du grain à la <em>bouteille</em></h2>
+    <div class="psteps">
+      <div class="pst"><p class="pst-n">01</p><span class="pst-icon">🌾</span><p class="pst-t">Sélection des malts</p><p class="pst-d">Malts premium, torréfaction sur mesure, sourcing rigoureux.</p></div>
+      <div class="pst"><p class="pst-n">02</p><span class="pst-icon">💧</span><p class="pst-t">Empâtage</p><p class="pst-d">Contrôle précis de la température pour extraire les sucres.</p></div>
+      <div class="pst"><p class="pst-n">03</p><span class="pst-icon">🌿</span><p class="pst-t">Houblonnage</p><p class="pst-d">Ajout en timing précis — amertume, arômes, tropical dry-hop.</p></div>
+      <div class="pst"><p class="pst-n">04</p><span class="pst-icon">🔬</span><p class="pst-t">Fermentation</p><p class="pst-d">Levures sélectionnées, température contrôlée, fût ou cuve.</p></div>
+      <div class="pst"><p class="pst-n">05</p><span class="pst-icon">🍺</span><p class="pst-t">Mise en bouteille</p><p class="pst-d">Embouteillage manuel, refermentation naturelle en bouteille.</p></div>
+    </div>
+  </section>
+  <section class="sec" style="background:var(--surface)">
+    <p class="sl">Gastronomie</p><h2 class="st">Accords <em>mets & bières</em></h2>
+    <div class="accords">
+      <div class="acc"><span class="acc-icon">🐟</span><p class="acc-name">Poissons grillés</p><p class="acc-desc">L'IPA Tropicale sublime les poissons de mer et fruits de mer</p></div>
+      <div class="acc"><span class="acc-icon">🧀</span><p class="acc-name">Fromages affinés</p><p class="acc-desc">Le Stout Cacao en parfaite harmonie avec les fromages corsés</p></div>
+      <div class="acc"><span class="acc-icon">🍖</span><p class="acc-name">Viandes braisées</p><p class="acc-desc">Le Porter Vanille adoucit et complète les viandes fumées</p></div>
+      <div class="acc"><span class="acc-icon">🌶️</span><p class="acc-name">Cuisine épicée</p><p class="acc-desc">La Blonde Passion équilibre parfaitement la chaleur des épices</p></div>
+    </div>
+  </section>
+  <footer><img src="assets/img/logo_navbar.jpg" alt="ZilFusion Brew" style="height:50px;width:auto;object-fit:contain;"><ul class="ft-links"><li><a onclick="showPage('accueil')">Accueil</a></li><li><a onclick="showPage('rhum')">Rhum</a></li><li><a onclick="showPage('boutique')">Boutique</a></li></ul><div class="ft-copy">© 2025 ZilFusion Brew</div></footer>
+</div>
+
+<!-- ══════════ PAGE RHUM ══════════ -->
+<div class="page" id="page-rhum">
+  <div class="ph" style="background:radial-gradient(ellipse 60% 80% at 70% 40%,rgba(139,58,10,.12) 0%,transparent 70%),var(--black)">
+    <div class="ph-inner">
+      <p class="ph-eye" style="color:#c45a1a"><span style="width:26px;height:1px;background:#c45a1a;display:inline-block;vertical-align:middle;margin-right:.8rem"></span>Macération Artisanale</p>
+      <h1 class="ph-title">Rhum<em>Arrangé</em></h1>
+      <p class="ph-sub">Des mois de patience, des ingrédients rares — chaque bouteille est le fruit d'une alchimie unique. Macérations lentes de fruits exotiques, épices et vanilles à travers l'océan Indien. Produits en quantité limitée, jamais reproduits à l'identique.</p>
+      <div class="ph-tags">
+        <span class="tag" style="border-color:rgba(139,58,10,.4);color:#c45a1a">Macération Longue</span>
+        <span class="tag" style="border-color:rgba(139,58,10,.4);color:#c45a1a">Fruits Exotiques</span>
+        <span class="tag" style="border-color:rgba(139,58,10,.4);color:#c45a1a">Vanille Madagascar</span>
+      </div>
+    </div>
+  </div>
+  <div class="mq-band"><div class="mq-inner" style="color:#c45a1a">
+    <span class="mq-item">Vanille-Coco</span><span class="mq-item">Gingembre-Citron</span><span class="mq-item">Fruits Rouges</span><span class="mq-item">Épices Créoles</span><span class="mq-item">Macération 6 Mois</span><span class="mq-item">Ingrédients Exotiques</span>
+    <span class="mq-item">Vanille-Coco</span><span class="mq-item">Gingembre-Citron</span><span class="mq-item">Fruits Rouges</span><span class="mq-item">Épices Créoles</span><span class="mq-item">Macération 6 Mois</span><span class="mq-item">Ingrédients Exotiques</span>
+  </div></div>
+  <section class="sec" style="background:var(--surface)">
+    <p class="sl">Nos cuvées</p><h2 class="st">Les rhums <em>arrangés</em></h2><div class="gl"></div>
+
+    <!-- BLOC CONFIANCE -->
+    <div style="display:flex;gap:1px;background:rgba(197,160,89,.12);border:1px solid rgba(197,160,89,.12);margin:2rem 0 0;flex-wrap:wrap;">
+      <div style="flex:1;min-width:180px;background:var(--black);padding:1rem 1.4rem;display:flex;align-items:center;gap:.8rem;">
+        <span style="font-size:1.3rem;flex-shrink:0;">🤲</span>
+        <div><div style="font-family:var(--fd);font-size:.62rem;font-weight:700;color:var(--white);letter-spacing:.05em;">Fait à la main</div><div style="font-size:.6rem;color:var(--dim);margin-top:.15rem;">Chaque bouteille préparée artisanalement</div></div>
+      </div>
+      <div style="flex:1;min-width:180px;background:var(--black);padding:1rem 1.4rem;display:flex;align-items:center;gap:.8rem;">
+        <span style="font-size:1.3rem;flex-shrink:0;">🌿</span>
+        <div><div style="font-family:var(--fd);font-size:.62rem;font-weight:700;color:var(--white);letter-spacing:.05em;">Ingrédients naturels</div><div style="font-size:.6rem;color:var(--dim);margin-top:.15rem;">Fruits frais, épices entières, zéro additif</div></div>
+      </div>
+      <div style="flex:1;min-width:180px;background:var(--black);padding:1rem 1.4rem;display:flex;align-items:center;gap:.8rem;">
+        <span style="font-size:1.3rem;flex-shrink:0;">🔒</span>
+        <div><div style="font-family:var(--fd);font-size:.62rem;font-weight:700;color:var(--white);letter-spacing:.05em;">Paiement sécurisé</div><div style="font-size:.6rem;color:var(--dim);margin-top:.15rem;">CB · PayPal · Virement · SSL</div></div>
+      </div>
+      <div style="flex:1;min-width:180px;background:var(--black);padding:1rem 1.4rem;display:flex;align-items:center;gap:.8rem;">
+        <span style="font-size:1.3rem;flex-shrink:0;">↩️</span>
+        <div><div style="font-family:var(--fd);font-size:.62rem;font-weight:700;color:var(--white);letter-spacing:.05em;">Satisfait ou remboursé</div><div style="font-size:.6rem;color:var(--dim);margin-top:.15rem;">14 jours pour changer d'avis</div></div>
+      </div>
+    </div>
+
+    <div class="rhum-guide">
+      <p class="rhum-guide-title">Choisissez votre rhum</p>
+      <div class="rhum-guide-list">
+        <span>🌴 Doux &amp; gourmand — Vanille Coco</span>
+        <span>🫚 Frais &amp; tonique — Gingembre Citron Vert</span>
+        <span>🌺 Rare &amp; signature — Longani</span>
+        <span>🐉 Exotique &amp; intense — Dragon Passion Combava</span>
+      </div>
+    </div>
+
+    <div class="rhums-grid" style="margin-top:2.2rem">
+      <div class="rc" data-pid="rhum-vanille-coco">
+        <span class="rc-year">6 mois</span>
+        <span class="rc-emoji">🌴</span>
+        <p class="rc-type">Cuvée Classique · 50cl · 32%</p>
+        <h3 class="rc-name">Rhum Vanille & Coco</h3>
+        <p style="font-family:var(--fs);font-style:italic;font-size:.95rem;color:rgba(232,201,122,.85);margin:.4rem 0 .9rem;line-height:1.5;">Le doux voyage — comme si les îles venaient à vous.</p>
+        <p class="rc-desc">Vanille Bourbon de Madagascar et noix de coco fraîche — 6 mois de macération lente. Rondeur crémeuse, chaleur douce, finale qui s'attarde.</p>
+        <p class="notes-title">Notes de dégustation</p>
+        <div class="notes-list"><span class="ntag">Vanille Bourbon</span><span class="ntag">Coco fraîche</span><span class="ntag">Caramel doux</span><span class="ntag">Fleuri</span><span class="ntag">Crémeux</span></div>
+        <p class="notes-title" style="margin-top:.9rem;">Idéal pour</p>
+        <div class="notes-list"><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🥂 Apéritif</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🍹 Cocktail Punch</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🎁 Cadeau</span></div>
+        <p style="font-size:.75rem;color:var(--gold);font-family:var(--fd);letter-spacing:.04em;margin:.9rem 0 .4rem;font-weight:700;">✦ Ce qui le rend unique</p>
+        <p style="font-size:.78rem;color:var(--dim);line-height:1.7;margin-bottom:1rem;">Vanille Bourbon entière, fendue à la main. Coco râpée le jour de la préparation. Macération lente à température ambiante — aucun arôme artificiel, aucun sucre ajouté.</p>
+        <div class="rc-specs"><div class="rc-spec"><div class="spec-v">32%</div><div class="spec-k">Alc.</div></div><div class="rc-spec"><div class="spec-v">50cl</div><div class="spec-k">Format</div></div><div class="rc-spec"><div class="spec-v">6 mois</div><div class="spec-k">Macération</div></div></div>
+        <div class="rc-price">24,90 €</div>
+        <p style="font-size:.7rem;color:var(--dim);margin-bottom:.8rem;">⭐ Le best-seller de la gamme · Parfait nature ou sur glace</p>
+        <button class="btn-add" onclick="addToCart('Rhum Vanille-Coco',24.90,'50cl · Rhum arrangé')">Commander — 24,90 €</button>
+      </div>
+      <div class="rc" data-pid="rhum-gingembre-citron">
+        <span class="rc-year">4 mois</span>
+        <span class="rc-emoji">🫚</span>
+        <p class="rc-type">Cuvée Épicée · 50cl · 34%</p>
+        <h3 class="rc-name">Rhum Gingembre & Citron Vert</h3>
+        <p style="font-family:var(--fs);font-style:italic;font-size:.95rem;color:rgba(232,201,122,.85);margin:.4rem 0 .9rem;line-height:1.5;">Le réveil des sens — un verre, et on ne pense plus à rien d'autre.</p>
+        <p class="rc-desc">Gingembre frais de La Réunion, citron vert et kaffir. Macération courte et intense — piquant, vif, tonique. Un rhum qui réveille.</p>
+        <p class="notes-title">Notes de dégustation</p>
+        <div class="notes-list"><span class="ntag">Gingembre frais</span><span class="ntag">Citron vert</span><span class="ntag">Kaffir</span><span class="ntag">Épicé</span><span class="ntag">Frais & vif</span></div>
+        <p class="notes-title" style="margin-top:.9rem;">Idéal pour</p>
+        <div class="notes-list"><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🍹 Ti' Punch</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🥃 Digestif</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🍸 Cocktail Mule</span></div>
+        <p style="font-size:.75rem;color:var(--gold);font-family:var(--fd);letter-spacing:.04em;margin:.9rem 0 .4rem;font-weight:700;">✦ Ce qui le rend unique</p>
+        <p style="font-size:.78rem;color:var(--dim);line-height:1.7;margin-bottom:1rem;">Gingembre tranché frais — jamais en poudre. Citrons verts pressés le jour même. La macération courte préserve l'intensité et la fraîcheur des arômes sans les alourdir.</p>
+        <div class="rc-specs"><div class="rc-spec"><div class="spec-v">34%</div><div class="spec-k">Alc.</div></div><div class="rc-spec"><div class="spec-v">50cl</div><div class="spec-k">Format</div></div><div class="rc-spec"><div class="spec-v">4 mois</div><div class="spec-k">Macération</div></div></div>
+        <div class="rc-price">22,90 €</div>
+        <p style="font-size:.7rem;color:var(--dim);margin-bottom:.8rem;">🥃 Le plus accessible de la gamme · Idéal pour découvrir nos rhums</p>
+        <button class="btn-add" onclick="addToCart('Rhum Gingembre-Citron',22.90,'50cl · Rhum arrangé')">Commander — 22,90 €</button>
+      </div>
+      <div class="rc" data-pid="rhum-fruits-rouges">
+        <span class="rc-year">9 mois</span>
+        <span class="rc-emoji">🍓</span>
+        <p class="rc-type">Cuvée Prestige · 50cl · 30%</p>
+        <h3 class="rc-name">Rhum Fruits Rouges Tropicaux</h3>
+        <p style="font-family:var(--fs);font-style:italic;font-size:.95rem;color:rgba(232,201,122,.85);margin:.4rem 0 .9rem;line-height:1.5;">Le rhum des grandes soirées — celui qu'on sort pour les moments qui comptent.</p>
+        <p class="rc-desc">9 mois de macération — notre cuvée la plus complexe. Framboise, goyave de Maurice, maracuja. Robe rubis, bouche veloutée. Pour les grandes occasions.</p>
+        <p class="notes-title">Notes de dégustation</p>
+        <div class="notes-list"><span class="ntag">Goyave de Maurice</span><span class="ntag">Framboise</span><span class="ntag">Maracuja</span><span class="ntag">Boisé doux</span><span class="ntag">Velours</span></div>
+        <p class="notes-title" style="margin-top:.9rem;">Idéal pour</p>
+        <div class="notes-list"><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🍷 Dégustation</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🎁 Cadeau premium</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🥃 Digestif</span></div>
+        <p style="font-size:.75rem;color:var(--gold);font-family:var(--fd);letter-spacing:.04em;margin:.9rem 0 .4rem;font-weight:700;">✦ Ce qui le rend unique</p>
+        <p style="font-size:.78rem;color:var(--dim);line-height:1.7;margin-bottom:1rem;">9 mois de macération — le double de la plupart des rhums arrangés. Fruits sélectionnés à maturité parfaite. Une patience rare, un résultat incomparable.</p>
+        <div class="rc-specs"><div class="rc-spec"><div class="spec-v">30%</div><div class="spec-k">Alc.</div></div><div class="rc-spec"><div class="spec-v">50cl</div><div class="spec-k">Format</div></div><div class="rc-spec"><div class="spec-v">9 mois</div><div class="spec-k">Macération</div></div></div>
+        <div class="rc-price">29,90 €</div>
+        <p style="font-size:.73rem;color:#f87171;font-weight:700;margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);padding:.4rem .8rem;border-radius:4px;">⚡ Cuvée Prestige · Série limitée — seulement quelques bouteilles restantes</p>
+        <button class="btn-add" onclick="addToCart('Rhum Fruits Rouges',29.90,'50cl · Cuvée Prestige')">Réserver — 29,90 €</button>
+      </div>
+      <div class="rc" data-pid="rhum-epices-creoles">
+        <span class="rc-year">5 mois</span>
+        <span class="rc-emoji">🌶️</span>
+        <p class="rc-type">Cuvée Créole · 50cl · 36%</p>
+        <h3 class="rc-name">Rhum Épices Créoles</h3>
+        <p style="font-family:var(--fs);font-style:italic;font-size:.95rem;color:rgba(232,201,122,.85);margin:.4rem 0 .9rem;line-height:1.5;">L'âme des marchés créoles — épicé, chaleureux, inoubliable.</p>
+        <p class="rc-desc">Cannelle de Ceylan, badiane, clou de girofle, piment. Un rhum chaud et profond inspiré des marchés créoles — chaleur enveloppante, finale longue.</p>
+        <p class="notes-title">Notes de dégustation</p>
+        <div class="notes-list"><span class="ntag">Cannelle Ceylan</span><span class="ntag">Badiane</span><span class="ntag">Clou de girofle</span><span class="ntag">Chaleureux</span><span class="ntag">Profond</span></div>
+        <p class="notes-title" style="margin-top:.9rem;">Idéal pour</p>
+        <div class="notes-list"><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🥃 Digestif</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">☕ Accord café</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🍫 Chocolat noir</span></div>
+        <p style="font-size:.75rem;color:var(--gold);font-family:var(--fd);letter-spacing:.04em;margin:.9rem 0 .4rem;font-weight:700;">✦ Ce qui le rend unique</p>
+        <p style="font-size:.78rem;color:var(--dim);line-height:1.7;margin-bottom:1rem;">Épices entières, jamais moulues — pour préserver les huiles essentielles. Recette inspirée des traditions créoles de l'île Maurice, affinée après des dizaines d'essais.</p>
+        <div class="rc-specs"><div class="rc-spec"><div class="spec-v">36%</div><div class="spec-k">Alc.</div></div><div class="rc-spec"><div class="spec-v">50cl</div><div class="spec-k">Format</div></div><div class="rc-spec"><div class="spec-v">5 mois</div><div class="spec-k">Macération</div></div></div>
+        <div class="rc-price">25,90 €</div>
+        <p style="font-size:.7rem;color:var(--dim);margin-bottom:.8rem;">🥃 Parfait en digestif · Accord exceptionnel : café, chocolat noir 70%</p>
+        <button class="btn-add" onclick="addToCart('Rhum Épices Créoles',25.90,'50cl · Cuvée Créole')">Commander — 25,90 €</button>
+      </div>
+      <div class="rc" data-pid="rhum-longani">
+        <span class="rc-year">42°</span>
+        <!-- SLIDER LONGANI -->
+        <div id="longani-slider" style="position:relative;width:100%;height:520px;overflow:hidden;margin-bottom:1rem;cursor:pointer;" onclick="toggleLonganiSlider()" title="Cliquer pour pause/reprendre">
+          <img id="longani-slide-1" src="assets/img/longani.png" alt="Rhum Longani" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .8s ease;opacity:1;">
+          <img id="longani-slide-2" src="assets/img/longani_modal.png" alt="Fiche Longani" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0a0a0a;transition:opacity .8s ease;opacity:0;">
+          <!-- Indicateurs -->
+          <div style="position:absolute;bottom:.7rem;left:50%;transform:translateX(-50%);display:flex;gap:.4rem;z-index:2;">
+            <div id="longani-dot-1" style="width:6px;height:6px;border-radius:50%;background:var(--gold);transition:opacity .3s;"></div>
+            <div id="longani-dot-2" style="width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.3;transition:opacity .3s;"></div>
+          </div>
+          <!-- Icône pause/play -->
+          <div id="longani-pause-icon" style="display:none;position:absolute;top:.7rem;right:.7rem;background:rgba(0,0,0,.6);color:var(--gold);font-size:.7rem;font-family:var(--fd);letter-spacing:.1em;padding:.3rem .6rem;z-index:3;">⏸ PAUSE</div>
+        </div>
+        <p class="rc-type">Cuvée Signature · 50cl · 42°</p>
+        <h3 class="rc-name" style="font-size:1.6rem;">Rhum Arrangé <em>Longani</em></h3>
+        <p class="rc-tagline">Une cuvée rare issue d'un fruit tropical peu connu, préparée à la main.</p>
+        <p style="font-family:var(--fs);font-style:italic;font-size:.95rem;color:rgba(232,201,122,.85);margin:.4rem 0 .9rem;line-height:1.5;">Un fruit introuvable, une bouteille rare — pour ceux qui cherchent l'exceptionnel.</p>
+        <hr style="border:none;border-top:2px solid var(--gold);width:40px;margin:0 0 1rem 0;">
+        <p class="rc-desc">Le longani est un fruit rare — cousin du litchi, chair translucide, goût floral et miellé. Difficile à trouver en dehors des marchés de l'île Maurice. Ici, il est macéré pendant plusieurs mois dans un rhum agricole premium. Le résultat est d'une délicatesse rare : des arômes floraux intenses, une bouche fruitée et légèrement sucrée, une longueur en fin de verre tout en finesse.</p>
+        <p class="notes-title">Notes de dégustation</p>
+        <div class="notes-list"><span class="ntag">Longani de Maurice</span><span class="ntag">Floral</span><span class="ntag">Litchi</span><span class="ntag">Miel doux</span><span class="ntag">Fruité délicat</span></div>
+        <p class="notes-title" style="margin-top:.9rem;">Idéal pour</p>
+        <div class="notes-list"><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🥂 Dégustation pure</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🎁 Cadeau d'exception</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🧊 Sur glaçons</span></div>
+        <p style="font-size:.75rem;color:var(--gold);font-family:var(--fd);letter-spacing:.04em;margin:.9rem 0 .4rem;font-weight:700;">✦ Ce qui le rend unique</p>
+        <p style="font-size:.78rem;color:var(--dim);line-height:1.7;margin-bottom:1rem;">Fruit sourcé directement à Maurice, disponible quelques semaines par an. Chaque lot est différent selon la saison. Une fois la cuvée épuisée, il faut attendre la prochaine récolte.</p>
+        <div class="rc-specs">
+          <div class="rc-spec"><div class="spec-v">42°</div><div class="spec-k">Alc.</div></div>
+          <div class="rc-spec"><div class="spec-v">50cl</div><div class="spec-k">Format</div></div>
+          <div class="rc-spec"><div class="spec-v">35,00 €</div><div class="spec-k">Prix</div></div>
+        </div>
+        <div class="rc-price">35,00 €</div>
+        <div style="display:flex;flex-direction:column;gap:.7rem;">
+          <p style="font-size:.73rem;color:#f87171;font-weight:700;margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);padding:.4rem .8rem;border-radius:4px;">✦ Cuvée Signature · Stock limité</p><p style="font-size:.7rem;color:var(--dim);margin-bottom:.8rem;">🥃 À déguster frais · Idéal nature ou avec glaçons</p><button class="btn-add" onclick="addToCart('Rhum Longani',35.00,'50cl · 42° · Cuvée Longani')">Réserver — 35,00 €</button>
+          <button class="btn-o" style="width:100%;text-align:center;padding:.72rem;" onclick="openLonganiModal()">ℹ️ Plus d'informations</button>
+        </div>
+      </div>
+      <div class="rc" data-pid="rhum-fruits-dragon">
+        <span class="rc-year">Nouveauté</span>
+        <!-- SLIDER FRUITS DU DRAGON -->
+        <div id="dragon-slider" style="position:relative;width:100%;height:420px;overflow:hidden;margin-bottom:1rem;cursor:pointer;" onclick="toggleDragonSlider()" title="Cliquer pour pause/reprendre">
+          <img id="dragon-slide-1" src="assets/img/produit_rhum_fruits_dragon.png" alt="Rhum Fruits du Dragon" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .8s ease;opacity:1;">
+          <img id="dragon-slide-2" src="assets/img/fruits_dragon_fiche.png" alt="Fiche Fruits du Dragon" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#111;transition:opacity .8s ease;opacity:0;">
+          <img id="dragon-slide-3" src="assets/img/fruits_dragon_slide2.png" alt="Fruits du Dragon photo" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .8s ease;opacity:0;">
+          <div style="position:absolute;bottom:.7rem;left:50%;transform:translateX(-50%);display:flex;gap:.4rem;z-index:2;">
+            <div id="dragon-dot-1" style="width:6px;height:6px;border-radius:50%;background:var(--gold);transition:opacity .3s;"></div>
+            <div id="dragon-dot-2" style="width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.3;transition:opacity .3s;"></div>
+            <div id="dragon-dot-3" style="width:6px;height:6px;border-radius:50%;background:var(--gold);opacity:.3;transition:opacity .3s;"></div>
+          </div>
+          <div id="dragon-pause-icon" style="display:none;position:absolute;top:.7rem;right:.7rem;background:rgba(0,0,0,.6);color:var(--gold);font-size:.7rem;font-family:var(--fd);letter-spacing:.1em;padding:.3rem .6rem;z-index:3;">▶ REPRENDRE</div>
+        </div>
+        <p class="rc-type">Cuvée Exotique · 50cl · 42° · Nouveauté</p>
+        <h3 class="rc-name">Rhum Fruits du Dragon, Passion & Combava</h3>
+        <p class="rc-tagline">Un assemblage exotique intense, pensé pour une dégustation marquante.</p>
+        <p style="font-family:var(--fs);font-style:italic;font-size:.95rem;color:rgba(232,201,122,.85);margin:.4rem 0 .9rem;line-height:1.5;">La cuvée dont on parle encore — audacieuse, tropicale, unique au monde.</p>
+        <p class="rc-desc">Fruit du dragon, maracuja, combava — trois fruits tropicaux rares macérés ensemble. Floral, zesté, tropical. Une cuvée qu'on ne trouve nulle part ailleurs.</p>
+        <p class="notes-title">Notes de dégustation</p>
+        <div class="notes-list"><span class="ntag">Fruit du Dragon</span><span class="ntag">Maracuja</span><span class="ntag">Combava</span><span class="ntag">Floral intense</span><span class="ntag">Zesté</span><span class="ntag">Tropical</span></div>
+        <p class="notes-title" style="margin-top:.9rem;">Idéal pour</p>
+        <div class="notes-list"><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🍹 Cocktail tropical</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🥂 Apéritif original</span><span class="ntag" style="border-color:rgba(197,160,89,.3);color:var(--gold);">🎁 Cadeau insolite</span></div>
+        <p style="font-size:.75rem;color:var(--gold);font-family:var(--fd);letter-spacing:.04em;margin:.9rem 0 .4rem;font-weight:700;">✦ Ce qui le rend unique</p>
+        <p style="font-size:.78rem;color:var(--dim);line-height:1.7;margin-bottom:1rem;">Seulement 30 bouteilles produites pour cette première cuvée. Recette inédite, combinaison jamais tentée en rhum arrangé. Chaque bouteille est numérotée.</p>
+        <div class="rc-specs"><div class="rc-spec"><div class="spec-v">42°</div><div class="spec-k">Alc.</div></div><div class="rc-spec"><div class="spec-v">50cl</div><div class="spec-k">Format</div></div><div class="rc-spec"><div class="spec-v">35,00 €</div><div class="spec-k">Prix</div></div></div>
+        <div class="rc-price">35,00 €</div>
+        <div style="display:flex;gap:.7rem;flex-direction:column;">
+          <p style="font-size:.73rem;color:#f87171;font-weight:700;margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);padding:.4rem .8rem;border-radius:4px;">✦ Cuvée Exclusive · 30 bouteilles numérotées</p><p style="font-size:.7rem;color:var(--dim);margin-bottom:.8rem;">🥃 À déguster frais · Parfait en cocktail tropical</p><button class="btn-add" onclick="addToCart('Rhum Fruits du Dragon, Passion & Combava',35.00,'50cl · 42° · Cuvée Exotique')">Réserver — 35,00 €</button>
+          <button class="btn-o" style="width:100%;text-align:center;padding:.6rem;" onclick="openRhumModal()">ℹ️ Plus d'informations</button>
+        </div>
+      </div>
+
+      <!-- MODAL RHUM INFO -->
+      <div id="rhumModal" onclick="closeRhumModal()" style="display:none;position:fixed;inset:0;z-index:9999;background:#000;align-items:flex-start;justify-content:center;padding-top:8rem;">
+        <img src="assets/img/fruits_dragon_modal_new.png" alt="Rhum Fruits du Dragon ZilFusion" style="width:70vw;max-height:70vh;object-fit:contain;">
+        <button onclick="event.stopPropagation();closeRhumModal()" style="position:fixed;top:10px;right:10px;background:#000;border:1px solid #fff;color:#fff;width:30px;height:30px;">✕</button>
+      </div>
+      <div id="longaniModal" onclick="closeLonganiModal()" style="display:none;position:fixed;inset:0;z-index:9999;background:#000;align-items:flex-start;justify-content:center;padding-top:8rem;">
+        <img src="assets/img/longani_modal.png" alt="Rhum Longani ZilFusion" style="width:70vw;max-height:70vh;object-fit:contain;">
+        <button onclick="event.stopPropagation();closeLonganiModal()" style="position:fixed;top:10px;right:10px;background:#000;border:1px solid #fff;color:#fff;width:30px;height:30px;">✕</button>
+      </div>
+    </div>
+  </section>
+  <section class="sec" style="background:var(--black)">
+  </section>
+  <section class="sec" id="section-longani" style="background:var(--surface);border-top:2px solid rgba(197,160,89,.18);">
+    <p class="sl">Focus Produit</p>
+    <h2 class="st">Rhum Arrangé <em>Longani</em></h2>
+    <div class="gl"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:2.5rem;">
+      <div>
+        <img src="assets/img/longani.png" alt="Rhum Longani" style="width:100%;border:1px solid var(--border);">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:2rem;">
+        <div>
+          <p style="font-family:var(--fd);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;">L'ingrédient rare</p>
+          <h3 style="font-family:var(--fd);font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:.8rem;">Le Longani — introuvable en dehors des îles</h3>
+          <p style="font-size:.85rem;color:var(--dim);line-height:1.8;">Fruit tropical rare de l'île Maurice, cousin du litchi à la chair translucide et florale. Saisonnier, disponible quelques semaines par an seulement.</p>
+        </div>
+        <div>
+          <p style="font-family:var(--fd);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;">La macération</p>
+          <h3 style="font-family:var(--fd);font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:.8rem;">Un travail d'orfèvre, répété à la main</h3>
+          <p style="font-size:.85rem;color:var(--dim);line-height:1.8;">Chaque fruit trié et préparé à la main le jour même. Macération lente dans un rhum agricole premium, contrôlée chaque semaine. Embouteillage artisanal sans filtration agressive.</p>
+        </div>
+        <div>
+          <p style="font-family:var(--fd);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;">Notes de dégustation</p>
+          <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.8rem;">
+            <span class="ntag">Longani de Maurice</span><span class="ntag">Floral intense</span><span class="ntag">Litchi</span><span class="ntag">Miel doux</span><span class="ntag">Fruité</span><span class="ntag">Finale délicate</span>
+          </div>
+          <p style="font-size:.75rem;color:var(--gold);font-family:var(--fd);letter-spacing:.04em;margin:.6rem 0 .3rem;font-weight:700;">✦ Meilleur à déguster</p>
+          <p style="font-size:.78rem;color:var(--dim);line-height:1.7;margin-bottom:1rem;">Nature, légèrement frais (pas glacé), dans un verre à dégustation. Ou sur deux glaçons — pour laisser les arômes s'ouvrir progressivement.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:.7rem;">
+          <button class="btn-add" onclick="addToCart('Rhum Longani',35.00,'50cl · Cuvée Longani')" style="max-width:280px;">Réserver — 35,00 €</button>
+          <button class="btn-o" onclick="document.getElementById('carte-longani') && window.scrollTo({top:0}) || document.querySelector('.rhums-grid').scrollIntoView({behavior:'smooth'})" style="max-width:260px;text-align:center;">↑ Retour à la grille</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sec" style="background:var(--black)">
+    <p class="sl">L'art de la macération</p><h2 class="st">Un processus <em>patient</em></h2>
+    <div class="mac-steps">
+      <div class="mst"><div class="mst-n">01</div><span class="mst-icon">🛒</span><p class="mst-t">Sélection</p><p class="mst-d">Fruits frais ou séchés, épices entières, vanilles — chaque ingrédient sélectionné à la main.</p><p class="mst-dur">Sourcing rigoureux</p></div>
+      <div class="mst"><div class="mst-n">02</div><span class="mst-icon">🍾</span><p class="mst-t">Préparation</p><p class="mst-d">Découpe, écorçage, séchage pour maximiser la surface d'échange avec le rhum.</p><p class="mst-dur">Préparation minutieuse</p></div>
+      <div class="mst"><div class="mst-n">03</div><span class="mst-icon">⏳</span><p class="mst-t">Macération</p><p class="mst-d">Immersion dans un rhum agricole premium. Rotation régulière, contrôle hebdomadaire.</p><p class="mst-dur">4 à 9 mois</p></div>
+      <div class="mst"><div class="mst-n">04</div><span class="mst-icon">🏺</span><p class="mst-t">Mise en bouteille</p><p class="mst-d">Filtrage délicat, ajustement au sirop de canne, embouteillage artisanal.</p><p class="mst-dur">Finition soignée</p></div>
+    </div>
+  </section>
+  <section class="sec" style="background:var(--surface)">
+    <p class="sl">Nos ingrédients</p><h2 class="st">Sourcés avec <em>soin</em></h2>
+    <div class="ing-grid">
+      <div class="ing"><span class="ing-icon">🌿</span><p class="ing-name">Vanille</p><p class="ing-origin">Madagascar</p></div>
+      <div class="ing"><span class="ing-icon">🥥</span><p class="ing-name">Noix de Coco</p><p class="ing-origin">Maurice</p></div>
+      <div class="ing"><span class="ing-icon">🫚</span><p class="ing-name">Gingembre</p><p class="ing-origin">Réunion</p></div>
+      <div class="ing"><span class="ing-icon">🍍</span><p class="ing-name">Ananas</p><p class="ing-origin">Côte d'Ivoire</p></div>
+      <div class="ing"><span class="ing-icon">🌶️</span><p class="ing-name">Piment</p><p class="ing-origin">Jamaïque</p></div>
+      <div class="ing"><span class="ing-icon">🌰</span><p class="ing-name">Cannelle</p><p class="ing-origin">Sri Lanka</p></div>
+    </div>
+  </section>
+  <footer><img src="assets/img/logo_navbar.jpg" alt="ZilFusion Brew" style="height:50px;width:auto;object-fit:contain;"><ul class="ft-links"><li><a onclick="showPage('accueil')">Accueil</a></li><li><a onclick="showPage('bieres')">Bières</a></li><li><a onclick="showPage('boutique')">Boutique</a></li></ul><div class="ft-copy">© 2025 ZilFusion Brew</div></footer>
+</div>
+
+<!-- ══════════ PAGE FERMENTATION ══════════ -->
+<div class="page" id="page-fermentees">
+  <div class="ph" style="background:radial-gradient(ellipse 60% 70% at 30% 60%,rgba(26,122,58,.1) 0%,transparent 65%),var(--black)">
+    <div class="ph-inner">
+      <p class="ph-eye" style="color:var(--green2)"><span style="width:26px;height:1px;background:var(--green2);display:inline-block;vertical-align:middle;margin-right:.8rem"></span>Fermentation Vivante</p>
+      <h1 class="ph-title">Kombucha · Kéfir<em>& Sodas Naturels</em></h1>
+      <p class="ph-sub">Des boissons vivantes, naturellement pétillantes, riches en probiotiques. Fermentées artisanalement sans additifs, sans compromis sur la qualité.</p>
+      <div class="ph-tags">
+        <span class="tag" style="border-color:rgba(26,122,58,.4);color:var(--green2)">Cultures Vivantes</span>
+        <span class="tag" style="border-color:rgba(26,122,58,.4);color:var(--green2)">Probiotiques</span>
+        <span class="tag" style="border-color:rgba(26,122,58,.4);color:var(--green2)">Sans Additifs</span>
+        <span class="tag" style="border-color:rgba(26,122,58,.4);color:var(--green2)">Vegan</span>
+      </div>
+    </div>
+  </div>
+  <div class="mq-band"><div class="mq-inner" style="color:var(--green2)">
+    <span class="mq-item">Kombucha Hibiscus</span><span class="mq-item">Kombucha Gingembre</span><span class="mq-item">Kéfir de Lait</span><span class="mq-item">Kéfir Fruits Tropicaux</span><span class="mq-item">Soda Passion-Menthe</span><span class="mq-item">Koso Ananas-Gingembre</span><span class="mq-item">Rumtopf Tropical</span>
+    <span class="mq-item">Kombucha Hibiscus</span><span class="mq-item">Kéfir de Lait</span><span class="mq-item">Koso Hibiscus</span><span class="mq-item">Soda Passion-Menthe</span><span class="mq-item">Rumtopf Griotte & Vanille</span>
+  </div></div>
+  <section class="sec" style="background:var(--surface)">
+    <p class="sl">Nos gammes</p><h2 class="st">Choisissez votre <em>fermentation</em></h2><div class="gl"></div>
+    <div class="tabs-nav" style="margin-top:2rem">
+      <button class="tab-btn active" id="tabBtn-kombucha" onclick="switchTab('kombucha',this)">🍵 Kombucha</button>
+      <button class="tab-btn" id="tabBtn-kefir" onclick="switchTab('kefir',this)">🥛 Kéfir</button>
+      <button class="tab-btn" id="tabBtn-sodas" onclick="switchTab('sodas',this)">🥤 Sodas Naturels</button>
+      <button class="tab-btn" id="tabBtn-koso" onclick="switchTab('koso',this)">🍯 Koso</button>
+      <button class="tab-btn" id="tabBtn-rumtopf" onclick="switchTab('rumtopf',this)">🍾 Rumtopf</button>
+    </div>
+    <div class="tab-panel active" id="tab-kombucha">
+      <div class="ferm-grid">
+        <div class="fc" data-pid="soda-goyave"><span class="fc-emoji">🌺</span><p class="fc-flv">Floral · Légèrement acide</p><h3 class="fc-name">Kombucha Hibiscus</h3><p class="fc-desc">Thé vert fermenté aux fleurs d'hibiscus séchées. Probiotique, naturellement pétillant, zéro sucre ajouté.</p><div class="fc-badges"><span class="fc-badge">Probiotique</span><span class="fc-badge">Vegan</span><span class="fc-badge">Sans alcool</span></div><div class="fc-price">6,90 €</div><p class="fc-sub">75cl · Thé vert & hibiscus</p><p style="font-size:.7rem;color:var(--gold);font-weight:700;margin-bottom:.5rem;letter-spacing:.04em;">🌿 Fermentation artisanale · Cultures vivantes</p><button class="btn-add" onclick="addToCart('Kombucha Hibiscus',6.90,'75cl · Kombucha')">J'en veux une — 6,90 €</button></div>
+        <div class="fc" data-ferm="kombucha-epices"><span class="fc-emoji">🫚</span><p class="fc-flv">Épicé · Tonique</p><h3 class="fc-name">Kombucha Gingembre</h3><p class="fc-desc">Thé noir et gingembre frais. Vivifiant, légèrement épicé. Fermentation 14 jours pour une profondeur maximale.</p><div class="fc-badges"><span class="fc-badge">Probiotique</span><span class="fc-badge">Tonique</span><span class="fc-badge">Sans alcool</span></div><div class="fc-price">6,90 €</div><p class="fc-sub">75cl · Thé noir & gingembre</p><p style="font-size:.7rem;color:var(--gold);font-weight:700;margin-bottom:.5rem;letter-spacing:.04em;">🌿 Fermentation 14 jours · Gingembre frais</p><button class="btn-add" onclick="addToCart('Kombucha Gingembre',6.90,'75cl · Kombucha')">J'en veux un — 6,90 €</button></div>
+        <div class="fc" data-ferm="kombucha-nature"><span class="fc-emoji">🍋</span><p class="fc-flv">Citronné · Vif</p><h3 class="fc-name">Kombucha Citron-Kaffir</h3><p class="fc-desc">Citron vert et feuilles de kaffir. Pétillant naturel, frais et aromatique. Idéal à l'apéritif.</p><div class="fc-badges"><span class="fc-badge">Probiotique</span><span class="fc-badge">Frais</span><span class="fc-badge">Sans alcool</span></div><div class="fc-price">7,20 €</div><p class="fc-sub">75cl · Thé vert & kaffir</p><p style="font-size:.7rem;color:var(--gold);font-weight:700;margin-bottom:.5rem;letter-spacing:.04em;">🌿 Recette artisanale · Pétillant naturel</p><button class="btn-add" onclick="addToCart('Kombucha Citron-Kaffir',7.20,'75cl · Kombucha')">J'en veux un — 7,20 €</button></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-kefir">
+      <div class="ferm-grid">
+        <div class="fc" data-ferm="kefir-nature"><span class="fc-emoji">🥛</span><p class="fc-flv">Doux · Crémeux</p><h3 class="fc-name">Kéfir de Lait Nature</h3><p class="fc-desc">Fermenté 24h avec nos grains de kéfir actifs. Légèrement pétillant, doux et velouté. Riche en probiotiques.</p><div class="fc-badges"><span class="fc-badge">Probiotique</span><span class="fc-badge">Vivant</span><span class="fc-badge">Sans sucre ajouté</span></div><div class="fc-price">4,50 €</div><p class="fc-sub">50cl · Lait entier fermenté</p><p style="font-size:.7rem;color:var(--gold);font-weight:700;margin-bottom:.5rem;letter-spacing:.04em;">🤲 Production artisanale · Grains actifs</p><button class="btn-add" onclick="addToCart('Kéfir de Lait Nature',4.50,'50cl · Kéfir')">J'en prends un — 4,50 €</button></div>
+        <div class="fc" data-ferm="kefir-fruits"><span class="fc-emoji">🍓</span><p class="fc-flv">Tropical · Vitaminé</p><h3 class="fc-name">Kéfir Fruits Tropicaux</h3><p class="fc-desc">Passion, mangue et noix de coco dans un kéfir de lait doux. Vitaminé, frais et probiotique — pour toute la famille.</p><div class="fc-badges"><span class="fc-badge">Probiotique</span><span class="fc-badge">Vitaminé</span><span class="fc-badge">Famille</span></div><div class="fc-price">5,20 €</div><p class="fc-sub">50cl · Lait fermenté & fruits</p><p style="font-size:.7rem;color:var(--gold);font-weight:700;margin-bottom:.5rem;letter-spacing:.04em;">🌿 Fruits naturels · Sans additifs</p><button class="btn-add" onclick="addToCart('Kéfir Fruits Tropicaux',5.20,'50cl · Kéfir')">J'en prends un — 5,20 €</button></div>
+        <div class="fc" data-ferm="kombucha-fruits"><span class="fc-emoji">🌺</span><p class="fc-flv">Floral · Léger</p><h3 class="fc-name">Kéfir Fruits Hibiscus</h3><p class="fc-desc">Hibiscus et fruits rouges dans un kéfir de lait fermenté. Couleur rose naturelle, goût acidulé et floral.</p><div class="fc-badges"><span class="fc-badge">Probiotique</span><span class="fc-badge">Floral</span><span class="fc-badge">Coloré naturel</span></div><div class="fc-price">4,80 €</div><p class="fc-sub">50cl · Lait fermenté & hibiscus</p><p style="font-size:.7rem;color:var(--gold);font-weight:700;margin-bottom:.5rem;letter-spacing:.04em;">🌿 Couleur 100% naturelle · Zéro colorant</p><button class="btn-add" onclick="addToCart('Kéfir Fruits Hibiscus',4.80,'50cl · Kéfir')">J'en prends un — 4,80 €</button></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-sodas">
+      <div class="ferm-grid">
+        <div class="fc"><span class="fc-emoji">💛</span><p class="fc-flv">Tropical · Rafraîchissant</p><h3 class="fc-name">Soda Passion-Menthe</h3><p class="fc-desc">Fruit de la passion et menthe fraîche. Pétillant naturel par fermentation légère. Zéro additif, zéro colorant.</p><div class="fc-badges"><span class="fc-badge">Zéro additif</span><span class="fc-badge">Pétillant naturel</span><span class="fc-badge">Vegan</span></div><div class="fc-price">3,20 €</div><p class="fc-sub">33cl · Soda naturel</p><p style="font-size:.7rem;color:var(--gold);font-weight:700;margin-bottom:.5rem;letter-spacing:.04em;">🌿 Pétillant naturel · Zéro additif</p><button class="btn-add" onclick="addToCart('Soda Passion-Menthe',3.20,'33cl · Soda naturel')">J'en prends un — 3,20 €</button></div>
+        <div class="fc"><span class="fc-emoji">🍍</span><p class="fc-flv">Exotique · Surprenant</p><h3 class="fc-name">Soda Ananas-Basilic</h3><p class="fc-desc">Ananas frais et basilic thaï. Une combinaison aromatique unique, pétillante et addictive. 100% naturel.</p><div class="fc-badges"><span class="fc-badge">Zéro additif</span><span class="fc-badge">Arômes naturels</span><span class="fc-badge">Vegan</span></div><div class="fc-price">3,20 €</div><p class="fc-sub">33cl · Soda naturel</p><p style="font-size:.7rem;color:var(--gold);font-weight:700;margin-bottom:.5rem;letter-spacing:.04em;">🌿 Recette originale · 100% naturel</p><button class="btn-add" onclick="addToCart('Soda Ananas-Basilic',3.20,'33cl · Soda naturel')">J'en prends un — 3,20 €</button></div>
+        <div class="fc"><span class="fc-emoji">💚</span><p class="fc-flv">Acidulé · Tropical</p><h3 class="fc-name">Soda Goyave-Lime</h3><p class="fc-desc">Goyave rose et lime. Un pétillant tropical aux notes acidulées et légèrement sucrées. Le soda de l'été.</p><div class="fc-badges"><span class="fc-badge">Zéro additif</span><span class="fc-badge">Tropical</span><span class="fc-badge">Vegan</span></div><div class="fc-price">3,50 €</div><p class="fc-sub">33cl · Soda naturel</p><p style="font-size:.7rem;color:var(--gold);font-weight:700;margin-bottom:.5rem;letter-spacing:.04em;">🌿 Goyave fraîche · Pétillant naturel</p><button class="btn-add" onclick="addToCart('Soda Goyave-Lime',3.50,'33cl · Soda naturel')">J'en prends un — 3,50 €</button></div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-koso">
+      <div class="ferm-intro">
+        <div class="ferm-intro-badge">🌿 Sans alcool</div>
+        <p class="ferm-intro-text">Un sirop vivant obtenu par fermentation de fruits et de sucre, riche en arômes et en enzymes. Une tradition japonaise réinterprétée avec des fruits tropicaux.</p>
+      </div>
+      <div class="ferm-grid">
+        <div class="fc koso-card">
+          <span class="fc-emoji">🍍</span>
+          <p class="fc-flv">Tropical · Enzymatique</p>
+          <h3 class="fc-name">Koso Ananas-Gingembre</h3>
+          <p class="fc-desc">Ananas frais et gingembre fermentés dans le sucre pendant 7 jours. Riche en enzymes naturelles, aromatique et légèrement pétillant.</p>
+          <div class="fc-badges"><span class="fc-badge">Sans alcool</span><span class="fc-badge">Enzymes naturels</span><span class="fc-badge">Vegan</span></div>
+          <div class="fc-price">8,90 €</div>
+          <p class="fc-sub">250ml · Koso fermenté</p>
+          <button class="btn-g" onclick="addToCart('Koso Ananas-Gingembre',8.90,'250ml · Koso')">Commander — 8,90 €</button>
+        </div>
+        <div class="fc koso-card">
+          <span class="fc-emoji">🌺</span>
+          <p class="fc-flv">Floral · Fruité</p>
+          <h3 class="fc-name">Koso Hibiscus-Fruits Rouges</h3>
+          <p class="fc-desc">Hibiscus séché, framboises et mangue macérés lentement. Couleur naturelle intense, arômes floraux et acidulés. À diluer dans de l'eau ou du thé.</p>
+          <div class="fc-badges"><span class="fc-badge">Sans alcool</span><span class="fc-badge">Coloré naturel</span><span class="fc-badge">Vegan</span></div>
+          <div class="fc-price">8,90 €</div>
+          <p class="fc-sub">250ml · Koso fermenté</p>
+          <button class="btn-g" onclick="addToCart('Koso Hibiscus-Fruits Rouges',8.90,'250ml · Koso')">Commander — 8,90 €</button>
+        </div>
+        <div class="fc koso-card">
+          <span class="fc-emoji">🍋</span>
+          <p class="fc-flv">Vif · Tonique</p>
+          <h3 class="fc-name">Koso Citron-Kaffir-Menthe</h3>
+          <p class="fc-desc">Citron, feuilles de kaffir et menthe fraîche fermentés dans du sucre de canne. Rafraîchissant, vivifiant — le koso du quotidien.</p>
+          <div class="fc-badges"><span class="fc-badge">Sans alcool</span><span class="fc-badge">Tonique</span><span class="fc-badge">Vegan</span></div>
+          <div class="fc-price">8,90 €</div>
+          <p class="fc-sub">250ml · Koso fermenté</p>
+          <button class="btn-g" onclick="addToCart('Koso Citron-Kaffir-Menthe',8.90,'250ml · Koso')">Commander — 8,90 €</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-rumtopf">
+      <div class="ferm-intro">
+        <div class="ferm-intro-badge">🍾 Contient de l'alcool</div>
+        <p class="ferm-intro-text">Des fruits soigneusement sélectionnés, macérés lentement dans le rhum pour une expérience intense et gourmande. Une tradition européenne revisitée avec des fruits tropicaux.</p>
+      </div>
+      <div class="ferm-grid">
+        <div class="fc rumtopf-card">
+          <span class="fc-emoji">🍓</span>
+          <p class="fc-flv">Gourmand · Alcoolisé</p>
+          <h3 class="fc-name">Rumtopf Fruits Tropicaux</h3>
+          <p class="fc-desc">Mangue, ananas et passion macérés 3 mois dans notre rhum blanc artisanal avec du sucre de canne. Intensément fruité, légèrement sucré, profond.</p>
+          <div class="fc-badges"><span class="fc-badge">Alcool</span><span class="fc-badge">Fruits frais</span><span class="fc-badge">Macération 3 mois</span></div>
+          <div class="fc-price">18,90 €</div>
+          <p class="fc-sub">350ml · Rumtopf au rhum</p>
+          <p style="font-size:.7rem;color:var(--gold);font-weight:700;margin-bottom:.6rem;letter-spacing:.04em;">⚠️ Réservé aux adultes · Contient du rhum</p>
+          <button class="btn-g" onclick="addToCart('Rumtopf Fruits Tropicaux',18.90,'350ml · Rumtopf')">Commander — 18,90 €</button>
+        </div>
+        <div class="fc rumtopf-card">
+          <span class="fc-emoji">🍒</span>
+          <p class="fc-flv">Profond · Intense</p>
+          <h3 class="fc-name">Rumtopf Griotte & Vanille</h3>
+          <p class="fc-desc">Griottes et vanille de Madagascar macérées dans le rhum vieux. Notes de cerise profonde et de vanille crémeuse. Le rumtopf du dessert.</p>
+          <div class="fc-badges"><span class="fc-badge">Alcool</span><span class="fc-badge">Rhum vieux</span><span class="fc-badge">Vanille Madagascar</span></div>
+          <div class="fc-price">21,90 €</div>
+          <p class="fc-sub">350ml · Rumtopf au rhum vieux</p>
+          <p style="font-size:.7rem;color:var(--gold);font-weight:700;margin-bottom:.6rem;letter-spacing:.04em;">⚠️ Réservé aux adultes · Contient du rhum</p>
+          <button class="btn-g" onclick="addToCart('Rumtopf Griotte & Vanille',21.90,'350ml · Rumtopf')">Commander — 21,90 €</button>
+        </div>
+        <div class="fc rumtopf-card">
+          <span class="fc-emoji">🌶️</span>
+          <p class="fc-flv">Épicé · Surprenant</p>
+          <h3 class="fc-name">Rumtopf Épices Créoles</h3>
+          <p class="fc-desc">Mangue, citron confit et épices créoles macérés dans le rhum agricole. Chaleureux, aromatique, pour les amateurs de caractère.</p>
+          <div class="fc-badges"><span class="fc-badge">Alcool</span><span class="fc-badge">Épices naturelles</span><span class="fc-badge">Caractère</span></div>
+          <div class="fc-price">19,90 €</div>
+          <p class="fc-sub">350ml · Rumtopf au rhum agricole</p>
+          <p style="font-size:.7rem;color:var(--gold);font-weight:700;margin-bottom:.6rem;letter-spacing:.04em;">⚠️ Réservé aux adultes · Contient du rhum</p>
+          <button class="btn-g" onclick="addToCart('Rumtopf Épices Créoles',19.90,'350ml · Rumtopf')">Commander — 19,90 €</button>
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <section class="sec" style="background:var(--black)">
+    <p class="sl">Bienfaits</p><h2 class="st">Pourquoi les boissons <em>fermentées ?</em></h2>
+    <div class="bfts">
+      <div class="bft"><span class="bft-icon">🦠</span><p class="bft-t">Flore intestinale</p><p class="bft-d">Milliards de bactéries bénéfiques pour rééquilibrer votre microbiote naturellement.</p></div>
+      <div class="bft"><span class="bft-icon">⚡</span><p class="bft-t">Énergie naturelle</p><p class="bft-d">Les enzymes vivantes et vitamines B boostent votre vitalité sans stimulants artificiels.</p></div>
+      <div class="bft"><span class="bft-icon">🛡️</span><p class="bft-t">Immunité renforcée</p><p class="bft-d">70% de l'immunité réside dans l'intestin — prenez soin de lui avec nos boissons vivantes.</p></div>
+      <div class="bft"><span class="bft-icon">🌿</span><p class="bft-t">100% Naturel</p><p class="bft-d">Zéro additif, zéro conservateur, zéro arôme artificiel. La nature à l'état pur.</p></div>
+    </div>
+  </section>
+  <footer><img src="assets/img/logo_navbar.jpg" alt="ZilFusion Brew" style="height:50px;width:auto;object-fit:contain;"><ul class="ft-links"><li><a onclick="showPage('accueil')">Accueil</a></li><li><a onclick="showPage('bieres')">Bières</a></li><li><a onclick="showPage('boutique')">Boutique</a></li></ul><div class="ft-copy">© 2025 ZilFusion Brew</div></footer>
+</div>
+
+<!-- ══════════ PAGE ATELIERS ══════════ -->
+<div class="page" id="page-ateliers">
+  <div class="ph" style="background:radial-gradient(ellipse 55% 80% at 70% 40%,rgba(90,61,138,.1) 0%,transparent 65%),var(--black)">
+    <div class="ph-inner">
+      <p class="ph-eye" style="color:#9b6fd4"><span style="width:26px;height:1px;background:#9b6fd4;display:inline-block;vertical-align:middle;margin-right:.8rem"></span>Expériences Artisanales</p>
+      <h1 class="ph-title">Ateliers<em>Découverte</em></h1>
+      <p class="ph-sub">Venez vivre la fermentation de l'intérieur. Apprenez à brasser, fermenter et déguster — en brasserie ou en déplacement, pour tous les niveaux.</p>
+      <div class="ph-tags">
+        <span class="tag" style="border-color:rgba(90,61,138,.4);color:#9b6fd4">Tous Niveaux</span>
+        <span class="tag" style="border-color:rgba(90,61,138,.4);color:#9b6fd4">Brasserie & Déplacement</span>
+        <span class="tag" style="border-color:rgba(90,61,138,.4);color:#9b6fd4">France · Maurice · Madagascar</span>
+      </div>
+    </div>
+  </div>
+  <div class="mq-band"><div class="mq-inner" style="color:#9b6fd4">
+    <span class="mq-item">Initiation Brassage</span><span class="mq-item">Atelier Kombucha</span><span class="mq-item">Dégustation Guidée</span><span class="mq-item">Team Building</span><span class="mq-item">Événements Privés</span><span class="mq-item">Sur Mesure</span>
+    <span class="mq-item">Initiation Brassage</span><span class="mq-item">Atelier Kombucha</span><span class="mq-item">Dégustation Guidée</span><span class="mq-item">Team Building</span><span class="mq-item">Événements Privés</span><span class="mq-item">Sur Mesure</span>
+  </div></div>
+  <section class="sec" style="background:var(--surface)">
+    <div class="atelier-promise">
+      <p>Apprenez à créer vos propres recettes, maîtriser les fermentations et repartir avec un vrai savoir-faire.</p>
+    </div>
+    <p class="sl">Nos programmes</p><h2 class="st">Choisissez votre <em>expérience</em></h2><div class="gl"></div>
+    <div class="at-grid" style="margin-top:2.2rem">
+      <div class="atc"><div class="at-num">01</div><span class="at-emoji">🍺</span><p class="at-lvl">Débutant · Intermédiaire</p><h3 class="at-name">Initiation Brassage Artisanal</h3><p class="at-desc">Brassez votre propre bière de A à Z ! 7h d'atelier immersif, apéro planche inclus. Vous revenez embouteiller vos 60 bouteilles de 33cl une fois la fermentation terminée.</p><div class="at-infos"><div class="at-info"><div class="k">Durée</div><div class="v">7 heures</div></div><div class="at-info"><div class="k">Groupe</div><div class="v">3 à 6 pers. max</div></div><div class="at-info"><div class="k">Niveau</div><div class="v">Débutant</div></div><div class="at-info"><div class="k">Lieu</div><div class="v">En brasserie</div></div></div><p class="incl-t">Inclus dans l'atelier</p><ul class="incl-list"><li>Théorie du brassage guidée</li><li>Brassage pratique de A à Z</li><li>Apéro planche maison</li><li>60 bouteilles 33cl de votre bière</li><li>Retour pour embouteillage inclus</li></ul><div class="at-price">160 € <small>/ personne</small></div><button class="btn-g" style="width:100%;text-align:center" onclick="selectAtelier('Initiation Brassage Artisanal — 160€/pers')">Réserver cet atelier</button></div>
+      <div class="atc"><div class="at-num">02</div><span class="at-emoji">🍵</span><p class="at-lvl">Tous niveaux</p><h3 class="at-name">Atelier Kombucha & Fermentation</h3><p class="at-desc">Plongez dans le monde fascinant de la fermentation vivante. Préparez votre propre kombucha et kéfir à emmener chez vous.</p><div class="at-infos"><div class="at-info"><div class="k">Durée</div><div class="v">2 heures</div></div><div class="at-info"><div class="k">Groupe</div><div class="v">4 à 12 pers.</div></div><div class="at-info"><div class="k">Niveau</div><div class="v">Tous niveaux</div></div><div class="at-info"><div class="k">Lieu</div><div class="v">Brasserie / ext.</div></div></div><p class="incl-t">Inclus dans l'atelier</p><ul class="incl-list"><li>Introduction à la fermentation</li><li>Préparation kombucha en groupe</li><li>Dégustation de 4 boissons fermentées</li><li>Kit de démarrage kombucha offert</li><li>Recettes et conseils pratiques</li></ul><div class="at-price">45 € <small>/ personne</small></div><button class="btn-g" style="width:100%;text-align:center" onclick="selectAtelier('Atelier Kombucha & Fermentation — 45€/pers')">Réserver cet atelier</button></div>
+      <div class="atc"><div class="at-num">03</div><span class="at-emoji">🥃</span><p class="at-lvl">Curieux & Amateurs</p><h3 class="at-name">Dégustation Guidée Bières & Rhums</h3><p class="at-desc">Une soirée dégustation commentée par notre maître brasseur. Identifiez les arômes, comprenez les styles, appréciez chaque création.</p><div class="at-infos"><div class="at-info"><div class="k">Durée</div><div class="v">2h30</div></div><div class="at-info"><div class="k">Groupe</div><div class="v">4 à 15 pers. min 4</div></div><div class="at-info"><div class="k">Niveau</div><div class="v">Tous niveaux</div></div><div class="at-info"><div class="k">Lieu</div><div class="v">Brasserie / ext.</div></div></div><p class="incl-t">Inclus dans l'atelier</p><ul class="incl-list"><li>6 bières artisanales en dégustation</li><li>3 rhums arrangés commentés</li><li>Plateau apéritif maison</li><li>Guide d'analyse sensorielle</li><li>-10% sur commande boutique</li></ul><div class="at-price">55 € <small>/ personne</small></div><button class="btn-g" style="width:100%;text-align:center" onclick="selectAtelier('Dégustation Guidée Bières & Rhums — 55€/pers')">Réserver cet atelier</button></div>
+      <div class="atc" style="background:rgba(197,160,89,.03)"><div class="at-num">04</div><span class="at-emoji">🏢</span><p class="at-lvl">Entreprises & Groupes</p><h3 class="at-name">Team Building & Événements Privés</h3><p class="at-desc">Un team building original autour de la fermentation artisanale. Sur mesure, chez vous ou en brasserie. En France, à Maurice ou à Madagascar.</p><div class="at-infos"><div class="at-info"><div class="k">Durée</div><div class="v">Sur mesure</div></div><div class="at-info"><div class="k">Groupe</div><div class="v">10 à 50 pers.</div></div><div class="at-info"><div class="k">Lieu</div><div class="v">Votre lieu / brasserie</div></div><div class="at-info"><div class="k">Zones</div><div class="v">FR · Maurice · Mada</div></div></div><p class="incl-t">Formule sur mesure</p><ul class="incl-list"><li>Programme 100% personnalisé</li><li>Animateur dédié ZilFusion</li><li>Matériel de brassage fourni</li><li>Options repas & dégustation</li><li>Devis personnalisé sous 48h</li></ul><div class="at-price">Sur devis</div><button class="btn-o" style="width:100%;text-align:center" onclick="selectAtelier('Team Building & Événement Privé — Devis')">Demander une date</button></div>
+      <div class="atc" style="background:rgba(139,58,10,.04)"><div class="at-num">05</div><span class="at-emoji">🏠</span><p class="at-lvl">Atelier à domicile</p><h3 class="at-name">Brassage chez vous — Particuliers</h3><p class="at-desc">Je me déplace chez vous avec tout le matériel. Vous brassez 20L de votre bière maison et repartez avec 60 bouteilles 33cl, le seau de fermentation et le barboteur.</p><div class="at-infos"><div class="at-info"><div class="k">Durée</div><div class="v">7 heures</div></div><div class="at-info"><div class="k">Groupe</div><div class="v">1 ou 2 personnes</div></div><div class="at-info"><div class="k">Lieu</div><div class="v">Chez vous</div></div><div class="at-info"><div class="k">Zones</div><div class="v">Sur devis</div></div></div><p class="incl-t">Inclus dans la formule</p><ul class="incl-list"><li>Déplacement + matériel complet</li><li>Tous les ingrédients fournis</li><li>20L de bière brassée ensemble</li><li>60 bouteilles 33cl + seau + barboteur</li><li>Retour pour embouteillage inclus</li></ul><div class="at-price">350 € <small>/ 1 ou 2 personnes</small></div><button class="btn-g" style="width:100%;text-align:center" onclick="selectAtelier('Brassage à domicile Particulier — 350€')">Réserver cet atelier</button></div>
+    </div>
+    <p class="atelier-reassurance">✔ Accessible débutant &nbsp;·&nbsp; ✔ Matériel fourni &nbsp;·&nbsp; ✔ Accompagnement personnalisé</p>
+  </section>
+  <section class="sec" style="background:var(--black)">
+    <div class="reserv-grid">
+      <div>
+        <p class="sl">Réservation</p><h2 class="st">Réservez votre <em>atelier</em></h2><div class="gl"></div>
+        <p class="sd">Nous vous confirmons votre réservation sous 24h. Pour les événements privés, devis sous 48h.</p>
+        <div class="ri">
+          <div class="ri-item"><span class="ri-icon">📱</span><div><div class="ri-label">Téléphone</div><div class="ri-val">06 45 25 69 65</div></div></div>
+          <div class="ri-item"><span class="ri-icon">📧</span><div><div class="ri-label">Email</div><div class="ri-val"><a href="mailto:contact.zilfusionbrew@gmail.com">contact.zilfusionbrew@gmail.com</a></div></div></div>
+          <div class="ri-item"><span class="ri-icon">📍</span><div><div class="ri-label">Zones</div><div class="ri-val">France · Île Maurice · Madagascar</div></div></div>
+          <div class="ri-item"><span class="ri-icon">🕐</span><div><div class="ri-label">Confirmation</div><div class="ri-val">Sous 24h · Acompte 30% à la réservation</div></div></div>
+        </div>
+      </div>
+      <form class="fg" onsubmit="handleForm(event)">
+        <div class="fr"><div class="ff"><label class="fl">Prénom</label><input type="text" class="fi" placeholder="Marie" required></div><div class="ff"><label class="fl">Nom</label><input type="text" class="fi" placeholder="Dupont" required></div></div>
+        <div class="fr"><div class="ff"><label class="fl">Email</label><input type="email" class="fi" placeholder="votre@email.fr" required></div><div class="ff"><label class="fl">Téléphone</label><input type="tel" class="fi" placeholder="06 XX XX XX XX"></div></div>
+        <div class="ff"><label class="fl">Atelier souhaité</label><select class="fi" id="atelierSelect"><option value="">— Choisir un atelier —</option><option>Initiation Brassage Artisanal — 160€/pers</option><option>Atelier Kombucha & Fermentation — 45€/pers</option><option>Dégustation Guidée Bières & Rhums — 55€/pers</option><option>Brassage à domicile Particulier — 350€</option><option>Team Building & Événement Privé — Devis</option></select></div>
+        <div class="fr"><div class="ff"><label class="fl">Nb de personnes</label><input type="number" class="fi" placeholder="Ex : 8" min="1"></div><div class="ff"><label class="fl">Date souhaitée</label><input type="date" class="fi"></div></div>
+        <div class="ff"><label class="fl">Message / Précisions</label><textarea class="fi" placeholder="Allergies, lieu souhaité, questions…"></textarea></div>
+        <button type="submit" class="btn-g" style="width:100%;text-align:center">Envoyer ma demande de réservation</button>
+        <p style="font-size:.65rem;color:var(--dim);text-align:center;margin-top:.5rem">Confirmation sous 24h · Paiement sécurisé</p>
+      </form>
+    </div>
+  </section>
+  <footer><img src="assets/img/logo_navbar.jpg" alt="ZilFusion Brew" style="height:50px;width:auto;object-fit:contain;"><ul class="ft-links"><li><a onclick="showPage('accueil')">Accueil</a></li><li><a onclick="showPage('bieres')">Bières</a></li><li><a onclick="showPage('boutique')">Boutique</a></li></ul><div class="ft-copy">© 2025 ZilFusion Brew</div></footer>
+</div>
+
+<!-- ══════════ PAGE BOUTIQUE ══════════ -->
+<div class="page" id="page-boutique">
+  <div class="shop-hdr">
+    <h1 class="shop-title">Boutique <em>ZilFusion</em></h1>
+    <p style="font-size:.8rem;color:var(--dim)">Livraison France métropolitaine · Retrait en brasserie · Commande minimum 6 bouteilles alcoolisées</p>
+  </div>
+  <div class="livr-bar">
+    <div class="livr-item">🚚 Livraison offerte <strong>dès 60€</strong></div>
+    <div class="livr-item">📦 Emballage <strong>soigné</strong></div>
+    <div class="livr-item">🏪 Retrait <strong>gratuit</strong></div>
+    <div class="livr-item">🔒 Paiement <strong>sécurisé</strong></div>
+  </div>
+  <div class="filter-bar" style="padding:0;border-bottom:1px solid var(--border);overflow-x:auto;white-space:nowrap;display:block;">
+    <div style="display:inline-flex;gap:0;min-width:100%;">
+      <button class="fbtn active" onclick="filterShopCat('all',this)" style="flex:1;border-right:1px solid var(--border);border-radius:0;padding:1rem 1.4rem;font-size:.58rem;letter-spacing:.14em;">Tous</button>
+      <button class="fbtn" onclick="filterShopCat('rhum',this)" style="flex:1;border-right:1px solid var(--border);border-radius:0;padding:1rem 1.4rem;font-size:.58rem;letter-spacing:.14em;">🥃 Rhums arrangés</button>
+      <button class="fbtn" onclick="filterShopCat('biere',this)" style="flex:1;border-right:1px solid var(--border);border-radius:0;padding:1rem 1.4rem;font-size:.58rem;letter-spacing:.14em;">🍺 Bières artisanales</button>
+      <button class="fbtn" onclick="filterShopCat('fermentation',this)" style="flex:1;border-right:1px solid var(--border);border-radius:0;padding:1rem 1.4rem;font-size:.58rem;letter-spacing:.14em;">🌿 Fermentation</button>
+      <button class="fbtn" onclick="filterShopCat('coffret',this)" style="flex:1;border-right:1px solid var(--border);border-radius:0;padding:1rem 1.4rem;font-size:.58rem;letter-spacing:.14em;">🎁 Coffrets</button>
+      <button class="fbtn" onclick="filterShopCat('ingredient',this)" style="flex:1;border-right:1px solid var(--border);border-radius:0;padding:1rem 1.4rem;font-size:.58rem;letter-spacing:.14em;">🌿 Ingrédients</button>
+      <button class="fbtn" onclick="filterShopCat('materiel',this)" style="flex:1;border-radius:0;padding:1rem 1.4rem;font-size:.58rem;letter-spacing:.14em;">🧰 Matériel</button>
+      <span class="sh-count" id="shopCount" style="display:flex;align-items:center;padding:0 1.4rem;flex-shrink:0;">29 produits</span>
+    </div>
+  </div>
+  <div class="shop-main">
+    <div class="sh-grid" id="shopGrid">
+      <!-- PALE ALE MANGO boutique -->
+      <div class="si" data-cat="biere" style="padding:0;overflow:hidden;">
+        <span class="si-badge" style="position:absolute;top:.8rem;left:.8rem;z-index:2;">Nouveauté</span>
+        <div style="position:relative;">
+          <img src="assets/img/produit_pale_ale_mango.png" alt="Pale Ale Mango" style="width:100%;height:180px;object-fit:cover;display:block;">
+          <div style="position:absolute;bottom:0;right:0;width:70px;height:70px;background:#000;">
+            <img src="assets/img/etiquette_pale_ale_mango.png" style="width:100%;height:100%;object-fit:contain;mix-blend-mode:screen;">
+          </div>
+        </div>
+        <div style="padding:1rem 1.2rem 1.2rem;">
+          <p class="si-cat">Bière · Pale Ale</p>
+          <p class="si-name">Pale Ale Mango 🥭</p>
+          <p class="si-desc">Mangue tropicale, houblons fruités, robe dorée. 5,2% alc.</p>
+          <div class="si-foot"><div><div class="si-price">4,50 €</div><div class="si-vol">33cl</div></div><button class="btn-sm" onclick="addToCart('Pale Ale Mango',4.50,'33cl · Pale Ale')">Je la veux</button></div>
+        </div>
+      </div>
+
+      <div class="si" data-cat="biere"><span class="si-badge">Signature</span><span class="si-emoji">🍊</span><p class="si-cat">Bière · IPA</p><p class="si-name">IPA Tropicale</p><p class="si-desc">Mangue, ananas, passion. Houblons Citra & Mosaic. 6,5% alc.</p><div class="si-foot"><div><div class="si-price">4,50 €</div><div class="si-vol">33cl</div></div><button class="btn-sm" onclick="addToCart('IPA Tropicale',4.50,'33cl · IPA')">Je la veux</button></div></div>
+      <div class="si" data-cat="biere"><span class="si-emoji">🍫</span><p class="si-cat">Bière · Stout</p><p class="si-name">Stout Cacao</p><p class="si-desc">Chocolat noir, café torréfié. Corps onctueux. 8,2% alc.</p><div class="si-foot"><div><div class="si-price">5,20 €</div><div class="si-vol">33cl</div></div><button class="btn-sm" onclick="addToCart('Stout Cacao',5.20,'33cl · Stout')">Je le veux</button></div></div>
+      <div class="si" data-cat="biere"><span class="si-emoji">🌸</span><p class="si-cat">Bière · Blonde</p><p class="si-name">Blonde Passion</p><p class="si-desc">Légère, tropicale, fruit de la passion. 4,8% alc.</p><div class="si-foot"><div><div class="si-price">4,00 €</div><div class="si-vol">33cl</div></div><button class="btn-sm" onclick="addToCart('Blonde Passion',4.00,'33cl · Blonde')">Je la veux</button></div></div>
+      <div class="si" data-cat="biere"><span class="si-badge lim">Limitée</span><span class="si-emoji">🌺</span><p class="si-cat">Bière · Saison</p><p class="si-name">Saison Hibiscus</p><p class="si-desc">Florale, acidulée. Édition limitée. 5,5% alc.</p><div class="si-foot"><div><div class="si-price">7,50 €</div><div class="si-vol">75cl</div></div><button class="btn-sm" onclick="addToCart('Saison Hibiscus',7.50,'75cl · Saison')">Réserver</button></div></div>
+      <div class="si" data-cat="biere"><span class="si-emoji">🍋</span><p class="si-cat">Bière · Sour</p><p class="si-name">Sour Citron Vert</p><p class="si-desc">Acide, citron vert, kaffir. Fermentation lactique. 4,2% alc.</p><div class="si-foot"><div><div class="si-price">5,00 €</div><div class="si-vol">33cl</div></div><button class="btn-sm" onclick="addToCart('Sour Citron Vert',5.00,'33cl · Sour')">Je la veux</button></div></div>
+      <div class="si" data-cat="biere"><span class="si-badge lim">Spéciale</span><span class="si-emoji">🍦</span><p class="si-cat">Bière · Porter</p><p class="si-name">Porter Vanille</p><p class="si-desc">Vanille Madagascar, doux et crémeux. 5,8% alc.</p><div class="si-foot"><div><div class="si-price">5,50 €</div><div class="si-vol">33cl</div></div><button class="btn-sm" onclick="addToCart('Porter Vanille',5.50,'33cl · Porter')">Réserver</button></div></div>
+      <div class="si" data-cat="biere" style="padding:0;overflow:hidden;"><img src="assets/img/griotika.png" alt="Griotika" style="width:100%;height:140px;object-fit:cover;display:block;"><div style="padding:1rem 1.2rem 1.2rem;"><p class="si-cat">Bière · Stout Griotte</p><p class="si-name">Griotika 🍒</p><p class="si-desc">Cherry Stout — griotte, chocolat noir, malt orge.</p><div class="si-foot"><div><div class="si-price">2,50 €</div><div class="si-vol">33cl</div></div><button class="btn-sm" onclick="addToCart('Griotika Cherry Stout',2.50,'33cl · Stout Griotte')">Réserver</button></div></div></div>
+      <div class="si" data-cat="rhum"><span class="si-badge">Signature</span><span class="si-emoji">🌴</span><p class="si-cat">Rhum Arrangé</p><p class="si-name">Rhum Vanille-Coco</p><p class="si-desc">Vanille Madagascar & coco. 6 mois. 32% alc.</p><div class="si-foot"><div><div class="si-price">24,90 €</div><div class="si-vol">50cl</div></div><button class="btn-sm" onclick="addToCart('Rhum Vanille-Coco',24.90,'50cl · Rhum')">Je le veux</button></div></div>
+      <div class="si" data-cat="rhum"><span class="si-emoji">🫚</span><p class="si-cat">Rhum Arrangé</p><p class="si-name">Rhum Gingembre-Citron</p><p class="si-desc">Gingembre frais, citron vert. 4 mois. 34% alc.</p><div class="si-foot"><div><div class="si-price">22,90 €</div><div class="si-vol">50cl</div></div><button class="btn-sm" onclick="addToCart('Rhum Gingembre-Citron',22.90,'50cl · Rhum')">Je le veux</button></div></div>
+      <div class="si" data-cat="rhum"><span class="si-badge lim">Prestige</span><span class="si-emoji">🍓</span><p class="si-cat">Rhum Arrangé</p><p class="si-name">Rhum Fruits Rouges</p><p class="si-desc">Goyave, framboise, passion. 9 mois. 30% alc.</p><div class="si-foot"><div><div class="si-price">29,90 €</div><div class="si-vol">50cl</div></div><button class="btn-sm" onclick="addToCart('Rhum Fruits Rouges',29.90,'50cl · Prestige')">Réserver</button></div></div>
+      <div class="si" data-cat="rhum"><span class="si-emoji">🌶️</span><p class="si-cat">Rhum Arrangé</p><p class="si-name">Rhum Épices Créoles</p><p class="si-desc">Cannelle, badiane, girofle. 5 mois. 36% alc.</p><div class="si-foot"><div><div class="si-price">25,90 €</div><div class="si-vol">50cl</div></div><button class="btn-sm" onclick="addToCart('Rhum Épices Créoles',25.90,'50cl · Rhum')">Je le veux</button></div></div>
+      <div class="si" data-cat="kombucha" data-cat2="fermentation"><span class="si-badge bio">Vivant</span><span class="si-emoji">🌺</span><p class="si-cat">Kombucha</p><p class="si-name">Kombucha Hibiscus</p><p class="si-desc">Thé vert fermenté, hibiscus. Probiotique & vegan.</p><div class="si-foot"><div><div class="si-price">6,90 €</div><div class="si-vol">75cl</div></div><button class="btn-sm" onclick="addToCart('Kombucha Hibiscus',6.90,'75cl · Kombucha')">Je le veux</button></div></div>
+      <div class="si" data-cat="kombucha" data-cat2="fermentation"><span class="si-emoji">🫚</span><p class="si-cat">Kombucha</p><p class="si-name">Kombucha Gingembre</p><p class="si-desc">Thé noir, gingembre frais. Tonique et probiotique.</p><div class="si-foot"><div><div class="si-price">6,90 €</div><div class="si-vol">75cl</div></div><button class="btn-sm" onclick="addToCart('Kombucha Gingembre',6.90,'75cl · Kombucha')">Je le veux</button></div></div>
+      <div class="si" data-cat="kefir" data-cat2="fermentation"><span class="si-emoji">🥛</span><p class="si-cat">Kéfir</p><p class="si-name">Kéfir de Lait Nature</p><p class="si-desc">Fermenté 24h, légèrement pétillant, soyeux.</p><div class="si-foot"><div><div class="si-price">4,50 €</div><div class="si-vol">50cl</div></div><button class="btn-sm" onclick="addToCart('Kéfir Lait Nature',4.50,'50cl · Kéfir')">Je le veux</button></div></div>
+      <div class="si" data-cat="kefir" data-cat2="fermentation"><span class="si-emoji">🍓</span><p class="si-cat">Kéfir</p><p class="si-name">Kéfir Fruits Tropicaux</p><p class="si-desc">Passion, mangue, coco. Vitaminé et probiotique.</p><div class="si-foot"><div><div class="si-price">5,20 €</div><div class="si-vol">50cl</div></div><button class="btn-sm" onclick="addToCart('Kéfir Fruits Tropicaux',5.20,'50cl · Kéfir')">Je le veux</button></div></div>
+      <div class="si" data-cat="soda" data-cat2="fermentation"><span class="si-emoji">💛</span><p class="si-cat">Soda Naturel</p><p class="si-name">Soda Passion-Menthe</p><p class="si-desc">Passion et menthe fraîche. Pétillant naturel.</p><div class="si-foot"><div><div class="si-price">3,20 €</div><div class="si-vol">33cl</div></div><button class="btn-sm" onclick="addToCart('Soda Passion-Menthe',3.20,'33cl · Soda')">Je le veux</button></div></div>
+      <div class="si" data-cat="soda" data-cat2="fermentation"><span class="si-emoji">🍍</span><p class="si-cat">Soda Naturel</p><p class="si-name">Soda Ananas-Basilic</p><p class="si-desc">Ananas frais et basilic thaï. Addictif.</p><div class="si-foot"><div><div class="si-price">3,20 €</div><div class="si-vol">33cl</div></div><button class="btn-sm" onclick="addToCart('Soda Ananas-Basilic',3.20,'33cl · Soda')">Je le veux</button></div></div>
+
+      <!-- ══ COFFRETS ══ -->
+      <div class="si" data-pid="box-decouverte" data-cat="coffret" style="position:relative;border:1px solid rgba(197,160,89,.3);"><span class="si-badge" style="background:var(--gold);color:#000;">⭐ Best-seller</span><span class="si-emoji">🎁</span><p class="si-cat">Coffret · 6 bouteilles · Idéal à offrir</p><p class="si-name">Box Découverte</p><p class="si-desc" style="font-size:.72rem;line-height:1.7;">✔ 2 × IPA Tropicale<br>✔ 1 × Stout Cacao<br>✔ 1 × Kombucha Hibiscus<br>✔ 1 × Soda Passion-Menthe<br>✔ 1 × Kéfir Nature</p><div class="si-foot"><div><div class="si-price">32,00 €</div><div class="si-vol" style="color:#4ade80;font-weight:700;">Livraison offerte</div></div><button class="btn-sm" onclick="addToCart('Box Découverte',32.00,'6 bouteilles assorties')">Commander →</button></div></div>
+      <div class="si" data-pid="box-brasseur" data-cat="coffret"><span class="si-badge lim">🍺 Amateurs</span><span class="si-emoji">🍺</span><p class="si-cat">Coffret · 6 bières · Édition limitée</p><p class="si-name">Box Brasseur</p><p class="si-desc" style="font-size:.72rem;line-height:1.7;">✔ 1 × IPA Tropicale<br>✔ 1 × Stout Cacao<br>✔ 1 × Blonde Passion<br>✔ 1 × Saison Hibiscus<br>✔ 1 × Sour · 1 × Porter Vanille</p><div class="si-foot"><div><div class="si-price">28,00 €</div><div class="si-vol" style="color:#4ade80;font-weight:700;">Livraison offerte</div></div><button class="btn-sm" onclick="addToCart('Box Brasseur',28.00,'6 bières artisanales')">Commander →</button></div></div>
+      <div class="si" data-pid="box-rhum-biere" data-cat="coffret"><span class="si-badge lim">🥃 Prestige</span><span class="si-emoji">🥃</span><p class="si-cat">Coffret · 6 bouteilles · Cadeau premium</p><p class="si-name">Box Rhum & Bière</p><p class="si-desc" style="font-size:.72rem;line-height:1.7;">✔ 1 × Rhum Vanille-Coco<br>✔ 1 × Rhum Gingembre-Citron<br>✔ 2 × IPA Tropicale<br>✔ 2 × Porter Vanille</p><div class="si-foot"><div><div class="si-price">58,00 €</div><div class="si-vol" style="color:#4ade80;font-weight:700;">Livraison offerte</div></div><button class="btn-sm" onclick="addToCart('Box Rhum & Bière',58.00,'Box Prestige 6 bouteilles')">Commander →</button></div></div>
+
+      <!-- ══ INGRÉDIENTS ══ -->
+      <div class="si" data-pid="vanille-madagascar" data-cat="ingredient"><span class="si-badge bio">Naturel</span><span class="si-emoji">🌿</span><p class="si-cat">Ingrédient · Macération</p><p class="si-name">Vanille Bourbon Madagascar</p><p class="si-desc">Gousses entières, séchées et fendues. Idéales pour rhum arrangé ou pâtisserie.</p><div class="si-foot"><div><div class="si-price">8,90 €</div><div class="si-vol">5 gousses</div></div><button class="btn-sm" onclick="addToCart('Vanille Bourbon Madagascar',8.90,'5 gousses')">Je la veux</button></div></div>
+      <div class="si" data-pid="gingembre-seche" data-cat="ingredient"><span class="si-badge bio">Naturel</span><span class="si-emoji">🫚</span><p class="si-cat">Ingrédient · Macération</p><p class="si-name">Gingembre séché tranché</p><p class="si-desc">Gingembre de La Réunion, tranché à la main et séché. Prêt pour la macération.</p><div class="si-foot"><div><div class="si-price">4,50 €</div><div class="si-vol">100g</div></div><button class="btn-sm" onclick="addToCart('Gingembre séché',4.50,'100g')">Je le veux</button></div></div>
+      <div class="si" data-pid="epices-creoles" data-cat="ingredient"><span class="si-badge bio">Naturel</span><span class="si-emoji">🌶️</span><p class="si-cat">Ingrédient · Épices</p><p class="si-name">Mélange Épices Créoles</p><p class="si-desc">Cannelle, badiane, girofle, piment — notre sélection pour rhum arrangé.</p><div class="si-foot"><div><div class="si-price">6,90 €</div><div class="si-vol">50g</div></div><button class="btn-sm" onclick="addToCart('Mélange Épices Créoles',6.90,'50g')">Je le veux</button></div></div>
+      <div class="si" data-pid="the-sencha" data-cat="ingredient"><span class="si-badge bio">Bio</span><span class="si-emoji">🍵</span><p class="si-cat">Ingrédient · Fermentation</p><p class="si-name">Thé vert Bio Sencha</p><p class="si-desc">Thé vert japonais de qualité supérieure — base idéale pour kombucha maison.</p><div class="si-foot"><div><div class="si-price">5,50 €</div><div class="si-vol">100g</div></div><button class="btn-sm" onclick="addToCart('Thé vert Bio Sencha',5.50,'100g')">Je le veux</button></div></div>
+
+      <!-- ══ MATÉRIEL ══ -->
+      <div class="si" data-pid="scoby-kombucha" data-cat="materiel"><span class="si-emoji">🧫</span><p class="si-cat">Matériel · Fermentation</p><p class="si-name">Scoby Kombucha Actif</p><p class="si-desc">Souche vivante prête à l'emploi, accompagnée de 200ml de liquide de démarrage.</p><div class="si-foot"><div><div class="si-price">9,90 €</div><div class="si-vol">Scoby + liquide</div></div><button class="btn-sm" onclick="addToCart('Scoby Kombucha',9.90,'Scoby actif')">Je le veux</button></div></div>
+      <div class="si" data-pid="grains-kefir" data-cat="materiel"><span class="si-emoji">🥛</span><p class="si-cat">Matériel · Fermentation</p><p class="si-name">Grains de Kéfir de Lait</p><p class="si-desc">Grains actifs, prêts à fermenter. Livraison rapide en milieu humide.</p><div class="si-foot"><div><div class="si-price">7,90 €</div><div class="si-vol">30g de grains</div></div><button class="btn-sm" onclick="addToCart('Grains Kéfir',7.90,'30g')">Je les veux</button></div></div>
+      <div class="si" data-pid="kit-embouteillage" data-cat="materiel"><span class="si-emoji">🍾</span><p class="si-cat">Matériel · Brassage</p><p class="si-name">Kit Embouteillage Maison</p><p class="si-desc">Seau 10L, barboteur, siphon et capsuleuse — pour embouteiller votre bière.</p><div class="si-foot"><div><div class="si-price">24,90 €</div><div class="si-vol">Kit complet</div></div><button class="btn-sm" onclick="addToCart('Kit Embouteillage',24.90,'Kit complet')">Je le veux</button></div></div>
+      <div class="si" data-pid="bocal-hermetique" data-cat="materiel"><span class="si-emoji">⚗️</span><p class="si-cat">Matériel · Macération</p><p class="si-name">Bocal Hermétique 1L</p><p class="si-desc">Bocal en verre épais avec joint silicone — idéal pour démarrer une macération.</p><div class="si-foot"><div><div class="si-price">6,90 €</div><div class="si-vol">1 litre</div></div><button class="btn-sm" onclick="addToCart('Bocal Hermétique 1L',6.90,'1L')">Je le veux</button></div></div>
+    </div>
+  </div>
+  <div class="boxes-sec">
+    <p class="sl">Coffrets · Édition limitée · Idéal à offrir</p>
+    <h2 class="st">Choisissez votre <em>coffret</em></h2>
+
+    <div class="boxes-grid-pro">
+
+      <!-- HERO COFFRET : BOX DÉCOUVERTE -->
+      <div class="boxc-hero">
+        <div class="boxc-hero-badge">⭐ Best-seller · Le plus commandé</div>
+        <div class="boxc-hero-inner">
+          <div class="boxc-hero-left">
+            <p class="box-lbl" style="margin-bottom:.5rem;">Idéal à offrir · Tous publics · Stock limité</p>
+            <h3 class="box-name" style="font-size:1.8rem;margin-bottom:.4rem;">Box Découverte</h3>
+            <p style="font-family:var(--fs);font-style:italic;font-size:.95rem;color:rgba(232,201,122,.85);margin-bottom:1.2rem;line-height:1.4;">Le meilleur de ZilFusion dans un seul coffret.</p>
+            <ul class="box-list-pro">
+              <li><span class="bck">✔</span> 2 × IPA Tropicale <span class="bcv">33cl</span></li>
+              <li><span class="bck">✔</span> 1 × Stout Cacao <span class="bcv">33cl</span></li>
+              <li><span class="bck">✔</span> 1 × Kombucha Hibiscus <span class="bcv">75cl</span></li>
+              <li><span class="bck">✔</span> 1 × Soda Passion-Menthe <span class="bcv">33cl</span></li>
+              <li><span class="bck">✔</span> 1 × Kéfir de Lait Nature <span class="bcv">50cl</span></li>
+            </ul>
+            <p style="font-size:.68rem;color:#f87171;font-weight:700;letter-spacing:.04em;margin-top:.8rem;">⚡ Plus que quelques exemplaires disponibles</p>
+          </div>
+          <div class="boxc-hero-right">
+            <div style="text-align:center;margin-bottom:1.4rem;">
+              <span style="font-size:4rem;display:block;margin-bottom:.5rem;">🎁</span>
+              <p style="font-size:.62rem;color:var(--dim);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.2rem;">Valeur réelle</p>
+              <p style="font-size:.9rem;color:var(--dim);text-decoration:line-through;margin-bottom:.3rem;">38,00 €</p>
+              <div style="font-family:var(--fd);font-size:3rem;font-weight:800;color:var(--gold);line-height:1;letter-spacing:-.03em;">39€</div>
+              <p style="font-size:.62rem;color:#4ade80;font-weight:700;margin-top:.3rem;">Vous économisez 9€</p>
+            </div>
+            <button class="btn-buy-hero" onclick="addToCart('Box Découverte',39.00,'6 bouteilles assorties')">Acheter maintenant</button>
+            <p style="font-size:.62rem;color:#4ade80;text-align:center;margin-top:.7rem;font-weight:700;">✓ Livraison offerte · Emballage cadeau inclus</p>
+            <p style="font-size:.58rem;color:var(--dim);text-align:center;margin-top:.3rem;">🔒 Paiement 100% sécurisé</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOX BRASSEUR -->
+      <div class="boxc-sub">
+        <div class="boxc-sub-top">
+          <span style="font-size:2rem;display:block;margin-bottom:.7rem;">🍺</span>
+          <p class="box-lbl">Édition limitée · Amateurs de bière</p>
+          <h3 class="box-name" style="font-size:1.1rem;">Box Brasseur</h3>
+          <ul class="box-list-pro" style="margin-top:.8rem;">
+            <li><span class="bck">✔</span> IPA Tropicale <span class="bcv">33cl</span></li>
+            <li><span class="bck">✔</span> Stout Cacao <span class="bcv">33cl</span></li>
+            <li><span class="bck">✔</span> Blonde Passion <span class="bcv">33cl</span></li>
+            <li><span class="bck">✔</span> Saison Hibiscus <span class="bcv">75cl</span></li>
+            <li><span class="bck">✔</span> Sour Citron Vert <span class="bcv">33cl</span></li>
+            <li><span class="bck">✔</span> Porter Vanille <span class="bcv">33cl</span></li>
+          </ul>
+          <p style="font-size:.62rem;color:#f87171;font-weight:700;margin-top:.8rem;">⚡ Stock réduit</p>
+        </div>
+        <div class="boxc-sub-foot">
+          <span style="font-size:.68rem;color:var(--dim);text-decoration:line-through;">32,50 €</span>
+          <div style="font-family:var(--fd);font-size:2.2rem;font-weight:800;color:var(--gold);line-height:1;letter-spacing:-.03em;margin-bottom:.8rem;">29€</div>
+          <button class="btn-buy-sub" onclick="addToCart('Box Brasseur',29.00,'6 bières artisanales')">Commander ce coffret</button>
+          <p style="font-size:.58rem;color:#4ade80;margin-top:.5rem;font-weight:700;">✓ Livraison offerte</p>
+        </div>
+      </div>
+
+      <!-- BOX RHUM & BIÈRE -->
+      <div class="boxc-sub" style="position:relative;border-top:2px solid rgba(139,58,10,.6);">
+        <div style="position:absolute;top:.9rem;right:.9rem;background:rgba(139,58,10,.85);color:var(--white);font-family:var(--fd);font-size:.48rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.28rem .7rem;">Cadeau prestige</div>
+        <div class="boxc-sub-top">
+          <span style="font-size:2rem;display:block;margin-bottom:.7rem;">🥃</span>
+          <p class="box-lbl">Édition limitée · Cadeau premium</p>
+          <h3 class="box-name" style="font-size:1.1rem;">Box Rhum & Bière</h3>
+          <ul class="box-list-pro" style="margin-top:.8rem;">
+            <li><span class="bck">✔</span> Rhum Vanille-Coco <span class="bcv">50cl</span></li>
+            <li><span class="bck">✔</span> Rhum Gingembre-Citron <span class="bcv">50cl</span></li>
+            <li><span class="bck">✔</span> 2 × IPA Tropicale <span class="bcv">33cl</span></li>
+            <li><span class="bck">✔</span> 2 × Porter Vanille <span class="bcv">33cl</span></li>
+          </ul>
+          <p style="font-size:.62rem;color:#f87171;font-weight:700;margin-top:.8rem;">⚡ Derniers exemplaires</p>
+        </div>
+        <div class="boxc-sub-foot">
+          <span style="font-size:.68rem;color:var(--dim);text-decoration:line-through;">69,80 €</span>
+          <div style="font-family:var(--fd);font-size:2.2rem;font-weight:800;color:var(--gold);line-height:1;letter-spacing:-.03em;margin-bottom:.8rem;">59€</div>
+          <button class="btn-buy-sub" onclick="addToCart('Box Rhum & Bière',59.00,'Box Prestige 6 bouteilles')">Commander ce coffret</button>
+          <p style="font-size:.58rem;color:#4ade80;margin-top:.5rem;font-weight:700;">✓ Livraison offerte</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BLOC CONFIANCE -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(197,160,89,.1);border:1px solid rgba(197,160,89,.1);margin-top:2.5rem;">
+      <div style="background:var(--black);padding:1.1rem 1.3rem;display:flex;align-items:center;gap:.75rem;"><span style="font-size:1.2rem;flex-shrink:0;">🤲</span><div><div style="font-family:var(--fd);font-size:.6rem;font-weight:700;color:var(--white);letter-spacing:.04em;">Fabrication artisanale</div><div style="font-size:.58rem;color:var(--dim);margin-top:.1rem;">Composé à la main</div></div></div>
+      <div style="background:var(--black);padding:1.1rem 1.3rem;display:flex;align-items:center;gap:.75rem;"><span style="font-size:1.2rem;flex-shrink:0;">🌿</span><div><div style="font-family:var(--fd);font-size:.6rem;font-weight:700;color:var(--white);letter-spacing:.04em;">Petites séries</div><div style="font-size:.58rem;color:var(--dim);margin-top:.1rem;">Jamais en grande quantité</div></div></div>
+      <div style="background:var(--black);padding:1.1rem 1.3rem;display:flex;align-items:center;gap:.75rem;"><span style="font-size:1.2rem;flex-shrink:0;">🔒</span><div><div style="font-family:var(--fd);font-size:.6rem;font-weight:700;color:var(--white);letter-spacing:.04em;">Paiement sécurisé</div><div style="font-size:.58rem;color:var(--dim);margin-top:.1rem;">CB · PayPal · SSL</div></div></div>
+      <div style="background:var(--black);padding:1.1rem 1.3rem;display:flex;align-items:center;gap:.75rem;"><span style="font-size:1.2rem;flex-shrink:0;">🚚</span><div><div style="font-family:var(--fd);font-size:.6rem;font-weight:700;color:var(--white);letter-spacing:.04em;">Livraison rapide</div><div style="font-size:.58rem;color:var(--dim);margin-top:.1rem;">Expédié sous 48h</div></div></div>
+    </div>
+
+  </div>
+  <footer><img src="assets/img/logo_navbar.jpg" alt="ZilFusion Brew" style="height:50px;width:auto;object-fit:contain;"><ul class="ft-links"><li><a onclick="showPage('accueil')">Accueil</a></li><li><a onclick="showPage('bieres')">Bières</a></li><li><a onclick="showPage('rhum')">Rhum</a></li><li><a onclick="showPage('ateliers')">Ateliers</a></li></ul><div class="ft-copy">© 2025 ZilFusion Brew · 06 45 25 69 65 · <a href="mailto:contact.zilfusionbrew@gmail.com">contact.zilfusionbrew@gmail.com</a><br><span style="font-size:.58rem;opacity:.4">L'abus d'alcool est dangereux. À consommer avec modération.</span></div></footer>
+</div>
+
+
+<!-- PAYMENT MODAL -->
+<div class="pay-overlay" id="payOverlay" onclick="closePaymentModal()"></div>
+<div class="pay-modal" id="payModal">
+  <div class="pay-header">
+    <div>
+      <p class="pay-label">Finaliser la commande</p>
+      <p class="pay-total-line">Total : <strong id="payTotalDisplay">0,00 €</strong></p>
+    </div>
+    <button class="pay-close" onclick="closePaymentModal()">✕</button>
+  </div>
+
+  <!-- STEPS -->
+  <div class="pay-steps">
+    <div class="pay-step active" id="step1-tab" onclick="goStep(1)"><span class="step-num">1</span>Coordonnées</div>
+    <div class="pay-step" id="step2-tab" onclick="goStep(2)"><span class="step-num">2</span>Livraison</div>
+    <div class="pay-step" id="step3-tab" onclick="goStep(3)"><span class="step-num">3</span>Paiement</div>
+  </div>
+
+  <!-- STEP 1 : COORDONNÉES -->
+  <div class="pay-body active" id="pay-step1">
+    <div class="pay-form">
+      <div class="pay-row">
+        <div class="pay-field"><label class="pay-lbl">Prénom</label><input class="pay-input" id="p-prenom" placeholder="Marie" required></div>
+        <div class="pay-field"><label class="pay-lbl">Nom</label><input class="pay-input" id="p-nom" placeholder="Dupont" required></div>
+      </div>
+      <div class="pay-field"><label class="pay-lbl">Email</label><input class="pay-input" id="p-email" type="email" placeholder="marie@email.fr" required></div>
+      <div class="pay-field"><label class="pay-lbl">Téléphone</label><input class="pay-input" id="p-tel" placeholder="06 XX XX XX XX"></div>
+    </div>
+    <button class="pay-btn" onclick="goStep(2)">Continuer → Livraison</button>
+  </div>
+
+  <!-- STEP 2 : LIVRAISON -->
+  <div class="pay-body" id="pay-step2">
+    <div class="pay-form">
+      <div class="pay-field"><label class="pay-lbl">Adresse</label><input class="pay-input" id="p-adresse" placeholder="12 rue des Brasseurs" required></div>
+      <div class="pay-row">
+        <div class="pay-field"><label class="pay-lbl">Code postal</label><input class="pay-input" id="p-cp" placeholder="75001" required></div>
+        <div class="pay-field"><label class="pay-lbl">Ville</label><input class="pay-input" id="p-ville" placeholder="Paris" required></div>
+      </div>
+      <div class="pay-field"><label class="pay-lbl">Pays</label>
+        <select class="pay-input" id="p-pays">
+          <option>France métropolitaine</option>
+          <option>Île Maurice</option>
+          <option>Madagascar</option>
+          <option>DOM-TOM</option>
+        </select>
+      </div>
+      <div class="pay-modes-livr">
+        <div class="livr-opt selected" id="livr-std" onclick="selectLivr('std',this)">
+          <div class="livr-opt-icon">📦</div>
+          <div><div class="livr-opt-name">Standard</div><div class="livr-opt-desc">3–5 jours ouvrés</div></div>
+          <div class="livr-opt-price" id="livr-std-price">5,90 €</div>
+        </div>
+        <div class="livr-opt" id="livr-exp" onclick="selectLivr('exp',this)">
+          <div class="livr-opt-icon">⚡</div>
+          <div><div class="livr-opt-name">Express</div><div class="livr-opt-desc">24–48h ouvrées</div></div>
+          <div class="livr-opt-price">12,90 €</div>
+        </div>
+        <div class="livr-opt" id="livr-ret" onclick="selectLivr('ret',this)">
+          <div class="livr-opt-icon">🏪</div>
+          <div><div class="livr-opt-name">Retrait brasserie</div><div class="livr-opt-desc">Gratuit · Sur RDV</div></div>
+          <div class="livr-opt-price">Gratuit</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:.8rem">
+      <button class="pay-btn-o" onclick="goStep(1)">← Retour</button>
+      <button class="pay-btn" onclick="goStep(3)" style="flex:1">Continuer → Paiement</button>
+    </div>
+  </div>
+
+  <!-- STEP 3 : PAIEMENT -->
+  <div class="pay-body" id="pay-step3">
+    <p class="pay-section-title">Choisissez votre mode de paiement</p>
+    <div class="pay-methods">
+      <div class="pay-method active" id="pm-card" onclick="selectPayMethod('card',this)">
+        <span class="pm-icon">💳</span>
+        <div><div class="pm-name">Carte bancaire</div><div class="pm-sub">Visa · Mastercard · CB</div></div>
+        <div class="pm-check" id="check-card">✓</div>
+      </div>
+      <div class="pay-method" id="pm-paypal" onclick="selectPayMethod('paypal',this)">
+        <span class="pm-icon">🅿️</span>
+        <div><div class="pm-name">PayPal</div><div class="pm-sub">Paiement sécurisé PayPal</div></div>
+        <div class="pm-check hidden" id="check-paypal">✓</div>
+      </div>
+      <div class="pay-method" id="pm-whatsapp" onclick="selectPayMethod('whatsapp',this)">
+        <span class="pm-icon">💬</span>
+        <div><div class="pm-name">Commande WhatsApp</div><div class="pm-sub">On vous rappelle pour payer</div></div>
+        <div class="pm-check hidden" id="check-whatsapp">✓</div>
+      </div>
+      <div class="pay-method" id="pm-virement" onclick="selectPayMethod('virement',this)">
+        <span class="pm-icon">🏦</span>
+        <div><div class="pm-name">Virement bancaire</div><div class="pm-sub">IBAN fourni par email</div></div>
+        <div class="pm-check hidden" id="check-virement">✓</div>
+      </div>
+    </div>
+
+    <!-- Carte -->
+    <div class="pm-form" id="form-card">
+      <div class="card-preview" id="cardPreview">
+        <div class="card-chip">▉▉</div>
+        <div class="card-num" id="displayCardNum">•••• •••• •••• ••••</div>
+        <div class="card-bottom">
+          <div><div class="card-lbl">Titulaire</div><div class="card-holder" id="displayHolder">VOTRE NOM</div></div>
+          <div><div class="card-lbl">Expire</div><div id="displayExpiry">MM/AA</div></div>
+        </div>
+      </div>
+      <div class="pay-form" style="margin-top:1rem">
+        <div class="pay-field"><label class="pay-lbl">Numéro de carte</label>
+          <input class="pay-input" id="cardNum" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCard(this)" onkeyup="updateCardPreview()">
+        </div>
+        <div class="pay-row">
+          <div class="pay-field"><label class="pay-lbl">Expiration</label><input class="pay-input" id="cardExp" placeholder="MM/AA" maxlength="5" oninput="formatExpiry(this)" onkeyup="updateCardPreview()"></div>
+          <div class="pay-field"><label class="pay-lbl">CVV</label><input class="pay-input" id="cardCvv" placeholder="123" maxlength="3" type="password"></div>
+        </div>
+        <div class="pay-field"><label class="pay-lbl">Nom sur la carte</label><input class="pay-input" id="cardName" placeholder="MARIE DUPONT" oninput="this.value=this.value.toUpperCase()" onkeyup="updateCardPreview()"></div>
+      </div>
+      <div class="pay-secure-notice">🔒 Paiement crypté SSL · Vos données ne sont jamais stockées</div>
+    </div>
+
+    <!-- PayPal -->
+    <div class="pm-form hidden" id="form-paypal">
+      <div class="paypal-box">
+        <div class="paypal-logo">Pay<span>Pal</span></div>
+        <p>Vous serez redirigé vers PayPal pour finaliser votre paiement en toute sécurité.</p>
+        <div class="paypal-amounts">
+          <div class="paypal-line"><span>Sous-total</span><span id="pp-subtotal">0,00 €</span></div>
+          <div class="paypal-line"><span>Livraison</span><span id="pp-ship">5,90 €</span></div>
+          <div class="paypal-line bold"><span>Total PayPal</span><span id="pp-total">0,00 €</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WhatsApp -->
+    <div class="pm-form hidden" id="form-whatsapp">
+      <div class="wa-box">
+        <div class="wa-icon">💬</div>
+        <h3>Commander par WhatsApp</h3>
+        <p>Cliquez ci-dessous pour envoyer votre commande directement sur WhatsApp. Nous vous répondrons pour confirmer et organiser le paiement.</p>
+        <div class="wa-preview" id="waPreview"></div>
+      </div>
+    </div>
+
+    <!-- Virement -->
+    <div class="pm-form hidden" id="form-virement">
+      <div class="vir-box">
+        <p class="vir-title">Coordonnées bancaires</p>
+        <div class="iban-row"><span class="iban-lbl">Bénéficiaire</span><span class="iban-val">ZilFusion Brew</span></div>
+        <div class="iban-row"><span class="iban-lbl">IBAN</span><span class="iban-val">FR76 XXXX XXXX XXXX XXXX XXXX XXX</span></div>
+        <div class="iban-row"><span class="iban-lbl">BIC</span><span class="iban-val">XXXXXXXX</span></div>
+        <div class="iban-row"><span class="iban-lbl">Référence</span><span class="iban-val" id="virRef">ZF-000001</span></div>
+        <p class="vir-note">⚠️ Indiquez la référence dans le libellé du virement. Commande traitée à réception.</p>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:.8rem;margin-top:1.2rem">
+      <button class="pay-btn-o" onclick="goStep(2)">← Retour</button>
+      <button class="pay-btn" id="confirmPayBtn" onclick="confirmPayment()" style="flex:1">Confirmer et payer</button>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS SCREEN -->
+<div class="pay-success" id="paySuccess">
+  <div class="success-box">
+    <div class="success-icon">✓</div>
+    <h2>Commande confirmée !</h2>
+    <p id="successMsg">Votre commande a été enregistrée. Vous recevrez un email de confirmation sous peu.</p>
+    <div class="success-order" id="successOrder"></div>
+    <button class="pay-btn" onclick="closeSuccess()" style="margin-top:1.5rem;width:100%">Retour à la boutique</button>
+  </div>
+</div>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-dh"><span class="cart-dt">Mon Panier</span><button class="cart-cls" onclick="closeCart()">✕</button></div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-foot">
+    <div class="c-ship"><span>Livraison</span><span id="shipCost" class="free">Gratuite dès 60€</span></div>
+    <div class="c-total"><span class="c-total-l">Total</span><span class="c-total-a" id="cartTotal">0,00 €</span></div>
+    <button class="c-checkout" onclick="openPaymentModal()">Procéder au paiement 🔒</button>
+    <p class="c-note">🔒 Paiement sécurisé SSL · 🚚 Livraison 3–5 jours · ↩ Remboursé 14j si insatisfait</p>
+    <p class="c-note" style="margin-top:.4rem;font-size:.6rem;opacity:.6;">Chaque bouteille est fabriquée à la main en petite série — merci pour votre confiance.</p>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<!-- MODAL LÉGALE -->
+<div id="legalOverlay" onclick="closeLegal()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:8000;"></div>
+<div id="legalModal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(700px,95vw);max-height:85vh;overflow-y:auto;background:var(--surface);border:1px solid var(--border);border-top:2px solid var(--gold);z-index:8001;padding:2.5rem;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
+    <h2 id="legalTitle" style="font-family:var(--fd);font-size:1rem;font-weight:800;color:var(--white);letter-spacing:.05em;text-transform:uppercase;"></h2>
+    <button onclick="closeLegal()" style="background:none;border:none;color:var(--dim);font-size:1.4rem;cursor:pointer;">✕</button>
+  </div>
+  <div id="legalContent" style="font-size:.82rem;color:var(--dim);line-height:1.9;"></div>
+</div>
+
+<script>
+var legalTexts = {
+  mentions: {
+    title: "Mentions Légales",
+    content: `<p><strong style="color:var(--white)">Éditeur du site</strong><br>ZilFusion Brew — Brasserie artisanale<br>Téléphone : 06 45 25 69 65<br>Email : contact.zilfusionbrew@gmail.com</p>
+    <br><p><strong style="color:var(--white)">Activité</strong><br>Production et vente de boissons artisanales : bières craft, rhums arrangés, kombucha, kéfir et sodas naturels.</p>
+    <br><p><strong style="color:var(--white)">Hébergement</strong><br>Site hébergé par Netlify, Inc. — 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis.</p>
+    <br><p><strong style="color:var(--white)">Propriété intellectuelle</strong><br>L'ensemble du contenu de ce site (textes, images, logos, design) est la propriété exclusive de ZilFusion Brew. Toute reproduction est interdite sans autorisation préalable écrite.</p>
+    <br><p><strong style="color:var(--white)">Avertissement alcool</strong><br>La vente d'alcool est interdite aux mineurs de moins de 18 ans. L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>`
+  },
+  cgv: {
+    title: "Conditions Générales de Vente",
+    content: `<p><strong style="color:var(--white)">1. Objet</strong><br>Les présentes CGV régissent les ventes de produits ZilFusion Brew entre le vendeur et tout client ayant passé commande sur le site.</p>
+    <br><p><strong style="color:var(--white)">2. Prix</strong><br>Les prix sont indiqués en euros TTC. ZilFusion Brew se réserve le droit de modifier ses prix à tout moment. Les produits sont facturés au tarif en vigueur au moment de la commande.</p>
+    <br><p><strong style="color:var(--white)">3. Commandes</strong><br>Toute commande implique l'acceptation des présentes CGV. La commande n'est définitive qu'après confirmation par email. ZilFusion Brew se réserve le droit d'annuler toute commande en cas de rupture de stock ou de problème de paiement.</p>
+    <br><p><strong style="color:var(--white)">4. Livraison</strong><br>Les délais de livraison sont de 3 à 5 jours ouvrés pour la France métropolitaine. La livraison est offerte à partir de 60€ d'achat.</p>
+    <br><p><strong style="color:var(--white)">5. Rétractation</strong><br>Conformément à la loi, vous disposez de 14 jours à compter de la réception de votre commande pour exercer votre droit de rétractation, sauf pour les produits périssables ou personnalisés.</p>
+    <br><p><strong style="color:var(--white)">6. Alcool</strong><br>Conformément à la législation française, la vente de boissons alcoolisées est strictement interdite aux personnes de moins de 18 ans.</p>`
+  },
+  confidentialite: {
+    title: "Politique de Confidentialité",
+    content: `<p><strong style="color:var(--white)">Collecte des données</strong><br>ZilFusion Brew collecte uniquement les données nécessaires au traitement de vos commandes et à la gestion de votre relation client : nom, prénom, email, adresse de livraison et téléphone.</p>
+    <br><p><strong style="color:var(--white)">Utilisation des données</strong><br>Vos données sont utilisées exclusivement pour le traitement de vos commandes, la livraison de vos produits et la communication relative à votre compte client. Elles ne sont jamais revendues à des tiers.</p>
+    <br><p><strong style="color:var(--white)">Conservation</strong><br>Vos données sont conservées pendant une durée maximum de 3 ans à compter de votre dernière commande ou interaction.</p>
+    <br><p><strong style="color:var(--white)">Vos droits</strong><br>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, de suppression et de portabilité de vos données. Pour exercer ces droits, contactez-nous à : contact.zilfusionbrew@gmail.com</p>
+    <br><p><strong style="color:var(--white)">Cookies</strong><br>Ce site utilise uniquement des cookies techniques nécessaires à son bon fonctionnement. Aucun cookie publicitaire ou de tracking n'est utilisé.</p>`
+  }
+};
+function openLegal(type) {
+  var data = legalTexts[type];
+  document.getElementById('legalTitle').textContent = data.title;
+  document.getElementById('legalContent').innerHTML = data.content;
+  document.getElementById('legalOverlay').style.display = 'block';
+  document.getElementById('legalModal').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+function closeLegal() {
+  document.getElementById('legalOverlay').style.display = 'none';
+  document.getElementById('legalModal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLegal(); });
+</script>
+
+<script src="script.js"></script>
+
+<!-- ADMIN PANEL -->
+<div id="adminBtn" onclick="openAdmin()" style="position:fixed;bottom:20px;left:20px;z-index:9000;width:44px;height:44px;background:transparent;border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;transition:all .3s;opacity:0;" title="Administration" onmouseover="this.style.opacity='0.6'" onmouseout="this.style.opacity='0'">⚙️</div>
+
+<!-- ADMIN LOGIN -->
+<div id="adminLoginOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9500;align-items:center;justify-content:center;">
+  <div style="background:var(--surface);border:1px solid var(--border);border-top:2px solid var(--gold);padding:2.5rem;width:min(380px,90vw);text-align:center;">
+    <p style="font-family:var(--fd);font-size:.56rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;">Administration</p>
+    <h2 style="font-family:var(--fd);font-size:1.2rem;font-weight:800;color:var(--white);margin-bottom:1.5rem;">ZilFusion Brew</h2>
+    <input id="adminPwdInput" type="password" placeholder="Mot de passe admin" style="width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--white);padding:.82rem 1rem;font-family:var(--fb);font-size:.9rem;outline:none;margin-bottom:1rem;" onkeydown="if(event.key==='Enter')checkAdminPwd()">
+    <div id="adminPwdError" style="color:#ef4444;font-size:.72rem;margin-bottom:.8rem;display:none;">Mot de passe incorrect</div>
+    <button onclick="checkAdminPwd()" style="width:100%;background:var(--gold);color:#000;border:none;padding:.85rem;font-family:var(--fd);font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;margin-bottom:.8rem;">Connexion</button>
+    <button onclick="closeAdminLogin()" style="width:100%;background:transparent;color:var(--dim);border:1px solid var(--border);padding:.7rem;font-family:var(--fd);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">Annuler</button>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel" style="display:none;position:fixed;inset:0;z-index:9600;background:var(--black);overflow-y:auto;">
+  <div style="max-width:900px;margin:0 auto;padding:2rem;">
+    <!-- Header admin -->
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
+      <div>
+        <p style="font-family:var(--fd);font-size:.52rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);">Panneau d'administration</p>
+        <h1 style="font-family:var(--fd);font-size:1.4rem;font-weight:800;color:var(--white);">ZilFusion Brew</h1>
+      </div>
+      <div style="display:flex;gap:.8rem;">
+        <button onclick="saveAdminChanges()" style="background:var(--gold);color:#000;border:none;padding:.7rem 1.5rem;font-family:var(--fd);font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;">💾 Sauvegarder</button>
+        <button onclick="closeAdmin()" style="background:transparent;color:var(--dim);border:1px solid var(--border);padding:.7rem 1.2rem;font-family:var(--fd);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;">✕ Fermer</button>
+      </div>
+    </div>
+
+    <!-- Message sauvegarde -->
+    <div id="adminSaveMsg" style="display:none;background:rgba(26,122,58,.15);border:1px solid var(--green2);color:var(--green2);padding:.8rem 1.2rem;font-family:var(--fd);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.5rem;">✓ Modifications sauvegardées et appliquées sur le site !</div>
+
+    <!-- Onglets -->
+    <div style="display:flex;gap:1px;background:var(--border);margin-bottom:2rem;">
+      <button class="admin-tab active" id="tab-bieres" onclick="switchAdminTab('bieres')" style="flex:1;background:var(--black);border:none;color:var(--gold);padding:.9rem;font-family:var(--fd);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">🍺 Bières</button>
+      <button class="admin-tab" id="tab-rhums" onclick="switchAdminTab('rhums')" style="flex:1;background:var(--surface);border:none;color:var(--dim);padding:.9rem;font-family:var(--fd);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">🥃 Rhums</button>
+      <button class="admin-tab" id="tab-ferm" onclick="switchAdminTab('ferm')" style="flex:1;background:var(--surface);border:none;color:var(--dim);padding:.9rem;font-family:var(--fd);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">🍵 Fermentés</button>
+      <button class="admin-tab" id="tab-ateliers" onclick="switchAdminTab('ateliers')" style="flex:1;background:var(--surface);border:none;color:var(--dim);padding:.9rem;font-family:var(--fd);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">🎓 Ateliers</button>
+      <button class="admin-tab" id="tab-boutique" onclick="switchAdminTab('boutique')" style="flex:1;background:var(--surface);border:none;color:var(--dim);padding:.9rem;font-family:var(--fd);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;">🛒 Boutique</button>
+    </div>
+
+    <!-- Contenu produits -->
+    <div id="admin-bieres">
+      <div id="adminProductList-bieres"></div>
+    </div>
+    <div id="admin-rhums" style="display:none;">
+      <div id="adminProductList-rhums"></div>
+    </div>
+    <div id="admin-ferm" style="display:none;">
+      <div id="adminProductList-ferm"></div>
+    </div>
+    <div id="admin-ateliers" style="display:none;">
+      <div id="adminProductList-ateliers"></div>
+    </div>
+    <div id="admin-boutique" style="display:none;">
+      <div id="adminProductList-boutique"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════
+// DONNÉES PRODUITS
+// ═══════════════════════════════════
+var PRODUITS = {
+  bieres: [
+    {id:'pale-ale-mango', nom:'Pale Ale Mango', emoji:'🥭', prix:4.50, format:'33cl', stock:12},
+    {id:'ipa-tropicale', nom:'IPA Tropicale', emoji:'🍊', prix:4.50, format:'33cl'},
+    {id:'stout-cacao', nom:'Stout Cacao', emoji:'🍫', prix:5.20, format:'33cl'},
+    {id:'blonde-passion', nom:'Blonde Passion', emoji:'🌸', prix:4.00, format:'33cl'},
+    {id:'saison-hibiscus', nom:'Saison Hibiscus', emoji:'🌺', prix:7.50, format:'75cl', stock:8},
+    {id:'sour-citron-vert', nom:'Sour Citron Vert', emoji:'🍋', prix:5.00, format:'33cl'},
+    {id:'porter-vanille', nom:'Porter Vanille', emoji:'🍦', prix:5.50, format:'33cl', stock:5},
+    {id:'griotika', nom:'Griotika Cherry Stout', emoji:'🍒', prix:2.50, format:'33cl'},
+  ],
+  rhums: [
+    {id:'rhum-vanille-coco', nom:'Rhum Vanille-Coco', emoji:'🌴', prix:24.90, format:'50cl'},
+    {id:'rhum-gingembre-citron', nom:'Rhum Gingembre-Citron', emoji:'🫚', prix:22.90, format:'50cl'},
+    {id:'rhum-fruits-rouges', nom:'Rhum Fruits Rouges Tropicaux', emoji:'🍓', prix:29.90, format:'50cl'},
+    {id:'rhum-epices-creoles', nom:'Rhum Épices Créoles', emoji:'🌶️', prix:25.90, format:'50cl'},
+    {id:'rhum-longani', nom:'Rhum Longani', emoji:'🌺', prix:35.00, format:'50cl'},
+    {id:'rhum-fruits-dragon', nom:'Rhum Fruits du Dragon, Passion & Combava', emoji:'🐉', prix:35.00, format:'50cl'},
+  ],
+  ferm: [
+    {id:'kombucha-hibiscus', nom:'Kombucha Hibiscus', emoji:'🌺', prix:6.90, format:'75cl'},
+    {id:'kombucha-gingembre', nom:'Kombucha Gingembre', emoji:'🫚', prix:6.90, format:'75cl'},
+    {id:'kombucha-citron', nom:'Kombucha Citron-Kaffir', emoji:'🍋', prix:7.20, format:'75cl'},
+    {id:'kefir-nature', nom:'Kéfir de Lait Nature', emoji:'🥛', prix:4.50, format:'50cl'},
+    {id:'kefir-fruits', nom:'Kéfir Fruits Tropicaux', emoji:'🍓', prix:5.20, format:'50cl'},
+    {id:'kefir-hibiscus', nom:'Kéfir Fruits Hibiscus', emoji:'🌺', prix:4.80, format:'50cl'},
+    {id:'soda-passion', nom:'Soda Passion-Menthe', emoji:'💛', prix:3.20, format:'33cl'},
+    {id:'soda-ananas', nom:'Soda Ananas-Basilic', emoji:'🍍', prix:3.20, format:'33cl'},
+    {id:'soda-goyave', nom:'Soda Goyave-Lime', emoji:'💚', prix:3.50, format:'33cl'},
+  ],
+  ateliers: [
+    {id:'atelier-brassage', nom:'Initiation Brassage Artisanal', emoji:'🍺', prix:160, format:'/pers'},
+    {id:'atelier-kombucha', nom:'Atelier Kombucha & Fermentation', emoji:'🍵', prix:45, format:'/pers'},
+    {id:'atelier-degustation', nom:'Dégustation Guidée Bières & Rhums', emoji:'🥃', prix:55, format:'/pers'},
+    {id:'atelier-domicile', nom:'Brassage à domicile Particuliers', emoji:'🏠', prix:350, format:'forfait'},
+  ],
+  boutique: [
+    {id:'box-decouverte', nom:'Box Découverte', emoji:'🎁', prix:32.00, format:'6 bouteilles'},
+    {id:'box-brasseur', nom:'Box Brasseur', emoji:'🍺', prix:28.00, format:'6 bières'},
+    {id:'box-rhum-biere', nom:'Box Rhum & Bière', emoji:'🥃', prix:58.00, format:'6 bouteilles'},
+    {id:'kit-embouteillage', nom:'Kit Embouteillage Maison', emoji:'🍾', prix:24.90, format:'Kit complet'},
+    {id:'scoby-kombucha', nom:'Scoby Kombucha Actif', emoji:'🧫', prix:9.90, format:'Scoby + liquide'},
+    {id:'grains-kefir', nom:'Grains de Kéfir de Lait', emoji:'🥛', prix:7.90, format:'30g'},
+    {id:'bocal-hermetique', nom:'Bocal Hermétique 1L', emoji:'⚗️', prix:6.90, format:'1L'},
+    {id:'vanille-madagascar', nom:'Vanille Bourbon Madagascar', emoji:'🌿', prix:8.90, format:'5 gousses'},
+    {id:'gingembre-seche', nom:'Gingembre séché tranché', emoji:'🫚', prix:4.50, format:'100g'},
+    {id:'epices-creoles', nom:'Mélange Épices Créoles', emoji:'🌶️', prix:6.90, format:'50g'},
+    {id:'the-sencha', nom:'Thé vert Bio Sencha', emoji:'🍵', prix:5.50, format:'100g'},
+  ]
+};
+
+var BADGES = ['', 'SOLDES', 'DÉSTOCKAGE', 'NOUVEAUTÉ', 'LIMITÉ', 'PROMO', 'ÉPUISÉ'];
+var BADGE_COLORS = {
+  '': '',
+  'SOLDES': '#dc2626',
+  'DÉSTOCKAGE': '#ea580c',
+  'NOUVEAUTÉ': '#c5a059',
+  'LIMITÉ': '#8b3a0a',
+  'PROMO': '#16a34a',
+  'ÉPUISÉ': '#4b5563'
+};
+
+// Charger les données sauvegardées
+function loadSavedData() {
+  try {
+    var saved = localStorage.getItem('zilfusion_admin');
+    if (saved) {
+      var data = JSON.parse(saved);
+      Object.keys(data).forEach(function(cat) {
+        Object.keys(data[cat]).forEach(function(id) {
+          Object.keys(PRODUITS).forEach(function(c) {
+            var p = PRODUITS[c].find(function(x){return x.id===id;});
+            if (p) {
+              if (data[cat][id].prix !== undefined) p.prix = data[cat][id].prix;
+              if (data[cat][id].badge !== undefined) p.badge = data[cat][id].badge;
+              if (data[cat][id].stock !== undefined) p.stock = data[cat][id].stock;
+            }
+          });
+        });
+      });
+    }
+  } catch(e) {}
+}
+
+// Appliquer les prix et badges sur le site
+function applyProduits() {
+  Object.keys(PRODUITS).forEach(function(cat) {
+    PRODUITS[cat].forEach(function(p) {
+      // Mettre à jour tous les éléments avec data-pid
+      document.querySelectorAll('[data-pid="'+p.id+'"]').forEach(function(el) {
+        var priceEls = el.querySelectorAll('.bc-price,.rc-price,.fc-price,.si-price');
+        priceEls.forEach(function(pe) {
+          pe.textContent = p.prix.toFixed(2).replace('.',',') + ' €';
+        });
+        // Mettre à jour le bouton addToCart
+        var btns = el.querySelectorAll('.btn-add,.btn-sm');
+        btns.forEach(function(btn) {
+          var oldOnclick = btn.getAttribute('onclick') || '';
+          var newOnclick = oldOnclick.replace(/,[0-9.]+,/, ','+p.prix+',');
+          btn.setAttribute('onclick', newOnclick);
+        });
+        // Badge
+        var existingBadge = el.querySelector('.admin-badge');
+        if (existingBadge) existingBadge.remove();
+        if (p.badge && p.badge !== '') {
+          var badge = document.createElement('div');
+          badge.className = 'admin-badge';
+          badge.textContent = p.badge;
+          badge.style.cssText = 'position:absolute;top:.7rem;left:.7rem;z-index:10;font-family:var(--fd);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;padding:.25rem .65rem;background:'+BADGE_COLORS[p.badge]+';color:#fff;font-weight:700;';
+          el.style.position = 'relative';
+          el.insertBefore(badge, el.firstChild);
+        }
+        // Badge stock (rouge)
+        var existingStock = el.querySelector('.admin-stock-badge');
+        if (existingStock) existingStock.remove();
+        if (p.stock != null && p.stock <= 20) {
+          var stockBadge = document.createElement('p');
+          stockBadge.className = 'admin-stock-badge';
+          var stockMsg = p.stock === 0 ? '⚠️ Épuisé — plus de stock' : '🔥 Plus que '+p.stock+' bouteille'+(p.stock > 1 ? 's' : '')+' en stock';
+          stockBadge.textContent = stockMsg;
+          stockBadge.style.cssText = 'font-size:.73rem;color:#f87171;font-weight:700;margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);padding:.35rem .75rem;border-radius:4px;';
+          var priceEl = el.querySelector('.bc-price,.rc-price,.fc-price');
+          if (priceEl) priceEl.insertAdjacentElement('afterend', stockBadge);
+        }
+      });
+    });
+  });
+}
+
+// Rendre le HTML des produits admin
+function renderAdminProducts(cat) {
+  var container = document.getElementById('adminProductList-'+cat);
+  container.innerHTML = '';
+  PRODUITS[cat].forEach(function(p) {
+    var savedBadge = p.badge || '';
+    var row = document.createElement('div');
+    row.style.cssText = 'display:grid;grid-template-columns:auto 1fr 120px 120px 190px;gap:1rem;align-items:center;padding:1rem 1.2rem;background:var(--surface);margin-bottom:1px;';
+    row.innerHTML = '<div style="font-size:1.8rem;">'+p.emoji+'</div>'
+      + '<div><p style="font-family:var(--fd);font-size:.8rem;font-weight:700;color:var(--white);">'+p.nom+'</p><p style="font-size:.65rem;color:var(--dim);">'+p.format+'</p></div>'
+      + '<div><label style="font-family:var(--fd);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.3rem;">Prix (€)</label>'
+      + '<input type="number" step="0.10" min="0" value="'+p.prix+'" data-id="'+p.id+'" data-cat="'+cat+'" class="admin-price-input" style="width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--white);padding:.5rem .7rem;font-family:var(--fb);font-size:.9rem;outline:none;"></div>'
+      + '<div><label style="font-family:var(--fd);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.3rem;">Stock</label>'
+      + '<input type="number" min="0" placeholder="Illimité" value="'+(p.stock != null ? p.stock : '')+'" data-id="'+p.id+'" data-cat="'+cat+'" class="admin-stock-input" style="width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--white);padding:.5rem .7rem;font-family:var(--fb);font-size:.9rem;outline:none;" title="Laisser vide = stock illimité"></div>'
+      + '<div><label style="font-family:var(--fd);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.3rem;">Badge</label>'
+      + '<select data-id="'+p.id+'" data-cat="'+cat+'" class="admin-badge-select" style="width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--white);padding:.5rem .7rem;font-family:var(--fb);font-size:.8rem;outline:none;-webkit-appearance:none;">'
+      + BADGES.map(function(b){ return '<option value="'+b+'"'+(b===savedBadge?' selected':'')+'>'+( b==='' ? '— Aucun badge —' : b)+'</option>'; }).join('')
+      + '</select></div>';
+    container.appendChild(row);
+  });
+}
+
+function switchAdminTab(tab) {
+  ['bieres','rhums','ferm','ateliers','boutique'].forEach(function(t) {
+    document.getElementById('admin-'+t).style.display = t===tab ? 'block' : 'none';
+    var btn = document.getElementById('tab-'+t);
+    btn.style.background = t===tab ? 'var(--black)' : 'var(--surface)';
+    btn.style.color = t===tab ? 'var(--gold)' : 'var(--dim)';
+  });
+}
+
+function saveAdminChanges() {
+  // Lire toutes les valeurs des inputs
+  document.querySelectorAll('.admin-price-input').forEach(function(input) {
+    var id = input.dataset.id;
+    var cat = input.dataset.cat;
+    var p = PRODUITS[cat].find(function(x){return x.id===id;});
+    if (p) p.prix = parseFloat(input.value) || p.prix;
+  });
+  document.querySelectorAll('.admin-badge-select').forEach(function(sel) {
+    var id = sel.dataset.id;
+    var cat = sel.dataset.cat;
+    var p = PRODUITS[cat].find(function(x){return x.id===id;});
+    if (p) p.badge = sel.value;
+  });
+  document.querySelectorAll('.admin-stock-input').forEach(function(input) {
+    var id = input.dataset.id;
+    var cat = input.dataset.cat;
+    var p = PRODUITS[cat].find(function(x){return x.id===id;});
+    if (p) p.stock = input.value === '' ? null : parseInt(input.value);
+  });
+  // Sauvegarder dans localStorage
+  var toSave = {};
+  Object.keys(PRODUITS).forEach(function(cat) {
+    toSave[cat] = {};
+    PRODUITS[cat].forEach(function(p) {
+      toSave[cat][p.id] = {prix: p.prix, badge: p.badge||'', stock: p.stock};
+    });
+  });
+  localStorage.setItem('zilfusion_admin', JSON.stringify(toSave));
+  // Appliquer sur le site
+  applyProduits();
+  // Afficher message
+  var msg = document.getElementById('adminSaveMsg');
+  msg.style.display = 'block';
+  setTimeout(function(){ msg.style.display = 'none'; }, 3000);
+}
+
+// Auth admin
+var ADMIN_PWD = 'zilfusion brew';
+function openAdmin() {
+  document.getElementById('adminLoginOverlay').style.display = 'flex';
+  setTimeout(function(){ document.getElementById('adminPwdInput').focus(); }, 100);
+}
+function closeAdminLogin() {
+  document.getElementById('adminLoginOverlay').style.display = 'none';
+  document.getElementById('adminPwdInput').value = '';
+  document.getElementById('adminPwdError').style.display = 'none';
+}
+function checkAdminPwd() {
+  var pwd = document.getElementById('adminPwdInput').value;
+  if (pwd === ADMIN_PWD) {
+    closeAdminLogin();
+    // Ouvrir le panel
+    loadSavedData();
+    renderAdminProducts('bieres');
+    renderAdminProducts('rhums');
+    renderAdminProducts('ferm');
+    document.getElementById('adminPanel').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.getElementById('adminPwdError').style.display = 'block';
+    document.getElementById('adminPwdInput').value = '';
+  }
+}
+function closeAdmin() {
+  document.getElementById('adminPanel').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// Init au chargement
+window.addEventListener('DOMContentLoaded', function() {
+  loadSavedData();
+  applyProduits();
+});
+</script>
+
+</body>
+</html>
