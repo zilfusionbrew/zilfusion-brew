@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shooters gravés — ZilFusion Brew</title>
+  <meta name="description" content="Shooters gravés ZilFusion Brew : verres premium à gravure laser pour rhums arrangés, crèmes artisanales et coffrets dégustation.">
+  <link rel="canonical" href="https://zilfusion.netlify.app/shooters.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Pirata+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    *{box-sizing:border-box;}
+    body{background:#050505;color:#fff;font-family:var(--fb,'Inter',sans-serif);margin:0;}
+
+    /* NAV */
+    .sh-nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:.6rem 3rem;background:linear-gradient(180deg,rgba(8,8,8,.97),rgba(8,8,8,.92));backdrop-filter:blur(18px);border-bottom:1px solid rgba(197,160,89,.18);box-shadow:0 16px 40px rgba(0,0,0,.24);}
+    .sh-nav-logo img{height:90px;width:auto;object-fit:contain;mix-blend-mode:screen;filter:brightness(1.1);}
+    .sh-nav-logo{cursor:pointer;}
+    .sh-nav-links{display:flex;gap:.6rem;flex-wrap:wrap;list-style:none;margin:0;padding:0;}
+    .sh-nav-links a{color:rgba(245,245,245,.8);text-decoration:none;font-size:.7rem;letter-spacing:.1em;padding:.5rem .85rem;border-radius:3px;transition:color .2s;}
+    .sh-nav-links a:hover{color:#c9a646;}
+    .sh-nav-right{display:flex;align-items:center;gap:.8rem;}
+    .sh-cart-btn{background:transparent;border:1px solid rgba(197,160,89,.35);color:#c9a646;font-family:var(--fd,Georgia,serif);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;padding:.55rem 1.1rem;border-radius:3px;cursor:pointer;transition:all .25s;}
+    .sh-cart-btn:hover{background:rgba(197,160,89,.1);border-color:rgba(197,160,89,.6);}
+
+    /* HERO */
+    .sh-hero{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden;background:#050505;}
+    .sh-hero-bg{position:absolute;inset:0;background-image:url('assets/img/shooterlifestylebar_new.jpeg');background-size:cover;background-position:60% center;background-repeat:no-repeat;transition:transform .6s ease;}
+    .sh-hero:hover .sh-hero-bg{transform:scale(1.015);}
+    .sh-hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.88) 0%,rgba(0,0,0,.65) 42%,rgba(0,0,0,.25) 70%,rgba(0,0,0,0) 100%);}
+    .sh-hero-content{position:relative;z-index:1;max-width:560px;padding:5rem 4rem;}
+    .sh-hero-tag{font-family:var(--fd,Georgia,serif);font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:#c9a646;margin-bottom:.7rem;}
+    .sh-hero-content h1{font-family:var(--fd,Georgia,serif);font-size:clamp(2rem,5vw,3.5rem);color:#fff;line-height:1.1;letter-spacing:.03em;margin:0 0 .5rem;text-shadow:0 2px 20px rgba(0,0,0,.7);}
+    .sh-hero-content h1 em{font-style:italic;color:#c9a646;}
+    .sh-hero-line{width:50px;height:1px;background:linear-gradient(90deg,#c9a646,rgba(197,160,89,.3));margin:.8rem 0 1.2rem;}
+    .sh-hero-content p{font-size:.92rem;color:rgba(245,245,245,.78);line-height:1.8;margin-bottom:1.8rem;text-shadow:0 1px 10px rgba(0,0,0,.6);}
+    .sh-hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;}
+
+    /* SECTION GAMME */
+    .sh-section{padding:4.5rem 2rem;background:#050505;}
+    .sh-section-surface{background:#0d0d0d;}
+    .sh-section-title{text-align:center;margin-bottom:3rem;}
+    .sh-section-title .tag{font-family:var(--fd,Georgia,serif);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a646;display:block;margin-bottom:.5rem;}
+    .sh-section-title h2{font-family:var(--fd,Georgia,serif);font-size:clamp(1.4rem,3vw,2.2rem);color:#fff;margin:0;}
+    .sh-section-title h2 em{font-style:italic;color:#c9a646;}
+    .sh-section-title p{font-size:.88rem;color:rgba(245,245,245,.6);max-width:52ch;margin:.8rem auto 0;line-height:1.75;}
+
+    /* PRODUCT CARDS */
+    .sh-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.6rem;max-width:1100px;margin:0 auto;}
+    .sh-card{background:#111;border:1px solid rgba(197,160,89,.12);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease;box-shadow:0 8px 28px rgba(0,0,0,.4);}
+    .sh-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.55);border-color:rgba(197,160,89,.32);}
+    .sh-card-featured{border-color:rgba(197,160,89,.25);background:linear-gradient(135deg,rgba(197,160,89,.04),rgba(0,0,0,.3));}
+    .sh-card-img{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background:#000;}
+    .sh-card-img img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .5s ease;}
+    .sh-card:hover .sh-card-img img{transform:scale(1.05);}
+    .sh-badge{position:absolute;bottom:.8rem;left:.8rem;font-family:var(--fd,Georgia,serif);font-size:.46rem;letter-spacing:.15em;text-transform:uppercase;color:#050505;background:#c9a646;padding:.24rem .7rem;border-radius:2px;}
+    .sh-badge-alt{position:absolute;top:.8rem;right:.8rem;font-family:var(--fd,Georgia,serif);font-size:.46rem;letter-spacing:.15em;text-transform:uppercase;color:#c9a646;background:rgba(197,160,89,.12);border:1px solid rgba(197,160,89,.4);padding:.24rem .7rem;border-radius:2px;}
+    .sh-card-body{padding:1.4rem;display:flex;flex-direction:column;gap:.7rem;flex:1;}
+    .sh-card-cat{font-family:var(--fd,Georgia,serif);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:#c9a646;}
+    .sh-card-name{font-family:var(--fd,Georgia,serif);font-size:1rem;color:#fff;letter-spacing:.04em;line-height:1.2;}
+    .sh-card-desc{font-size:.78rem;color:rgba(245,245,245,.6);line-height:1.7;flex:1;}
+    .sh-card-footer{display:flex;align-items:center;justify-content:space-between;gap:.8rem;margin-top:.5rem;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.05);padding-top:.9rem;}
+    .sh-price{font-family:var(--fd,Georgia,serif);font-size:1.35rem;font-weight:800;color:#c9a646;letter-spacing:-.01em;line-height:1;}
+    .sh-price small{display:block;font-size:.58rem;font-weight:400;color:rgba(197,160,89,.55);letter-spacing:.08em;}
+    .sh-btn-add{background:#c9a646;color:#050505;border:none;border-radius:4px;font-family:var(--fd,Georgia,serif);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;padding:.72rem 1.3rem;cursor:pointer;transition:all .25s;flex-shrink:0;}
+    .sh-btn-add:hover{background:#e0ba52;transform:translateY(-2px);box-shadow:0 6px 18px rgba(197,160,89,.35);}
+    .sh-btn-soon{background:transparent;color:rgba(197,160,89,.7);border:1px solid rgba(197,160,89,.3);border-radius:4px;font-family:var(--fd,Georgia,serif);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;padding:.68rem 1.1rem;cursor:default;flex-shrink:0;}
+
+    /* SPECS SECTION */
+    .sh-specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.2rem;max-width:900px;margin:0 auto;}
+    .sh-spec-item{text-align:center;padding:1.4rem 1rem;border:1px solid rgba(197,160,89,.1);border-radius:8px;background:rgba(197,160,89,.03);}
+    .sh-spec-icon{font-size:1.4rem;margin-bottom:.6rem;}
+    .sh-spec-label{font-family:var(--fd,Georgia,serif);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:#c9a646;margin-bottom:.3rem;}
+    .sh-spec-value{font-size:.82rem;color:rgba(245,245,245,.75);line-height:1.5;}
+
+    /* CTA BOTTOM */
+    .sh-cta{padding:4rem 2rem;background:#050505;border-top:1px solid rgba(197,160,89,.08);text-align:center;}
+    .sh-cta h2{font-family:var(--fd,Georgia,serif);font-size:clamp(1.2rem,2.5vw,1.8rem);color:#fff;margin-bottom:.8rem;}
+    .sh-cta p{font-size:.85rem;color:rgba(245,245,245,.6);max-width:48ch;margin:0 auto 1.6rem;line-height:1.75;}
+
+    /* TOAST */
+    #sh-toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(80px);background:rgba(197,160,89,.96);color:#050505;font-family:var(--fd,Georgia,serif);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:.75rem 2rem;border-radius:4px;transition:transform .35s ease,opacity .35s ease;opacity:0;z-index:9999;white-space:nowrap;}
+    #sh-toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+
+    /* FOOTER */
+    footer.sh-footer{background:#0a0a0a;border-top:1px solid rgba(197,160,89,.1);padding:2rem;text-align:center;font-size:.62rem;color:rgba(245,245,245,.3);line-height:1.8;}
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      #gamme > div > div[style*="grid-template-columns:1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+      }
+      #gamme > div > div > div:last-child {
+        padding: 1.5rem !important;
+      }
+      .sh-nav{padding:.6rem 1.2rem;}
+      .sh-nav-logo img{height:68px;}
+      .sh-nav-links{display:none;}
+      .sh-hero-content{padding:4rem 1.4rem 3rem;}
+      .sh-hero-content h1{font-size:clamp(1.8rem,8vw,2.8rem);}
+      .sh-hero-actions{flex-direction:column;}
+      .sh-hero-actions .btn-g,.sh-hero-actions .btn-o{width:100%;text-align:center;}
+      .sh-grid{grid-template-columns:1fr;}
+      .sh-specs{grid-template-columns:1fr 1fr;}
+      .sh-section{padding:2.8rem 1rem;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="sh-nav">
+    <a href="index.html" class="sh-nav-logo">
+      <img src="assets/img/logo_navbar.jpg" alt="ZilFusion Brew" loading="eager" decoding="async">
+    </a>
+        <ul class="sh-nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="bieres.html">Bières</a></li>
+      <li><a href="rhums.html">Rhums</a></li>
+      <li><a href="shooters.html" style="color:#c9a646;">Shooters</a></li>
+      <li><a href="tulipe.html">Verres Tulipe</a></li>
+      <li><a href="longdrinks.html">Verres Longdrink</a></li>
+      <li><a href="verres-biere.html">Verres à Bière</a></li>
+      <li><a href="verres-coffrets.html">Verres &amp; Coffrets</a></li>
+    </ul>
+    <div class="sh-nav-right">
+      <button class="sh-cart-btn" onclick="location.href='index.html#cart'">🛒 Panier <span id="sh-cart-count">0</span></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="sh-hero">
+    <div class="sh-hero-bg"></div>
+    <div class="sh-hero-overlay"></div>
+    <div class="sh-hero-content">
+      <p class="sh-hero-tag">Brassage artisanal · Gravure laser</p>
+      <h1>L'Art du<br>Shooter<br><em>Artisanal</em></h1>
+      <div class="sh-hero-line"></div>
+      <p>Des créations intenses, pensées pour la dégustation.<br>Entre caractère, précision et savoir-faire.</p>
+      <div class="sh-hero-actions">
+        <a href="#gamme" class="btn-g" style="font-size:.88rem;padding:1rem 2.2rem;text-decoration:none;display:inline-block;">Voir la gamme →</a>
+        <a href="verres-coffrets.html" class="btn-o" style="font-size:.82rem;padding:.95rem 1.6rem;text-decoration:none;display:inline-block;">Coffrets cadeaux</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section class="sh-section sh-section-surface">
+    <div class="sh-section-title">
+      <span class="tag">Le verre signature</span>
+      <h2>Un shooter <em>premium</em></h2>
+    </div>
+    <div class="sh-specs">
+      <div class="sh-spec-item">
+        <div class="sh-spec-icon">⚗️</div>
+        <p class="sh-spec-label">Gravure</p>
+        <p class="sh-spec-value">Laser haute précision<br>Finition sablée</p>
+      </div>
+      <div class="sh-spec-item">
+        <div class="sh-spec-icon">🥃</div>
+        <p class="sh-spec-label">Contenu</p>
+        <p class="sh-spec-value">Rhums arrangés<br>Crèmes artisanales</p>
+      </div>
+      <div class="sh-spec-item">
+        <div class="sh-spec-icon">✦</div>
+        <p class="sh-spec-label">Design</p>
+        <p class="sh-spec-value">Blason ZilFusion Brew<br>Gravure irréversible</p>
+      </div>
+      <div class="sh-spec-item">
+        <div class="sh-spec-icon">🫧</div>
+        <p class="sh-spec-label">Entretien</p>
+        <p class="sh-spec-value">Compatible<br>lave-vaisselle</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUIT UNIQUE -->
+  <section class="sh-section" id="gamme">
+    <div class="sh-section-title">
+      <span class="tag">Notre verre signature</span>
+      <h2>Shooter <em>Gravé Zil Fusion Brew</em></h2>
+    </div>
+
+    <div style="max-width:960px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;background:#0d0d0d;border:1px solid rgba(197,160,89,.18);border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5);">
+
+      <!-- IMAGE -->
+      <div style="aspect-ratio:3/4;overflow:hidden;background:#000;position:relative;" class="sh-prod-img-wrap">
+        <img class="sh-img-default" src="assets/img/shooter-vide-bar.png" alt="Shooter Gravé Zil Fusion Brew — vide" style="width:100%;height:100%;object-fit:cover;object-position:center;position:absolute;inset:0;transition:opacity .5s ease;opacity:1;" loading="lazy" decoding="async">
+        <img class="sh-img-hover" src="assets/img/shooter-rhum-plein.png" alt="Shooter Gravé Zil Fusion Brew — rempli" style="width:100%;height:100%;object-fit:cover;object-position:center;position:absolute;inset:0;transition:opacity .5s ease;opacity:0;" loading="lazy" decoding="async">
+        <div style="position:absolute;bottom:.8rem;left:.8rem;display:flex;gap:.5rem;z-index:2;">
+          <span class="sh-badge" style="position:static;">Gravure laser</span>
+        </div>
+        <div style="position:absolute;bottom:.8rem;right:.8rem;font-family:var(--fd,Georgia,serif);font-size:.46rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(197,160,89,.7);opacity:0;transition:opacity .4s ease;" class="sh-hover-hint">Vue remplie</div>
+      </div>
+
+      <!-- INFOS -->
+      <div style="padding:2.5rem 2.5rem 2.5rem 0;">
+        <p style="font-family:var(--fd,Georgia,serif);font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a646;margin-bottom:.5rem;">Verre shooter · Gravure laser</p>
+        <h3 style="font-family:var(--fd,Georgia,serif);font-size:1.5rem;color:#fff;letter-spacing:.03em;line-height:1.2;margin-bottom:.5rem;">Shooter Gravé<br><em style="color:#c9a646;">Zil Fusion Brew</em></h3>
+        <div style="width:48px;height:1px;background:linear-gradient(90deg,#c9a646,rgba(197,160,89,.3));margin:.7rem 0 1.2rem;"></div>
+        <p style="font-size:.88rem;color:rgba(245,245,245,.65);line-height:1.8;margin-bottom:1.6rem;">Verre shooter compact avec gravure laser Zil Fusion Brew. Pensé pour les dégustations courtes, les rhums arrangés, les crèmes artisanales et les moments de partage.</p>
+
+        <ul style="list-style:none;padding:0;margin:0 0 1.8rem;display:flex;flex-direction:column;gap:.5rem;">
+          <li style="font-size:.82rem;color:rgba(245,245,245,.78);display:flex;align-items:center;gap:.6rem;"><span style="color:#c9a646;">✔</span> Gravure laser haute précision</li>
+          <li style="font-size:.82rem;color:rgba(245,245,245,.78);display:flex;align-items:center;gap:.6rem;"><span style="color:#c9a646;">✔</span> Finition sablée — verre épais résistant</li>
+          <li style="font-size:.82rem;color:rgba(245,245,245,.78);display:flex;align-items:center;gap:.6rem;"><span style="color:#c9a646;">✔</span> Compatible lave-vaisselle</li>
+          <li style="font-size:.82rem;color:rgba(245,245,245,.78);display:flex;align-items:center;gap:.6rem;"><span style="color:#c9a646;">✔</span> Design signature Zil Fusion Brew</li>
+        </ul>
+
+        <div style="display:flex;flex-direction:column;gap:.8rem;background:rgba(0,0,0,.3);border:1px solid rgba(197,160,89,.1);border-radius:10px;padding:1.3rem;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:.8rem;border-bottom:1px solid rgba(255,255,255,.05);">
+            <div>
+              <p style="font-family:var(--fd,Georgia,serif);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(197,160,89,.65);margin-bottom:.2rem;">Unité</p>
+              <p style="font-family:var(--fd,Georgia,serif);font-size:1.6rem;font-weight:800;color:#c9a646;line-height:1;">3 €</p>
+            </div>
+            <button class="sh-btn-add" onclick="shAddToCart('Shooter Gravé Zil Fusion Brew', 3)">Ajouter 1 shooter →</button>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:.8rem;border-bottom:1px solid rgba(255,255,255,.05);">
+            <div>
+              <p style="font-family:var(--fd,Georgia,serif);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(197,160,89,.65);margin-bottom:.2rem;">Pack 2 shooters</p>
+              <p style="font-family:var(--fd,Georgia,serif);font-size:1.6rem;font-weight:800;color:#c9a646;line-height:1;">6 €</p>
+            </div>
+            <button class="sh-btn-add" onclick="shAddToCart('Pack 2 Shooters Gravés Zil Fusion Brew', 6)" style="background:rgba(197,160,89,.15);color:#c9a646;border:1px solid rgba(197,160,89,.4);">Ajouter pack 2 →</button>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <p style="font-family:var(--fd,Georgia,serif);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(197,160,89,.65);margin-bottom:.2rem;">Pack 4 shooters</p>
+              <p style="font-family:var(--fd,Georgia,serif);font-size:1.6rem;font-weight:800;color:#c9a646;line-height:1;">12 €</p>
+            </div>
+            <button class="sh-btn-add" onclick="shAddToCart('Pack 4 Shooters Gravés Zil Fusion Brew', 12)" style="background:rgba(197,160,89,.15);color:#c9a646;border:1px solid rgba(197,160,89,.4);">Ajouter pack 4 →</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LIFESTYLE SECTION -->
+  <section class="sh-section sh-section-surface">
+    <div style="max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+      <div>
+        <p style="font-family:var(--fd,Georgia,serif);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a646;margin-bottom:.6rem;">Le geste qui fait l'effet</p>
+        <h2 style="font-family:var(--fd,Georgia,serif);font-size:clamp(1.4rem,3vw,2rem);color:#fff;margin-bottom:1rem;line-height:1.2;">Un shooter qui<br>se <em style="color:#c9a646;">savoure</em></h2>
+        <div style="width:50px;height:1px;background:linear-gradient(90deg,#c9a646,rgba(197,160,89,.3));margin:.7rem 0 1.2rem;"></div>
+        <p style="font-size:.9rem;color:rgba(245,245,245,.65);line-height:1.85;margin-bottom:1.5rem;">Pensé pour rhums arrangés, crèmes artisanales et coffrets dégustation. Parfait à l'unité ou en pack — le geste signature ZilFusion Brew.</p>
+        <a href="verres-coffrets.html" class="btn-g" style="font-size:.88rem;padding:.95rem 2rem;text-decoration:none;display:inline-block;">Voir les coffrets →</a>
+      </div>
+      <div style="border-radius:14px;overflow:hidden;box-shadow:0 16px 50px rgba(0,0,0,.55);aspect-ratio:4/5;">
+        <img src="assets/img/shooter-rhum-plein.png" alt="Shooter ZilFusion Brew lifestyle bar" style="width:100%;height:100%;object-fit:cover;object-position:55% center;transition:transform .5s ease;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAS -->
+  <section class="sh-cta">
+    <h2>Commander un coffret shooter sur mesure ?</h2>
+    <p>Coffrets personnalisés, gravure spéciale, commandes pro ou événements — contactez-nous directement.</p>
+    <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;">
+      <a href="verres-coffrets.html" class="btn-g" style="font-size:.85rem;padding:.95rem 2rem;text-decoration:none;display:inline-block;">Voir tous les coffrets →</a>
+      <a href="index.html#contact" class="btn-o" style="font-size:.8rem;padding:.9rem 1.6rem;text-decoration:none;display:inline-block;">Nous contacter</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="sh-footer">
+    © 2025 ZilFusion Brew — L'abus d'alcool est dangereux pour la santé. À consommer avec modération. Vente interdite aux mineurs.
+  </footer>
+
+  <!-- TOAST -->
+  <div id="sh-toast"></div>
+
+  <script>
+  (function(){
+    function getCart(){ try{ return JSON.parse(sessionStorage.getItem('cart')||'[]'); }catch(e){ return []; } }
+    function saveCart(c){ sessionStorage.setItem('cart', JSON.stringify(c)); }
+    function updateBadge(){
+      var c = getCart();
+      var count = c.reduce(function(s,i){ return s+i.qty; }, 0);
+      var el = document.getElementById('sh-cart-count');
+      if(el) el.textContent = count;
+    }
+    window.shAddToCart = function(name, price){
+      var ids = {
+        'Shooter Gravé Zil Fusion Brew|300': 'shooter-grave',
+        'Pack 2 Shooters Gravés Zil Fusion Brew|600': 'pack-2-shooters-graves',
+        'Pack 4 Shooters Gravés Zil Fusion Brew|1200': 'pack-4-shooters-graves'
+      };
+      var id = ids[name + '|' + Math.round(price * 100)];
+      var cart = getCart();
+      var ex = cart.find(function(i){ return i.id===id; });
+      if(ex){ ex.qty++; } else { cart.push({id:id, name:name, price:price, qty:1}); }
+      saveCart(cart);
+      updateBadge();
+      shToast('✔ ' + name + ' ajouté');
+    };
+        function shToast(msg){
+      var t = document.getElementById('sh-toast');
+      if(!t) return;
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(function(){ t.classList.remove('show'); }, 2800);
+    }
+    updateBadge();
+
+    // Hover image swap on product card
+    var wrap = document.querySelector('.sh-prod-img-wrap');
+    if (wrap) {
+      var imgDefault = wrap.querySelector('.sh-img-default');
+      var imgHover   = wrap.querySelector('.sh-img-hover');
+      var hint       = wrap.querySelector('.sh-hover-hint');
+      wrap.addEventListener('mouseenter', function() {
+        imgDefault.style.opacity = '0';
+        imgHover.style.opacity   = '1';
+        if (hint) hint.style.opacity = '1';
+      });
+      wrap.addEventListener('mouseleave', function() {
+        imgDefault.style.opacity = '1';
+        imgHover.style.opacity   = '0';
+        if (hint) hint.style.opacity = '0';
+      });
+    }
+  })();
+  </script>
+</body>
+</html>

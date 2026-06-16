@@ -1,0 +1,8 @@
+{
+  "name": "zilfusion-brew",
+  "version": "1.0.0",
+  "description": "ZilFusion Brew – Brasserie Artisanale",
+  "dependencies": {
+    "stripe": "^14.0.0"
+  }
+}

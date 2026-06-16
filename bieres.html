@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bières artisanales — Zil Fusion Brew</title>
+  <meta name="description" content="Bières artisanales Zil Fusion Brew : gamme craft, créations tropicales, verres associés et univers brassicole artisanal.">
+  <link rel="canonical" href="https://zilfusion.netlify.app/bieres.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Pirata+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    *{box-sizing:border-box;}
+    body{background:#050505;color:#fff;font-family:var(--fb,'Inter',sans-serif);margin:0;}
+    .sh-nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:.6rem 3rem;background:linear-gradient(180deg,rgba(8,8,8,.97),rgba(8,8,8,.92));backdrop-filter:blur(18px);border-bottom:1px solid rgba(197,160,89,.18);box-shadow:0 16px 40px rgba(0,0,0,.24);}
+    .sh-nav-logo img{height:90px;width:auto;object-fit:contain;mix-blend-mode:screen;}
+    .sh-nav-links{display:flex;gap:.6rem;flex-wrap:wrap;list-style:none;margin:0;padding:0;}
+    .sh-nav-links a{color:rgba(245,245,245,.8);text-decoration:none;font-size:.7rem;letter-spacing:.1em;padding:.5rem .85rem;transition:color .2s;}
+    .sh-nav-links a:hover,.sh-nav-links a.active{color:#c9a646;}
+    .sh-cart-btn{background:transparent;border:1px solid rgba(197,160,89,.35);color:#c9a646;font-family:var(--fd,Georgia,serif);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;padding:.55rem 1.1rem;border-radius:3px;cursor:pointer;transition:all .25s;}
+    .sh-cart-btn:hover{background:rgba(197,160,89,.1);}
+    .sh-hero{position:relative;min-height:75vh;display:flex;align-items:center;overflow:hidden;}
+    .sh-hero-bg{position:absolute;inset:0;background-image:url('assets/img/biere-lifestyle-bar.png');background-size:cover;background-position:center;transition:transform .6s;}
+    .sh-hero:hover .sh-hero-bg{transform:scale(1.015);}
+    .sh-hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.88) 0%,rgba(0,0,0,.6) 45%,rgba(0,0,0,.2) 75%,transparent 100%);}
+    .sh-hero-content{position:relative;z-index:1;max-width:560px;padding:5rem 4rem;}
+    .sh-hero-tag{font-family:var(--fd,Georgia,serif);font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:#c9a646;margin-bottom:.7rem;}
+    .sh-hero-content h1{font-family:var(--fp,"Pirata One",serif);font-size:clamp(2rem,5vw,3.2rem);color:#fff;line-height:1.1;margin:0 0 .5rem;text-shadow:0 2px 20px rgba(0,0,0,.7);}
+    .sh-hero-content h1 em{font-family:var(--fs,"Playfair Display",serif);font-style:italic;color:#c9a646;}
+    .sh-line{width:50px;height:1px;background:linear-gradient(90deg,#c9a646,rgba(197,160,89,.3));margin:.8rem 0 1.2rem;}
+    .sh-hero-content p{font-size:.92rem;color:rgba(245,245,245,.78);line-height:1.8;margin-bottom:1.8rem;}
+    .sh-sec{padding:4.5rem 2rem;background:#050505;}
+    .sh-sec-surface{background:#0d0d0d;}
+    .sh-sec-title{text-align:center;margin-bottom:3rem;}
+    .sh-sec-title .tag{font-family:var(--fd,Georgia,serif);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a646;display:block;margin-bottom:.5rem;}
+    .sh-sec-title h2{font-family:var(--fp,"Pirata One",serif);font-size:clamp(1.4rem,3vw,2.2rem);color:#fff;margin:0;}
+    .sh-sec-title h2 em{font-family:var(--fs,"Playfair Display",serif);font-style:italic;color:#c9a646;}
+    .sh-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.4rem;max-width:1100px;margin:0 auto;}
+    .sh-card{background:#0d0d0d;border:1px solid rgba(197,160,89,.12);border-radius:12px;overflow:hidden;transition:transform .28s,box-shadow .28s,border-color .28s;}
+    .sh-card:hover{transform:translateY(-5px);box-shadow:0 18px 48px rgba(0,0,0,.55);border-color:rgba(197,160,89,.32);}
+    .sh-card-img{aspect-ratio:4/3;overflow:hidden;background:#000;}
+    .sh-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+    .sh-card:hover .sh-card-img img{transform:scale(1.04);}
+    .sh-card-body{padding:1.3rem;}
+    .sh-card-cat{font-family:var(--fd,Georgia,serif);font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:#c9a646;margin-bottom:.4rem;}
+    .sh-card-name{font-family:var(--fp,"Pirata One",serif);font-size:.95rem;color:#fff;margin-bottom:.5rem;}
+    .sh-card-desc{font-size:.78rem;color:rgba(245,245,245,.62);line-height:1.65;}
+    footer.sh-footer{background:#0a0a0a;border-top:1px solid rgba(197,160,89,.1);padding:2rem;text-align:center;font-size:.62rem;color:rgba(245,245,245,.3);line-height:1.8;}
+    @media(max-width:768px){.sh-nav{padding:.6rem 1.2rem;}.sh-nav-logo img{height:68px;}.sh-nav-links{display:none;}.sh-hero-content{padding:4rem 1.4rem 3rem;}}
+  </style>
+</head>
+<body>
+  <nav class="sh-nav">
+    <a href="index.html"><img src="assets/img/logo_navbar.jpg" alt="Zil Fusion Brew" style="height:90px;width:auto;object-fit:contain;mix-blend-mode:screen;" loading="eager" decoding="async"></a>
+    <ul class="sh-nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="bieres.html" class="active">Bières</a></li>
+      <li><a href="rhums.html">Rhums</a></li>
+      <li><a href="shooters.html">Shooters</a></li>
+      <li><a href="tulipe.html">Verres Tulipe</a></li>
+      <li><a href="longdrinks.html">Verres Longdrink</a></li>
+      <li><a href="verres-biere.html">Verres à Bière</a></li>
+      <li><a href="verres-coffrets.html">Verres &amp; Coffrets</a></li>
+    </ul>
+    <button class="sh-cart-btn" onclick="location.href='index.html#cart'">🛒 Panier</button>
+  </nav>
+
+  <section class="sh-hero">
+    <div class="sh-hero-bg"></div>
+    <div class="sh-hero-overlay"></div>
+    <div class="sh-hero-content">
+      <p class="sh-hero-tag">Brassage artisanal</p>
+      <h1>L'Art du<br>Brassage<br><em>Artisanal</em></h1>
+      <div class="sh-line"></div>
+      <p>Des bières uniques, brassées avec passion.<br>Entre tradition, caractère et modernité.</p>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap;">
+        <a href="#gamme" class="btn-g" style="font-size:.88rem;padding:1rem 2.2rem;text-decoration:none;display:inline-block;">Voir nos bières →</a>
+        <a href="verres-biere.html" class="btn-o" style="font-size:.82rem;padding:.95rem 1.6rem;text-decoration:none;display:inline-block;">Verres à bière</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sh-sec sh-sec-surface" id="gamme">
+    <div class="sh-sec-title">
+      <span class="tag">Nos créations</span>
+      <h2>Gamme <em>bières artisanales</em></h2>
+    </div>
+    <div class="sh-grid">
+      <div class="sh-card">
+        <div class="sh-card-img"><img src="assets/img/gamme_bieres_artisanales.png" alt="Bières artisanales ZilFusion Brew" loading="lazy" decoding="async"></div>
+        <div class="sh-card-body">
+          <p class="sh-card-cat">Brassage artisanal</p>
+          <h3 class="sh-card-name">Collection Bières ZilFusion Brew</h3>
+          <p class="sh-card-desc">Pale Ale, IPA, Blanches, Sours — des bières brassées avec passion et des ingrédients sélectionnés aux quatre coins du monde.</p>
+        </div>
+      </div>
+      <div class="sh-card">
+        <div class="sh-card-img"><img src="assets/img/biere-pinte-remplie.png" alt="Pinte ZilFusion Brew" loading="lazy" decoding="async"></div>
+        <div class="sh-card-body">
+          <p class="sh-card-cat">Verre signature</p>
+          <h3 class="sh-card-name">Verre à bière gravé</h3>
+          <p class="sh-card-desc">Le verre officiel ZilFusion Brew pour sublimer chaque dégustation. Gravure laser premium, condensation réelle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sh-sec" style="text-align:center;border-top:1px solid rgba(197,160,89,.08);">
+    <h2 style="font-family:var(--fd,Georgia,serif);font-size:1.5rem;color:#fff;margin-bottom:.8rem;">Envie du verre qui va avec ?</h2>
+    <p style="font-size:.85rem;color:rgba(245,245,245,.6);max-width:48ch;margin:0 auto 1.6rem;line-height:1.75;">Découvrez nos verres à bière gravés Zil Fusion Brew, conçus pour sublimer la mousse et les arômes.</p>
+    <a href="verres-biere.html" class="btn-g" style="font-size:.88rem;padding:.95rem 2rem;text-decoration:none;display:inline-block;">Voir les verres à bière →</a>
+  </section>
+
+  <footer class="sh-footer">© 2025 Zil Fusion Brew — L'abus d'alcool est dangereux pour la santé. À consommer avec modération. Vente interdite aux mineurs.</footer>
+</body>
+</html>

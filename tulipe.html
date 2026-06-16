@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verre Tulipe Dégustation — Zil Fusion Brew</title>
+  <meta name="description" content="Verre tulipe de dégustation Zil Fusion Brew : gravure laser premium, forme aromatique et packs pour rhums arrangés et spiritueux.">
+  <link rel="canonical" href="https://zilfusion.netlify.app/tulipe.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Pirata+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    *{box-sizing:border-box;}
+    body{background:#050505;color:#fff;font-family:var(--fb,'Inter',sans-serif);margin:0;}
+
+    /* NAV — identique shooters */
+    .sh-nav{position:sticky;top:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:.6rem 3rem;background:linear-gradient(180deg,rgba(8,8,8,.97),rgba(8,8,8,.92));backdrop-filter:blur(18px);border-bottom:1px solid rgba(197,160,89,.18);box-shadow:0 16px 40px rgba(0,0,0,.24);}
+    .sh-nav-logo img{height:90px;width:auto;object-fit:contain;mix-blend-mode:screen;filter:brightness(1.1);}
+    .sh-nav-logo{cursor:pointer;}
+    .sh-nav-links{display:flex;gap:.6rem;flex-wrap:wrap;list-style:none;margin:0;padding:0;}
+    .sh-nav-links a{color:rgba(245,245,245,.8);text-decoration:none;font-size:.7rem;letter-spacing:.1em;padding:.5rem .85rem;border-radius:3px;transition:color .2s;}
+    .sh-nav-links a:hover{color:#c9a646;}
+    .sh-nav-links a.active{color:#c9a646;}
+    .sh-nav-right{display:flex;align-items:center;gap:.8rem;}
+    .sh-cart-btn{background:transparent;border:1px solid rgba(197,160,89,.35);color:#c9a646;font-family:var(--fd,Georgia,serif);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;padding:.55rem 1.1rem;border-radius:3px;cursor:pointer;transition:all .25s;}
+    .sh-cart-btn:hover{background:rgba(197,160,89,.1);border-color:rgba(197,160,89,.6);}
+
+    /* HERO */
+    .sh-hero{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden;background:#050505;}
+    .sh-hero-bg{position:absolute;inset:0;background-image:url('assets/img/tulipe-lifestyle-bar.png');background-size:cover;background-position:62% center;background-repeat:no-repeat;transition:transform .6s ease;}
+    .sh-hero:hover .sh-hero-bg{transform:scale(1.015);}
+    .sh-hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.88) 0%,rgba(0,0,0,.65) 42%,rgba(0,0,0,.25) 70%,rgba(0,0,0,0) 100%);}
+    .sh-hero-content{position:relative;z-index:1;max-width:560px;padding:5rem 4rem;}
+    .sh-hero-tag{font-family:var(--fd,Georgia,serif);font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:#c9a646;margin-bottom:.7rem;}
+    .sh-hero-content h1{font-family:var(--fp,'Pirata One',serif);font-size:clamp(2rem,5vw,3.5rem);color:#fff;line-height:1.1;letter-spacing:.03em;margin:0 0 .5rem;text-shadow:0 2px 20px rgba(0,0,0,.7);}
+    .sh-hero-content h1 em{font-family:var(--fs,'Playfair Display',serif);font-family:var(--fs,"Playfair Display",serif);font-style:italic;color:#c9a646;}
+    .sh-hero-line{width:50px;height:1px;background:linear-gradient(90deg,#c9a646,rgba(197,160,89,.3));margin:.8rem 0 1.2rem;}
+    .sh-hero-content p{font-size:.92rem;color:rgba(245,245,245,.78);line-height:1.8;margin-bottom:1.8rem;text-shadow:0 1px 10px rgba(0,0,0,.6);}
+    .sh-hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;}
+
+    /* SECTIONS */
+    .sh-section{padding:4.5rem 2rem;background:#050505;}
+    .sh-section-surface{background:#0d0d0d;}
+    .sh-section-title{text-align:center;margin-bottom:3rem;}
+    .sh-section-title .tag{font-family:var(--fd,Georgia,serif);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a646;display:block;margin-bottom:.5rem;}
+    .sh-section-title h2{font-family:var(--fp,'Pirata One',serif);font-size:clamp(1.4rem,3vw,2.2rem);color:#fff;margin:0;}
+    .sh-section-title h2 em{font-family:var(--fs,"Playfair Display",serif);font-style:italic;color:#c9a646;}
+
+    /* SPECS */
+    .tp-specs{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;max-width:860px;margin:0 auto;}
+    .tp-spec{text-align:center;padding:1.3rem 1rem;border:1px solid rgba(197,160,89,.1);border-radius:8px;background:rgba(197,160,89,.03);}
+    .tp-spec-icon{font-size:1.3rem;margin-bottom:.5rem;}
+    .tp-spec-label{font-family:var(--fd,Georgia,serif);font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;color:#c9a646;margin-bottom:.3rem;}
+    .tp-spec-value{font-size:.82rem;color:rgba(245,245,245,.72);line-height:1.5;}
+
+    /* PRODUIT SPLIT */
+    .tp-product-inner{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4.5rem;align-items:start;}
+    .tp-main-img{border-radius:14px;overflow:hidden;background:#000;box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 0 1px rgba(197,160,89,.12);}
+    .tp-main-img img{width:100%;display:block;object-fit:cover;transition:transform .5s ease;}
+    .tp-main-img:hover img{transform:scale(1.03);}
+    .tp-thumb-row{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-top:.8rem;}
+    .tp-thumb{border-radius:8px;overflow:hidden;background:#000;aspect-ratio:4/3;border:1px solid rgba(197,160,89,.1);cursor:pointer;transition:border-color .2s;}
+    .tp-thumb:hover,.tp-thumb.active-thumb{border-color:rgba(197,160,89,.45);box-shadow:0 0 0 2px rgba(197,160,89,.2);}
+    .tp-thumb img{width:100%;height:100%;object-fit:cover;object-position:center 20%;}
+
+    /* INFO */
+    .tp-info-cat{font-family:var(--fd,Georgia,serif);font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a646;margin-bottom:.5rem;}
+    .tp-checklist{list-style:none;padding:0;margin:0 0 1.8rem;display:flex;flex-direction:column;gap:.5rem;}
+    .tp-checklist li{font-size:.82rem;color:rgba(245,245,245,.8);display:flex;align-items:center;gap:.6rem;}
+
+    /* PRICING — identique shooters */
+    .sh-btn-add{background:#c9a646;color:#050505;border:none;border-radius:4px;font-family:var(--fd,Georgia,serif);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;padding:.75rem 1.3rem;cursor:pointer;transition:all .25s;flex-shrink:0;}
+    .sh-btn-add:hover{background:#e0ba52;transform:translateY(-2px);box-shadow:0 6px 18px rgba(197,160,89,.35);}
+    .sh-btn-sec{background:rgba(197,160,89,.1);color:#c9a646;border:1px solid rgba(197,160,89,.35);border-radius:4px;font-family:var(--fd,Georgia,serif);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;padding:.72rem 1.2rem;cursor:pointer;transition:all .25s;flex-shrink:0;}
+    .sh-btn-sec:hover{background:rgba(197,160,89,.2);border-color:rgba(197,160,89,.6);}
+
+    /* TOAST */
+    #tp-toast{position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%) translateY(80px);background:rgba(197,160,89,.96);color:#050505;font-family:var(--fd,Georgia,serif);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:.75rem 2rem;border-radius:4px;transition:transform .35s ease,opacity .35s ease;opacity:0;z-index:9999;white-space:nowrap;}
+    #tp-toast.show{transform:translateX(-50%) translateY(0);opacity:1;}
+
+    footer.sh-footer{background:#0a0a0a;border-top:1px solid rgba(197,160,89,.1);padding:2rem;text-align:center;font-size:.62rem;color:rgba(245,245,245,.3);line-height:1.8;}
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .sh-nav{padding:.6rem 1.2rem;}
+      .sh-nav-logo img{height:68px;}
+      .sh-nav-links{display:none;}
+      .sh-hero-content{padding:4rem 1.4rem 3rem;}
+      .sh-hero-content h1{font-size:clamp(1.8rem,8vw,2.8rem);}
+      .sh-hero-actions{flex-direction:column;}
+      .sh-hero-actions .btn-g,.sh-hero-actions .btn-o{width:100%;text-align:center;}
+      .tp-product-inner{grid-template-columns:1fr;gap:2.5rem;}
+      .tp-specs{grid-template-columns:1fr 1fr;}
+      .sh-section{padding:2.8rem 1rem;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="sh-nav">
+    <a href="index.html"><img src="assets/img/logo_navbar.jpg" alt="Zil Fusion Brew" style="height:90px;width:auto;object-fit:contain;mix-blend-mode:screen;" loading="eager" decoding="async"></a>
+    <ul class="sh-nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="bieres.html">Bières</a></li>
+      <li><a href="rhums.html">Rhums</a></li>
+      <li><a href="shooters.html">Shooters</a></li>
+      <li><a href="tulipe.html" class="active">Verres Tulipe</a></li>
+      <li><a href="longdrinks.html">Verres Longdrink</a></li>
+      <li><a href="verres-biere.html">Verres à Bière</a></li>
+      <li><a href="verres-coffrets.html">Verres &amp; Coffrets</a></li>
+    </ul>
+    <button class="sh-cart-btn" onclick="location.href='index.html#cart'">🛒 Panier</button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="sh-hero">
+    <div class="sh-hero-bg"></div>
+    <div class="sh-hero-overlay"></div>
+    <div class="sh-hero-content">
+      <p class="sh-hero-tag">Dégustation premium · Gravure laser</p>
+      <h1>L'Art de<br>la Tulipe<br><em>Artisanale</em></h1>
+      <div class="sh-hero-line"></div>
+      <p>La forme qui concentre les arômes.<br>Chaque dégustation devient un rituel premium.</p>
+      <div class="sh-hero-actions">
+        <a href="#produit" class="btn-g" style="font-size:.88rem;padding:1rem 2.2rem;text-decoration:none;display:inline-block;">Voir le verre →</a>
+        <a href="verres-coffrets.html" class="btn-o" style="font-size:.82rem;padding:.95rem 1.6rem;text-decoration:none;display:inline-block;">Coffrets cadeaux</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section class="sh-section sh-section-surface">
+    <div class="tp-specs">
+      <div class="tp-spec"><div class="tp-spec-icon">⚗️</div><p class="tp-spec-label">Capacité</p><p class="tp-spec-value">3.5 oz</p></div>
+      <div class="tp-spec"><div class="tp-spec-icon">📏</div><p class="tp-spec-label">Hauteur</p><p class="tp-spec-value">7.5 cm</p></div>
+      <div class="tp-spec"><div class="tp-spec-icon">⭕</div><p class="tp-spec-label">Diamètre</p><p class="tp-spec-value">4 cm</p></div>
+      <div class="tp-spec"><div class="tp-spec-icon">✦</div><p class="tp-spec-label">Gravure</p><p class="tp-spec-value">Laser · Sablée</p></div>
+      <div class="tp-spec"><div class="tp-spec-icon">🫧</div><p class="tp-spec-label">Entretien</p><p class="tp-spec-value">Lave-vaisselle</p></div>
+    </div>
+  </section>
+
+  <!-- PRODUIT -->
+  <section class="sh-section" id="produit">
+    <div class="tp-product-inner">
+
+      <!-- IMAGE PRODUIT UNIQUE -->
+      <div>
+        <div style="border-radius:14px;overflow:hidden;background:#000;box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 0 1px rgba(197,160,89,.12);max-width:560px;margin:0 auto;">
+          <img src="assets/img/verre-tulipe-fiche.png" alt="Verre Tulipe Gravé Zil Fusion Brew" style="width:100%;display:block;object-fit:contain;transition:transform .5s ease;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'" loading="lazy" decoding="async">
+        </div>
+      </div>
+
+      <!-- INFOS + PRIX -->
+      <div>
+        <p class="tp-info-cat">Verre tulipe · Dégustation premium · Gravure laser</p>
+        <h2 style="font-family:var(--fp,'Pirata One',serif);font-size:1.6rem;color:#fff;letter-spacing:.03em;line-height:1.15;margin-bottom:.5rem;">Verre Tulipe Gravé<br><em style="font-family:var(--fs,'Playfair Display',serif);font-style:italic;color:#c9a646;">Zil Fusion Brew</em></h2>
+        <div style="width:48px;height:1px;background:linear-gradient(90deg,#c9a646,rgba(197,160,89,.3));margin:.6rem 0 1.2rem;"></div>
+        <p style="font-size:.88rem;color:rgba(245,245,245,.65);line-height:1.8;margin-bottom:1.4rem;">Verre tulipe de dégustation avec gravure laser Zil Fusion Brew. Sa forme concentre les arômes et sublime les rhums arrangés, crèmes artisanales et spiritueux.</p>
+
+        <ul class="tp-checklist">
+          <li><span style="color:#c9a646;">✔</span> Gravure laser haute précision</li>
+          <li><span style="color:#c9a646;">✔</span> Forme tulipe — concentre les arômes</li>
+          <li><span style="color:#c9a646;">✔</span> Blason ZilFusion Brew face avant</li>
+          <li><span style="color:#c9a646;">✔</span> Zil Fusion Brew gravé face arrière</li>
+          <li><span style="color:#c9a646;">✔</span> Verre épais · Compatible lave-vaisselle</li>
+        </ul>
+
+        <div style="background:rgba(0,0,0,.35);border:1px solid rgba(197,160,89,.12);border-radius:12px;padding:1.4rem;display:flex;flex-direction:column;gap:0;">
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.05);gap:.8rem;flex-wrap:wrap;">
+            <div>
+              <p style="font-family:var(--fd,Georgia,serif);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(197,160,89,.65);margin-bottom:.2rem;">1 verre tulipe</p>
+              <p style="font-family:var(--fd,Georgia,serif);font-size:1.5rem;font-weight:800;color:#c9a646;line-height:1;">8 €</p>
+            </div>
+            <button class="sh-btn-add" onclick="tpAdd('Verre Tulipe Gravé Zil Fusion Brew', 8)">Ajouter 1 tulipe →</button>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.05);gap:.8rem;flex-wrap:wrap;">
+            <div>
+              <p style="font-family:var(--fd,Georgia,serif);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(197,160,89,.65);margin-bottom:.2rem;">Pack 2 verres tulipe</p>
+              <p style="font-family:var(--fd,Georgia,serif);font-size:1.5rem;font-weight:800;color:#c9a646;line-height:1;">15 €</p>
+            </div>
+            <button class="sh-btn-sec" onclick="tpAdd('Pack 2 Verres Tulipe Gravés Zil Fusion Brew', 15)">Ajouter pack 2 →</button>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:.8rem 0 0;gap:.8rem;flex-wrap:wrap;">
+            <div>
+              <p style="font-family:var(--fd,Georgia,serif);font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(197,160,89,.65);margin-bottom:.2rem;">Pack 4 verres tulipe</p>
+              <p style="font-family:var(--fd,Georgia,serif);font-size:1.5rem;font-weight:800;color:#c9a646;line-height:1;">28 €</p>
+            </div>
+            <button class="sh-btn-sec" onclick="tpAdd('Pack 4 Verres Tulipe Gravés Zil Fusion Brew', 28)">Ajouter pack 4 →</button>
+          </div>
+        </div>
+        <p style="font-size:.62rem;color:rgba(197,160,89,.5);text-align:center;margin-top:.8rem;font-style:italic;">Gravure irréversible · Production artisanale · Expédié avec soin</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMPARAISON -->
+  <section class="sh-section sh-section-surface">
+    <div style="max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+      <div>
+        <p style="font-family:var(--fd,Georgia,serif);font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a646;margin-bottom:.6rem;">Options de gravure</p>
+        <h2 style="font-family:var(--fp,'Pirata One',serif);font-size:clamp(1.4rem,3vw,2rem);color:#fff;margin-bottom:1rem;line-height:1.2;">Face avant &amp; face arrière —<br><em style="font-family:var(--fs,'Playfair Display',serif);font-style:italic;color:#c9a646;">une gravure signature</em></h2>
+        <div style="width:50px;height:1px;background:linear-gradient(90deg,#c9a646,rgba(197,160,89,.3));margin:.7rem 0 1.2rem;"></div>
+        <p style="font-size:.9rem;color:rgba(245,245,245,.65);line-height:1.85;">Chaque verre tulipe est gravé au laser des deux côtés — le blason ZilFusion Brew en façade, le nom de la marque au dos. Une pièce unique, pensée pour la dégustation et le cadeau premium.</p>
+      </div>
+      <div style="border-radius:14px;overflow:hidden;box-shadow:0 16px 50px rgba(0,0,0,.55);">
+        <img src="assets/img/tulipe-composition-premium.png" alt="Collection verres tulipe ZilFusion Brew" style="width:100%;display:block;object-fit:contain;background:#050505;" loading="lazy" decoding="async">
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="sh-section" style="text-align:center;border-top:1px solid rgba(197,160,89,.08);">
+    <h2 style="font-family:var(--fp,'Pirata One',serif);font-size:clamp(1.2rem,2.5vw,1.8rem);color:#fff;margin-bottom:.8rem;">Un coffret tulipe sur mesure ?</h2>
+    <p style="font-size:.85rem;color:rgba(245,245,245,.6);max-width:48ch;margin:0 auto 1.6rem;line-height:1.75;">Commandes pro, événements, gravure personnalisée — contactez-nous directement.</p>
+    <div style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;">
+      <a href="verres-coffrets.html" class="btn-g" style="font-size:.85rem;padding:.95rem 2rem;text-decoration:none;display:inline-block;">Voir tous les coffrets →</a>
+      <a href="index.html" class="btn-o" style="font-size:.8rem;padding:.9rem 1.6rem;text-decoration:none;display:inline-block;">Retour accueil</a>
+    </div>
+  </section>
+
+  <footer class="sh-footer">© 2025 Zil Fusion Brew — L'abus d'alcool est dangereux pour la santé. À consommer avec modération. Vente interdite aux mineurs.</footer>
+  <div id="tp-toast"></div>
+
+  <script>
+  (function(){
+    function getCart(){ try{ return JSON.parse(sessionStorage.getItem('cart')||'[]'); }catch(e){ return []; } }
+    function saveCart(c){ sessionStorage.setItem('cart', JSON.stringify(c)); }
+    function updateBadge(){
+      var n = getCart().reduce(function(s,i){ return s+i.qty; }, 0);
+      var el = document.getElementById('tp-cart-count');
+      if(el) el.textContent = n;
+    }
+    window.tpAdd = function(name, price){
+      var ids = {
+        'Verre Tulipe Gravé Zil Fusion Brew|800': 'verre-tulipe-grave',
+        'Pack 2 Verres Tulipe Gravés Zil Fusion Brew|1500': 'pack-2-verres-tulipe',
+        'Pack 4 Verres Tulipe Gravés Zil Fusion Brew|2800': 'pack-4-verres-tulipe'
+      };
+      var id = ids[name + '|' + Math.round(price * 100)];
+      var cart = getCart();
+      var ex = cart.find(function(i){ return i.id===id; });
+      if(ex){ ex.qty++; } else { cart.push({id:id, name:name, price:price, qty:1}); }
+      saveCart(cart); updateBadge();
+      var t = document.getElementById('tp-toast');
+      t.textContent = '✔ ' + name + ' ajouté';
+      t.classList.add('show');
+      setTimeout(function(){ t.classList.remove('show'); }, 2800);
+    };
+        window.tpSwitch = function(src, thumb){
+      var img = document.getElementById('tp-img-main');
+      img.style.opacity='0';
+      setTimeout(function(){ img.src=src; img.style.opacity='1'; img.style.transition='opacity .4s'; }, 200);
+      document.querySelectorAll('.tp-thumb').forEach(function(t){ t.classList.remove('active-thumb'); });
+      thumb.classList.add('active-thumb');
+    };
+    updateBadge();
+  })();
+  </script>
+</body>
+</html>

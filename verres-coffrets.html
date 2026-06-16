@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verres gravés & Coffrets — ZilFusion Brew</title>
+  <meta name="description" content="Verres gravés et coffrets ZilFusion Brew : shooters, tulipes, longdrinks, verres à bière et cadeaux premium personnalisables.">
+  <link rel="canonical" href="https://zilfusion.netlify.app/verres-coffrets.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Pirata+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── PAGE VERRES & COFFRETS ── */
+    * { box-sizing: border-box; }
+    body { background: #050505; color: #fff; font-family: var(--fb, 'Inter', sans-serif); margin: 0; }
+
+    .vc-nav {
+      position: sticky; top: 0; z-index: 200;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: .6rem 3rem;
+      background: linear-gradient(180deg, rgba(8,8,8,.97), rgba(8,8,8,.92));
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(197,160,89,.18);
+    }
+    .vc-nav a { color: rgba(245,245,245,.8); text-decoration: none; font-size: .72rem; letter-spacing: .1em; transition: color .2s; }
+    .vc-nav a:hover { color: #c9a646; }
+    .vc-logo img { height: 90px; width: auto; object-fit: contain; mix-blend-mode: screen; }
+    .vc-cart-btn {
+      background: transparent; border: 1px solid rgba(197,160,89,.35); color: #c9a646;
+      font-family: var(--fd, Georgia, serif); font-size: .6rem; letter-spacing: .14em; text-transform: uppercase;
+      padding: .55rem 1.2rem; border-radius: 3px; cursor: pointer; transition: all .25s;
+    }
+    .vc-cart-btn:hover { background: rgba(197,160,89,.1); border-color: rgba(197,160,89,.6); }
+
+    /* HERO */
+    .vc-hero {
+      background: var(--black, #050505);
+      padding: 5.5rem 2rem 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .vc-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 55% at 50% 40%, rgba(197,160,89,.06), transparent 70%);
+      pointer-events: none;
+    }
+    .vc-hero-tag {
+      font-family: var(--fd, Georgia, serif); font-size: .56rem; letter-spacing: .22em;
+      text-transform: uppercase; color: #c9a646; margin-bottom: .6rem;
+    }
+    .vc-hero h1 {
+      font-family: var(--fp, 'Pirata One', serif); font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: #fff; margin: 0 0 .6rem; line-height: 1.15; letter-spacing: .03em;
+    }
+    .vc-hero h1 em { font-style: italic; color: #c9a646; }
+    .vc-hero-line {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, #c9a646, rgba(197,160,89,.3));
+      margin: .8rem auto 1.4rem;
+    }
+    .vc-hero p { font-size: .92rem; color: rgba(245,245,245,.7); line-height: 1.8; max-width: 52ch; margin: 0 auto; }
+    .vc-badges {
+      display: inline-flex; gap: 2rem; margin-top: 1.8rem; flex-wrap: wrap; justify-content: center;
+      font-family: var(--fd, Georgia, serif); font-size: .54rem; letter-spacing: .15em; text-transform: uppercase; color: #c9a646;
+    }
+
+    /* GRID PRODUITS */
+    .vc-section { padding: 4rem 2rem; }
+    .vc-section-dark { background: #050505; }
+    .vc-section-surface { background: #0e0e0e; }
+    .vc-section-title { text-align: center; margin-bottom: 2.5rem; }
+    .vc-section-title .tag { font-family: var(--fd, Georgia, serif); font-size: .56rem; letter-spacing: .2em; text-transform: uppercase; color: #c9a646; }
+    .vc-section-title h2 { font-family: var(--fp, 'Pirata One', serif); font-size: clamp(1.4rem, 3vw, 2.2rem); color: #fff; margin: .4rem 0; }
+    .vc-section-title h2 em { font-style: italic; color: #c9a646; }
+
+    .vc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* PRODUCT CARD */
+    .vc-card {
+      background: #0e0e0e;
+      border: 1px solid rgba(197,160,89,.12);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+      box-shadow: 0 8px 28px rgba(0,0,0,.4);
+    }
+    .vc-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 48px rgba(0,0,0,.55);
+      border-color: rgba(197,160,89,.32);
+    }
+    .vc-card-featured {
+      border-color: rgba(197,160,89,.28);
+      background: linear-gradient(135deg, rgba(197,160,89,.04), rgba(0,0,0,.3));
+    }
+    .vc-card-img {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: #000;
+    }
+    .vc-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+      transition: transform .5s ease;
+    }
+    .vc-card:hover .vc-card-img img { transform: scale(1.04); }
+    .vc-badge {
+      position: absolute; bottom: .7rem; left: .7rem;
+      font-family: var(--fd, Georgia, serif); font-size: .46rem; letter-spacing: .15em; text-transform: uppercase;
+      color: #050505; background: #c9a646; padding: .22rem .65rem; border-radius: 2px;
+    }
+    .vc-badge-top {
+      position: absolute; top: .7rem; right: .7rem;
+      font-family: var(--fd, Georgia, serif); font-size: .46rem; letter-spacing: .15em; text-transform: uppercase;
+      color: #c9a646; background: rgba(197,160,89,.12); border: 1px solid rgba(197,160,89,.4);
+      padding: .22rem .65rem; border-radius: 2px;
+    }
+    .vc-card-body {
+      padding: 1.3rem;
+      display: flex; flex-direction: column; gap: .65rem;
+      flex: 1;
+    }
+    .vc-card-cat { font-family: var(--fd, Georgia, serif); font-size: .5rem; letter-spacing: .18em; text-transform: uppercase; color: #c9a646; }
+    .vc-card-name { font-family: var(--fd, Georgia, serif); font-size: .95rem; color: #fff; letter-spacing: .04em; line-height: 1.25; }
+    .vc-card-desc { font-size: .78rem; color: rgba(245,245,245,.62); line-height: 1.65; flex: 1; }
+    .vc-card-footer { display: flex; align-items: center; justify-content: space-between; gap: .8rem; margin-top: .4rem; flex-wrap: wrap; }
+    .vc-price { font-family: var(--fd, Georgia, serif); font-size: 1.4rem; font-weight: 800; color: #c9a646; letter-spacing: -.01em; }
+    .vc-price small { font-size: .65rem; font-weight: 400; color: rgba(197,160,89,.6); }
+    .vc-btn-add {
+      background: #c9a646; color: #050505;
+      border: none; border-radius: 4px;
+      font-family: var(--fd, Georgia, serif); font-size: .6rem; letter-spacing: .14em; text-transform: uppercase;
+      padding: .7rem 1.3rem; cursor: pointer;
+      transition: all .25s ease;
+      flex-shrink: 0;
+    }
+    .vc-btn-add:hover { background: #e0ba52; transform: translateY(-2px); box-shadow: 0 6px 18px rgba(197,160,89,.35); }
+
+    /* TOAST */
+    #vc-toast {
+      position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%) translateY(80px);
+      background: rgba(197,160,89,.95); color: #050505;
+      font-family: var(--fd, Georgia, serif); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
+      padding: .75rem 2rem; border-radius: 4px;
+      transition: transform .35s ease, opacity .35s ease;
+      opacity: 0; z-index: 9999; white-space: nowrap;
+    }
+    #vc-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+    /* MOBILE NAV */
+    .vc-nav-links { display: flex; gap: 1.2rem; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
+    @media (max-width: 768px) {
+      .vc-nav { padding: .6rem 1.2rem; }
+      .vc-logo img { height: 68px !important; }
+      .vc-nav-links { display: none; }
+      .vc-hero { padding: 4rem 1.2rem 2.5rem; }
+      .vc-grid { grid-template-columns: 1fr; }
+      .vc-card-img { aspect-ratio: 4/3; }
+      .vc-section { padding: 2.5rem 1rem; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .vc-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* SECTION CTA BAS DE PAGE */
+    .vc-cta-section {
+      padding: 4rem 2rem;
+      background: #050505;
+      text-align: center;
+      border-top: 1px solid rgba(197,160,89,.08);
+    }
+    .vc-cta-section h2 { font-family: var(--fp, 'Pirata One', serif); font-size: clamp(1.2rem, 2.5vw, 1.8rem); color: #fff; margin-bottom: .8rem; }
+    .vc-cta-section p { font-size: .85rem; color: rgba(245,245,245,.62); max-width: 48ch; margin: 0 auto 1.6rem; line-height: 1.75; }
+    .vc-btn-secondary {
+      display: inline-block;
+      border: 1px solid rgba(197,160,89,.4); color: #c9a646;
+      font-family: var(--fd, Georgia, serif); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase;
+      padding: .9rem 2rem; border-radius: 4px; text-decoration: none;
+      transition: all .25s;
+    }
+    .vc-btn-secondary:hover { background: rgba(197,160,89,.08); border-color: rgba(197,160,89,.7); }
+
+    footer.vc-footer {
+      background: #0a0a0a; border-top: 1px solid rgba(197,160,89,.1);
+      padding: 2rem; text-align: center;
+      font-size: .65rem; color: rgba(245,245,245,.35); line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="vc-nav">
+    <a href="index.html" class="vc-logo">
+      <img src="assets/img/logo_navbar.jpg" alt="ZilFusion Brew" loading="eager" decoding="async">
+    </a>
+    <ul class="vc-nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="bieres.html">Bières</a></li>
+      <li><a href="rhums.html">Rhums</a></li>
+      <li><a href="shooters.html">Shooters</a></li>
+      <li><a href="tulipe.html">Verres Tulipe</a></li>
+      <li><a href="longdrinks.html">Verres Longdrink</a></li>
+      <li><a href="verres-biere.html">Verres à Bière</a></li>
+      <li><a href="verres-coffrets.html" style="color:#c9a646;">Verres &amp; Coffrets</a></li>
+    </ul>
+    <button class="vc-cart-btn" onclick="location.href='index.html#cart'">🛒 Panier <span id="vc-cart-count">0</span></button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="vc-hero">
+    <p class="vc-hero-tag">Collection signature · Gravure laser</p>
+    <h1>Verres <em>gravés</em> &amp; Coffrets<br>ZilFusion Brew</h1>
+    <div class="vc-hero-line"></div>
+    <p>Des verres premium gravés au laser avec le blason ZilFusion Brew,<br>pour sublimer chaque moment de dégustation.</p>
+    <div class="vc-badges">
+      <span>✦ Gravure laser haute précision</span>
+      <span>✦ Finition sablée</span>
+      <span>✦ Résistant lave-vaisselle</span>
+    </div>
+  </section>
+
+  <!-- VERRES INDIVIDUELS -->
+  <section class="vc-section vc-section-surface">
+    <div class="vc-section-title">
+      <p class="tag">Nos verres</p>
+      <h2>La collection <em>signature</em></h2>
+    </div>
+    <div class="vc-grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+
+      <!-- SHOOTER -->
+      <div class="vc-card">
+        <div class="vc-card-img" style="background:#000;">
+          <img src="assets/img/shooter-vide-bar.png" alt="Shooter gravé ZilFusion Brew" style="object-fit:cover;object-position:center;" loading="lazy" decoding="async">
+          <span class="vc-badge">Gravure laser</span>
+        </div>
+        <div class="vc-card-body">
+          <p class="vc-card-cat">Shooter · Dégustation</p>
+          <h3 class="vc-card-name">Shooter gravé ZilFusion Brew</h3>
+          <p class="vc-card-desc">Verre à shooter compact, gravure laser fine avec effet sablé. Parfait pour rhums arrangés, crèmes artisanales et coffrets dégustation.</p>
+          <div class="vc-card-footer">
+            <div class="vc-price">3 € <small>/ unité</small></div>
+            <button class="vc-btn-add" onclick="vcAddToCart('Shooter Gravé Zil Fusion Brew', 3)">Ajouter →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- LONGDRINK -->
+      <div class="vc-card">
+        <div class="vc-card-img" style="background:#000;">
+          <img src="assets/img/longdrink-verre-vide.png" alt="Verre longdrink gravé ZilFusion Brew — vide" style="object-fit:contain;object-position:center;width:100%;height:100%;" loading="lazy" decoding="async">
+          <span class="vc-badge">Gravure laser</span>
+        </div>
+        <div class="vc-card-body">
+          <p class="vc-card-cat">Longdrink · Cocktails</p>
+          <h3 class="vc-card-name">Verre longdrink gravé</h3>
+          <p class="vc-card-desc">Format long élancé, idéal pour cocktails, crèmes de rhum et boissons artisanales. Blason ZilFusion Brew gravé en façade.</p>
+          <div class="vc-card-footer">
+            <div class="vc-price">8 € <small>/ unité</small></div>
+            <button class="vc-btn-add" onclick="vcAddToCart('Verre Longdrink Gravé Zil Fusion Brew', 8)">Ajouter →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TULIPE -->
+      <div class="vc-card">
+        <div class="vc-card-img" style="background:#0a0a0a;">
+          <img src="assets/img/verre-tulipe-fiche.png" alt="Verre tulipe gravé ZilFusion Brew" style="object-fit:contain;object-position:center;" loading="lazy" decoding="async">
+          <span class="vc-badge">Gravure laser</span>
+          <span class="vc-badge-top">Best seller</span>
+        </div>
+        <div class="vc-card-body">
+          <p class="vc-card-cat">Tulipe · Rhum &amp; Spiritueux</p>
+          <h3 class="vc-card-name">Verre tulipe dégustation</h3>
+          <p class="vc-card-desc">Forme tulipe 3.5 oz optimisée pour concentrer les arômes. Gravure crâne + Zil Fusion Brew. La référence pour la dégustation premium.</p>
+          <div class="vc-card-footer">
+            <div class="vc-price">8 € <small>/ unité</small></div>
+            <button class="vc-btn-add" onclick="vcAddToCart('Verre Tulipe Gravé Zil Fusion Brew', 8)">Ajouter →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- VERRE À BIÈRE -->
+      <div class="vc-card">
+        <div class="vc-card-img" style="background:#000;">
+          <img src="assets/img/biere-verre-vide.png" alt="Verre à bière gravé ZilFusion Brew" style="object-fit:contain;object-position:center;" loading="lazy" decoding="async">
+          <span class="vc-badge">Gravure laser</span>
+        </div>
+        <div class="vc-card-body">
+          <p class="vc-card-cat">Bière · Dégustation</p>
+          <h3 class="vc-card-name">Verre à bière gravé</h3>
+          <p class="vc-card-desc">Pinte signature ZilFusion Brew, gravure laser blason en façade. Idéal pour nos bières craft artisanales et dégustations.</p>
+          <div class="vc-card-footer">
+            <div class="vc-price">8 € <small>/ unité</small></div>
+            <button class="vc-btn-add" onclick="vcAddToCart('Verre à Bière Gravé Zil Fusion Brew', 8)">Ajouter →</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COFFRETS -->
+  <section class="vc-section vc-section-dark">
+    <div class="vc-section-title">
+      <p class="tag">Coffrets cadeaux</p>
+      <h2>Offrir une <em>expérience</em></h2>
+    </div>
+    <div class="vc-grid">
+
+      <!-- COFFRET DÉCOUVERTE -->
+      <div class="vc-card vc-card-featured">
+        <div class="vc-card-img">
+          <img src="assets/img/gamme_coffrets_artisanaux.png" alt="Coffret découverte ZilFusion Brew" loading="lazy" decoding="async">
+          <span class="vc-badge">Édition limitée</span>
+          <span class="vc-badge-top">Recommandé</span>
+        </div>
+        <div class="vc-card-body">
+          <p class="vc-card-cat">Coffret · Découverte</p>
+          <h3 class="vc-card-name">Coffret découverte premium</h3>
+          <p class="vc-card-desc">2 verres tulipe gravés + 2 shooters gravés, présentés dans un écrin premium. Le cadeau signature ZilFusion Brew pour les amateurs de dégustation.</p>
+          <div class="vc-card-footer">
+            <div class="vc-price">35 € <small>/ coffret</small></div>
+            <button class="vc-btn-add" onclick="vcAddToCart('Coffret découverte premium ZilFusion Brew', 35)">Ajouter →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- COFFRET RHUM -->
+      <div class="vc-card vc-card-featured">
+        <div class="vc-card-img">
+          <img src="assets/img/coffret_rhum.png" alt="Coffret rhum ZilFusion Brew" loading="lazy" decoding="async">
+          <span class="vc-badge">Sur commande</span>
+        </div>
+        <div class="vc-card-body">
+          <p class="vc-card-cat">Coffret · Rhum &amp; Spiritueux</p>
+          <h3 class="vc-card-name">Coffret rhum arrangé</h3>
+          <p class="vc-card-desc">Nos rhums arrangés premium dans un coffret bois artisanal. Bois travaillé, finitions soignées, sélection de créations pour une expérience unique.</p>
+          <div class="vc-card-footer">
+            <div class="vc-price">59 € <small>/ coffret</small></div>
+            <button class="vc-btn-add" onclick="vcAddToCart('Coffret rhum arrangé ZilFusion Brew', 59)">Ajouter →</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="vc-cta-section">
+    <h2>Une question ? Une commande sur mesure ?</h2>
+    <p>Coffrets personnalisés, gravure spéciale, commandes pro — contactez-nous directement.</p>
+    <a href="index.html#contact" class="vc-btn-secondary">Nous contacter →</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="vc-footer">
+    © 2025 ZilFusion Brew — L'abus d'alcool est dangereux pour la santé. À consommer avec modération. Vente interdite aux mineurs.
+  </footer>
+
+  <!-- TOAST -->
+  <div id="vc-toast"></div>
+
+  <script>
+  // ── CART (sessionStorage, clé "cart") ──
+  function vcGetCart() {
+    try { return JSON.parse(sessionStorage.getItem('cart') || '[]'); } catch(e) { return []; }
+  }
+  function vcSaveCart(cart) {
+    sessionStorage.setItem('cart', JSON.stringify(cart));
+  }
+  function vcUpdateBadge() {
+    var cart = vcGetCart();
+    var count = cart.reduce(function(s, i) { return s + i.qty; }, 0);
+    var el = document.getElementById('vc-cart-count');
+    if (el) el.textContent = count;
+  }
+  function vcAddToCart(name, price) {
+    var ids = {
+      'Shooter Gravé Zil Fusion Brew|300': 'shooter-grave',
+      'Verre Longdrink Gravé Zil Fusion Brew|800': 'verre-longdrink-grave',
+      'Verre Tulipe Gravé Zil Fusion Brew|800': 'verre-tulipe-grave',
+      'Verre à Bière Gravé Zil Fusion Brew|800': 'verre-biere-grave',
+      'Coffret découverte premium ZilFusion Brew|3500': 'coffret-decouverte-premium-verres',
+      'Coffret rhum arrangé ZilFusion Brew|5900': 'coffret-rhum-arrange-verres'
+    };
+    var id = ids[name + '|' + Math.round(price * 100)];
+    var cart = vcGetCart();
+    var existing = cart.find(function(i) { return i.id === id; });
+    if (existing) { existing.qty++; } else { cart.push({ id: id, name: name, price: price, qty: 1 }); }
+    vcSaveCart(cart);
+    vcUpdateBadge();
+    vcShowToast('✔ ' + name + ' ajouté au panier');
+  }
+    function vcShowToast(msg) {
+    var t = document.getElementById('vc-toast');
+    if (!t) return;
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(function() { t.classList.remove('show'); }, 2800);
+  }
+  // Init badge on load
+  vcUpdateBadge();
+  </script>
+</body>
+</html>

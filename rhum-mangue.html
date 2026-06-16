@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhum arrangé Mangue — ZilFusion Brew</title>
+<meta name="description" content="Rhum arrangé Mangue ZilFusion Brew — macération lente de mangue tropicale dans un rhum sélectionné. Intensité aromatique riche et gourmande. 70 cl — 35,00 €.">
+<link rel="canonical" href="https://zilfusion.netlify.app/rhum-mangue.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23080808'/><text y='.9em' font-size='80' x='10'>🍺</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Pirata+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="enhancements.css">
+<style>
+  .prod-page { max-width: 1000px; margin: 0 auto; padding: 6rem 2rem 4rem; }
+  .prod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .prod-img-wrap { position: relative; }
+  .prod-img-wrap img { width: 100%; max-width: 420px; height: auto; object-fit: contain; filter: drop-shadow(0 20px 60px rgba(197,160,89,.3)); display: block; margin: 0 auto; }
+  .prod-badge-serie { display: inline-block; font-size: .62rem; font-weight: 700; color: #f87171; letter-spacing: .06em; text-transform: uppercase; background: rgba(248,113,113,.08); border: 1px solid rgba(248,113,113,.2); padding: .2rem .8rem; border-radius: 999px; margin-bottom: 1rem; }
+  .prod-cat { font-size: .7rem; color: var(--gold); letter-spacing: .12em; text-transform: uppercase; margin-bottom: .5rem; font-family: var(--fs); }
+  .prod-title { font-size: clamp(1.8rem, 3vw, 2.4rem); font-family: var(--ff); color: var(--white); margin-bottom: .3rem; line-height: 1.2; }
+  .prod-format { font-size: .72rem; color: var(--dim); margin-bottom: 1.2rem; }
+  .prod-price { font-size: 2rem; font-family: var(--ff); color: var(--gold); margin-bottom: 1.4rem; }
+  .prod-desc { font-size: .88rem; color: var(--dim); line-height: 1.75; margin-bottom: 1.5rem; max-width: 44ch; }
+  .prod-points { list-style: none; padding: 0; margin: 0 0 1.4rem; border-top: 1px solid rgba(197,160,89,.12); }
+  .prod-points li { display: flex; align-items: center; gap: .6rem; font-size: .78rem; color: var(--dim); padding: .6rem 0; border-bottom: 1px solid rgba(197,160,89,.08); }
+  .prod-points li span.dot { color: var(--gold); font-size: 1rem; flex-shrink: 0; }
+  .prod-finale { font-size: .75rem; color: var(--gold); font-style: italic; margin-bottom: 1.8rem; }
+  .prod-btn-wrap { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .prod-mention { font-size: .62rem; color: var(--dim); margin-top: 1rem; font-style: italic; opacity: .7; }
+  .prod-back { display: inline-flex; align-items: center; gap: .4rem; font-size: .7rem; color: var(--dim); text-decoration: none; letter-spacing: .05em; margin-bottom: 2.5rem; cursor: pointer; transition: color .2s; }
+  .prod-back:hover { color: var(--gold); }
+  .prod-sep { border: none; border-top: 1px solid rgba(197,160,89,.1); margin: 3rem 0; }
+  @media (max-width: 680px) {
+    .prod-grid { grid-template-columns: 1fr; }
+    .prod-page { padding: 5rem 1.2rem 3rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo" onclick="location.href='index.html'" style="padding:.2rem 0;cursor:pointer;">
+    <img src="assets/img/logo_navbar.jpg" alt="ZilFusion Brew" style="height:110px;width:auto;object-fit:contain;mix-blend-mode:screen;filter:brightness(1.1);" loading="eager" decoding="async">
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html#bieres">Bières</a></li>
+    <li><a href="index.html#rhum" class="active">Rhums Arrangés</a></li>
+    <li><a href="index.html#fermentees">Boissons Fermentées</a></li>
+    <li><a href="index.html#ateliers">Ateliers</a></li>
+    <li><a href="index.html#boutique">Boutique</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-cart" onclick="location.href='index.html#cart'">🛒 Panier <span class="cart-badge" id="cartCount">0</span></button>
+    <button class="nav-burger" onclick="document.getElementById('mobMenu').classList.add('open')">☰</button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="document.getElementById('mobMenu').classList.remove('open')">✕</button>
+  <ul>
+    <li><a href="index.html" onclick="document.getElementById('mobMenu').classList.remove('open')">Accueil</a></li>
+    <li><a href="index.html" onclick="document.getElementById('mobMenu').classList.remove('open')">Bières</a></li>
+    <li><a href="index.html" onclick="document.getElementById('mobMenu').classList.remove('open')">Rhums Arrangés</a></li>
+    <li><a href="index.html" onclick="document.getElementById('mobMenu').classList.remove('open')">Ateliers</a></li>
+    <li><a href="index.html" onclick="document.getElementById('mobMenu').classList.remove('open')">Boutique</a></li>
+  </ul>
+</div>
+
+<!-- PAGE PRODUIT -->
+<main class="prod-page">
+
+  <a class="prod-back" onclick="history.back()">← Retour</a>
+
+  <div class="prod-grid">
+
+    <!-- IMAGE -->
+    <div class="prod-img-wrap">
+      <img src="assets/img/gamme_rhum_arrange.png" alt="Rhum arrangé Mangue ZilFusion Brew" loading="lazy" decoding="async">
+    </div>
+
+    <!-- INFOS -->
+    <div class="prod-info">
+      <span class="prod-badge-serie">⚡ Série limitée</span>
+      <span style="display:inline-block;font-size:.62rem;font-weight:700;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;background:rgba(197,160,89,.08);border:1px solid rgba(197,160,89,.25);padding:.2rem .8rem;border-radius:999px;margin-bottom:1rem;margin-left:.4rem;">🏆 Best-seller</span>
+      <p class="prod-cat">Rhum Arrangé · Macération artisanale</p>
+      <h1 class="prod-title">Rhum arrangé<br><em>Mangue</em></h1>
+      <p class="prod-format">70 cl &nbsp;·&nbsp; Bouteille artisanale</p>
+      <div class="prod-price">35,00 €</div>
+      <p style="font-size:.65rem;color:var(--dim);font-style:italic;margin-top:-.9rem;margin-bottom:1.4rem;">Recette artisanale — petites séries limitées</p>
+
+      <p class="prod-desc">Une macération lente de mangue tropicale dans un rhum sélectionné, révélant une douceur fruitée intense et parfaitement équilibrée.</p>
+
+      <ul class="prod-points">
+        <li><span class="dot">✦</span> Mangue tropicale mûre</li>
+        <li><span class="dot">✦</span> Macération longue</li>
+        <li><span class="dot">✦</span> Profil gourmand et intense</li>
+      </ul>
+
+      <p class="prod-finale">Un incontournable pour découvrir l'univers ZilFusion Brew.</p>
+
+      <div class="prod-btn-wrap">
+        <button class="btn-g" onclick="ajouterPanier()" style="font-size:.78rem;padding:1rem 2.2rem;">Ajouter au panier</button>
+        <a href="index.html" class="btn-o" style="font-size:.78rem;padding:1rem 1.8rem;text-decoration:none;display:inline-flex;align-items:center;">Voir la boutique</a>
+      </div>
+      <p style="font-size:.62rem;color:var(--dim);margin-top:.8rem;opacity:.8;">🔒 Paiement sécurisé • Livraison 3–5 jours • Produit artisanal</p>
+      <p class="prod-mention">Petites séries disponibles selon production — réservation conseillée.</p>
+      <p style="font-size:.65rem;color:#4ade80;font-weight:600;margin-top:.5rem;">🚚 Livraison offerte dès 60€ · ✅ Premières commandes en cours</p>
+      <p class="prod-mention" style="margin-top:.4rem;">L'abus d'alcool est dangereux pour la santé. À consommer avec modération. Vente interdite aux mineurs.</p>
+    </div>
+
+  </div>
+
+  <hr class="prod-sep">
+
+  <!-- SECTION INFOS COMPLÉMENTAIRES -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;">
+    <div class="bc" style="padding:1.2rem;text-align:center;">
+      <div style="font-size:1.6rem;margin-bottom:.4rem;">🥭</div>
+      <p style="font-size:.7rem;color:var(--gold);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.3rem;">Fruit</p>
+      <p style="font-size:.8rem;color:var(--dim);">Mangue tropicale</p>
+    </div>
+    <div class="bc" style="padding:1.2rem;text-align:center;">
+      <div style="font-size:1.6rem;margin-bottom:.4rem;">⏳</div>
+      <p style="font-size:.7rem;color:var(--gold);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.3rem;">Macération</p>
+      <p style="font-size:.8rem;color:var(--dim);">Lente &amp; artisanale</p>
+    </div>
+    <div class="bc" style="padding:1.2rem;text-align:center;">
+      <div style="font-size:1.6rem;margin-bottom:.4rem;">🍾</div>
+      <p style="font-size:.7rem;color:var(--gold);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.3rem;">Format</p>
+      <p style="font-size:.8rem;color:var(--dim);">70 cl</p>
+    </div>
+    <div class="bc" style="padding:1.2rem;text-align:center;">
+      <div style="font-size:1.6rem;margin-bottom:.4rem;">🌍</div>
+      <p style="font-size:.7rem;color:var(--gold);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.3rem;">Origine</p>
+      <p style="font-size:.8rem;color:var(--dim);">Maurice · Madagascar · France</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <img src="assets/img/logo_navbar.jpg" alt="ZilFusion Brew" style="height:50px;width:auto;object-fit:contain;" loading="eager" decoding="async">
+  <ul class="ft-links">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="index.html">Bières</a></li>
+    <li><a href="index.html">Rhum</a></li>
+    <li><a href="index.html">Ateliers</a></li>
+    <li><a href="index.html">Boutique</a></li>
+    <li><a href="index.html">Contact</a></li>
+  </ul>
+  <div class="ft-copy">© 2025 ZilFusion Brew<br><span style="font-size:.58rem;opacity:.4">L'abus d'alcool est dangereux pour la santé. À consommer avec modération. Vente interdite aux mineurs.</span></div>
+</footer>
+
+<script>
+  // --- AGE GATE : même clé que index.html ---
+  if (sessionStorage.getItem('ageVerified') !== 'true') {
+    window.location.href = 'index.html';
+  }
+
+  // --- PANIER : même clé cart que script.js ---
+  function getCart() {
+    return JSON.parse(sessionStorage.getItem('cart') || '[]');
+  }
+  function saveCart(cart) {
+    sessionStorage.setItem('cart', JSON.stringify(cart));
+  }
+  function updateBadge() {
+    var count = getCart().reduce(function(s,i){ return s + i.qty; }, 0);
+    var badge = document.getElementById('cartCount');
+    if (badge) badge.textContent = count;
+  }
+
+  function ajouterPanier() {
+    var cart = getCart();
+    var id = 'rhum-mangue';
+    var nom = 'Rhum arrangé Mangue';
+    var existing = cart.find(function(i){ return i.id === id; });
+    if (existing) { existing.qty++; } else { cart.push({ id: id, name: nom, price: 35.00, sub: '70cl · Rhum arrangé', qty: 1 }); }
+    saveCart(cart);
+    updateBadge();
+
+    var btn = document.querySelector('button.btn-g');
+    btn.textContent = '✓ Ajouté !';
+    btn.style.background = 'rgba(74,222,128,.15)';
+    btn.style.borderColor = '#4ade80';
+    btn.style.color = '#4ade80';
+    setTimeout(function() {
+      btn.textContent = 'Ajouter au panier';
+      btn.style.background = '';
+      btn.style.borderColor = '';
+      btn.style.color = '';
+    }, 2000);
+  }
+
+  document.addEventListener('DOMContentLoaded', updateBadge);
+</script>
+
+</body>
+</html>
