@@ -1,0 +1,108 @@
+{
+  "gammes": {
+    "bieres": {
+      "statut": "disponible"
+    },
+    "rhums": {
+      "statut": "disponible"
+    },
+    "fermentation": {
+      "statut": "bientot_disponible"
+    },
+    "koso": {
+      "statut": "bientot_disponible"
+    },
+    "rumtopf": {
+      "statut": "bientot_disponible"
+    }
+  },
+  "produits": {
+    "pale-ale-mango": {
+      "statut": "disponible"
+    },
+    "ipa-tropicale": {
+      "statut": "disponible"
+    },
+    "stout-cacao": {
+      "statut": "disponible"
+    },
+    "blonde-passion": {
+      "statut": "disponible"
+    },
+    "saison-hibiscus": {
+      "statut": "disponible"
+    },
+    "sour-citron-vert": {
+      "statut": "disponible"
+    },
+    "porter-vanille": {
+      "statut": "disponible"
+    },
+    "griotika": {
+      "statut": "disponible"
+    },
+    "rhum-vanille-coco": {
+      "statut": "disponible"
+    },
+    "rhum-gingembre-citron": {
+      "statut": "disponible"
+    },
+    "rhum-fruits-rouges": {
+      "statut": "disponible"
+    },
+    "rhum-epices-creoles": {
+      "statut": "disponible"
+    },
+    "rhum-longani": {
+      "statut": "disponible"
+    },
+    "rhum-dragon": {
+      "statut": "disponible"
+    },
+    "kombucha-hibiscus": {
+      "statut": "bientot_disponible"
+    },
+    "kombucha-gingembre": {
+      "statut": "bientot_disponible"
+    },
+    "kombucha-citron-kaffir": {
+      "statut": "bientot_disponible"
+    },
+    "kefir-nature": {
+      "statut": "bientot_disponible"
+    },
+    "kefir-fruits-tropicaux": {
+      "statut": "bientot_disponible"
+    },
+    "soda-passion-menthe": {
+      "statut": "bientot_disponible"
+    },
+    "soda-ananas-basilic": {
+      "statut": "bientot_disponible"
+    },
+    "soda-goyave-lime": {
+      "statut": "bientot_disponible"
+    },
+    "atelier-brassage": {
+      "statut": "disponible"
+    },
+    "atelier-kombucha": {
+      "statut": "disponible"
+    },
+    "atelier-degustation": {
+      "statut": "disponible"
+    },
+    "atelier-rhum": {
+      "statut": "disponible"
+    },
+    "box-decouverte": {
+      "statut": "disponible"
+    },
+    "box-brasseur": {
+      "statut": "disponible"
+    },
+    "box-rhum-biere": {
+      "statut": "disponible"
+    }
+  }
+}
